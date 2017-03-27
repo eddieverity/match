@@ -1,8 +1,473 @@
-<html>
-<head>
-  <title>Survey</title>
-</head>
-<body>
-  
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+      <!-- Latest compiled and minified JavaScript -->
+      <script type="text/javascript" src="{% static 'match_dot_com/js/script.js' %}"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'match_dot_com/css/style.css' %}">
+      <link rel="shortcut icon" type="image/png" href="{% static 'match_dot_com/img/favicon.ico' %}"/>
+  </head>
+  <body>
+    <div id="wrapper">
+      <form action="{% url 'match:survey' %}" method="POST">
+      <fieldset>
+        <label for="user_age">Your Age</label><br>
+        <input type="number" name="age" min="18" max="75">
+      </fieldset>
+      <fieldset>
+        <label for="yourgender">Your Gender</label><br>
+        <input type="radio" name="user_gender" value="male">Male<br>
+        <input type="radio" name="user_gender" value="female">Female<br>
+        <input type="radio" name="user_gender" value="other">Other<br>
+      </fieldset>
+      <fieldset>
+			<label for="valueA">Your Height:</label>
+			<select name="valueA" id="valueA">
+				<optgroup label="4&rsquo;">
+					<option value="4&rsquo;">4&rsquo;</option>
+					<option value="4&rsquo;&nbsp;1&rdquo;">4&rsquo;&nbsp;1&rdquo;</option>
+					<option value="4&rsquo;&nbsp;2&rdquo;">4&rsquo;&nbsp;2&rdquo;</option>
+					<option value="4&rsquo;&nbsp;3&rdquo;">4&rsquo;&nbsp;3&rdquo;</option>
+					<option value="4&rsquo;&nbsp;4&rdquo;">4&rsquo;&nbsp;4&rdquo;</option>
+					<option value="4&rsquo;&nbsp;5&rdquo;">4&rsquo;&nbsp;5&rdquo;</option>
+					<option value="4&rsquo;&nbsp;6&rdquo;">4&rsquo;&nbsp;6&rdquo;</option>
+					<option value="4&rsquo;&nbsp;7&rdquo;">4&rsquo;&nbsp;7&rdquo;</option>
+					<option value="4&rsquo;&nbsp;8&rdquo;">4&rsquo;&nbsp;8&rdquo;</option>
+					<option value="4&rsquo;&nbsp;9&rdquo;">4&rsquo;&nbsp;9&rdquo;</option>
+					<option value="4&rsquo;&nbsp;10&rdquo;">4&rsquo;&nbsp;10&rdquo;</option>
+					<option value="4&rsquo;&nbsp;11&rdquo;">4&rsquo;&nbsp;11&rdquo;</option>
+				</optgroup>
+				<optgroup label="5&rsquo;"> selected="selected"
+					<option value="5&rsquo;">5&rsquo;</option>
+					<option value="5&rsquo;&nbsp;1&rdquo;">5&rsquo;&nbsp;1&rdquo;</option>
+					<option value="5&rsquo;&nbsp;2&rdquo;">5&rsquo;&nbsp;2&rdquo;</option>
+					<option value="5&rsquo;&nbsp;3&rdquo;">5&rsquo;&nbsp;3&rdquo;</option>
+					<option value="5&rsquo;&nbsp;4&rdquo;">5&rsquo;&nbsp;4&rdquo;</option>
+					<option value="5&rsquo;&nbsp;5&rdquo;">5&rsquo;&nbsp;5&rdquo;</option>
+					<option value="5&rsquo;&nbsp;6&rdquo;">5&rsquo;&nbsp;6&rdquo;</option>
+					<option value="5&rsquo;&nbsp;7&rdquo;">5&rsquo;&nbsp;7&rdquo;</option>
+					<option value="5&rsquo;&nbsp;8&rdquo;">5&rsquo;&nbsp;8&rdquo;</option>
+					<option value="5&rsquo;&nbsp;9&rdquo;">5&rsquo;&nbsp;9&rdquo;</option>
+					<option value="5&rsquo;&nbsp;10&rdquo;">5&rsquo;&nbsp;10&rdquo;</option>
+					<option value="5&rsquo;&nbsp;11&rdquo;">5&rsquo;&nbsp;11&rdquo;</option>
+				</optgroup>
+				<optgroup label="6&rsquo;">
+					<option value="6&rsquo;">6&rsquo;</option>
+					<option value="6&rsquo;&nbsp;1&rdquo;">6&rsquo;&nbsp;1&rdquo;</option>
+					<option value="6&rsquo;&nbsp;2&rdquo;">6&rsquo;&nbsp;2&rdquo;</option>
+					<option value="6&rsquo;&nbsp;3&rdquo;">6&rsquo;&nbsp;3&rdquo;</option>
+					<option value="6&rsquo;&nbsp;4&rdquo;">6&rsquo;&nbsp;4&rdquo;</option>
+					<option value="6&rsquo;&nbsp;5&rdquo;">6&rsquo;&nbsp;5&rdquo;</option>
+					<option value="6&rsquo;&nbsp;6&rdquo;">6&rsquo;&nbsp;6&rdquo;</option>
+					<option value="6&rsquo;&nbsp;7&rdquo;">6&rsquo;&nbsp;7&rdquo;</option>
+					<option value="6&rsquo;&nbsp;8&rdquo;">6&rsquo;&nbsp;8&rdquo;</option>
+					<option value="6&rsquo;&nbsp;9&rdquo;">6&rsquo;&nbsp;9&rdquo;</option>
+					<option value="6&rsquo;&nbsp;10&rdquo;">6&rsquo;&nbsp;10&rdquo;</option>
+					<option value="6&rsquo;&nbsp;11&rdquo;">6&rsquo;&nbsp;11&rdquo;</option>
+				</optgroup>
+			</select>
+		  </fieldset>
+      <fieldset>
+        <label for="user_bodytype">Body Type</label><br>
+        <input type="radio" name="user_bodytype" value="0">Slim<br>
+        <input type="radio" name="user_bodytype" value="1"> Average<br>
+        <input type="radio" name="user_bodytype" value="2">Athletic<br>
+        <input type="radio" name="user_bodytype" value="3"> Heavyset<br>
+      </fieldset>
+      <fieldset>
+        <label for="user_status">Relationship Status</label><br>
+        <input type="radio" name="user_status" value="single">Never Married<br>
+        <input type="radio" name="user_status" value="separated">Currently Separated<br>
+        <input type="radio" name="user_status" value="divorced"> Divorced<br>
+        <input type="radio" name="user_status" value="widowed">Widowed<br>
+        <input type="radio" name="user_status" value="other">Other<br>
+      </fieldset>
+       <fieldset>
+        <label for="user_status">Are you interested in marriage?</label><br>
+        <input type="radio" name="user_status" value="0">Never<br>
+        <input type="radio" name="user_status" value="1">Possibly<br>
+        <input type="radio" name="user_status" value="2">Someday<br>
+      </fieldset>
+      <fieldset>
+        <label for="user_currkids">Do you have children?</label><br>
+        <input type="radio" name="user_currkids" value="0">No<br>
+        <input type="radio" name="user_currkids" value="3">Yes, and they live with me<br>
+        <input type="radio" name="user_currkids" value="2">Yes, and they sometimes live with me<br>
+        <input type="radio" name="user_currkids" value="1">Yes, but they do not live with me<br>
+      </fieldset>
+      <fieldset>
+        <label for="user_futurekids">Do you want children?</label><br>
+        <input type="radio" name="user_futurekids" value="5">Definitely<br>
+        <input type="radio" name="user_futurekids" value="4">Someday<br>
+        <input type="radio" name="user_futurekids" value="2">Not Sure<br>
+        <input type="radio" name="user_futurekids" value="1">Probably Not<br>
+        <input type="radio" name="user_futurekids" value="0">No<br>
+        <input type="radio" name="user_futurekids" value="3">No, but it's okay if my partner does.<br>
+      </fieldset>
+      <fieldset>
+        <label for="user_edu">Highest Education</label><br>
+        <input type="radio" name="user_edu" value="0">No Highschool<br>
+        <input type="radio" name="user_edu" value="1">High School<br>
+        <input type="radio" name="user_edu" value="2">Some College<br>
+        <input type="radio" name="user_edu" value="3">College Graduate<br>
+        <input type="radio" name="user_edu" value="4">Graduate School<br>
+        <input type="radio" name="user_edu" value="5">Doctorate<br>
+      </fieldset>
+      <fieldset>
+        <label for="user_smoke">Do you smoke?</label><br>
+        <input type="radio" name="user_smoke" value="0">No<br>
+        <input type="radio" name="user_smoke" value="2">Occasionally<br>
+        <input type="radio" name="user_smoke" value="3">Daily<br>
+        <input type="radio" name="user_smoke" value="4">Like A Chimney<br>
+        <input type="radio" name="user_smoke" value="1">Trying to Quit<br>
+      </fieldset>
+      <fieldset>
+        <label for="user_drink">Do you drink?</label><br>
+        <input type="radio" name="user_drink" value="0">Never<br>
+        <input type="radio" name="user_drink" value="1">Social Drinker<br>
+        <input type="radio" name="user_drink" value="2">Moderately<br>
+        <input type="radio" name="user_drink" value="3">Regularly<br>
+      </fieldset>
+      <fieldset>
+        <label for="user_religion">What is your religious affiliation?</label><br>
+        <input type="radio" name="user_religion" value="religious">Religious<br>
+        <input type="radio" name="user_religion" value="spiritual">Spritual, but Not Practicing<br>
+        <input type="radio" name="user_religion" value="not-religious">Not Religious<br>
+      </fieldset>
+      <fieldset>
+        <label for="user_salary">What is your financial situation?</label><br>
+        <input type="radio" name="user_salary" value="0">Struggling<br>
+        <input type="radio" name="user_salary" value="1">Comfortable<br>
+        <input type="radio" name="user_salary" value="2">Affluent<br>
+      </fieldset>
+      <fieldset>
+        <label for="user_interests">What are your interests?</label><br>
+        <input type="checkbox" name="user_interests" value="book-club">Book Club<br>
+        <input type="checkbox" name="user_interests" value="camping">Camping<br>
+        <input type="checkbox" name="user_interests" value="coffee">Coffee and Conversation<br>
+        <input type="checkbox" name="user_interests" value="networking">Business Networking<br>
+        <input type="checkbox" name="user_interests" value="cooking">Cooking<br>
+        <input type="checkbox" name="user_interests" value="dining-out">Dining Out<br>
+        <input type="checkbox" name="user_interests" value="fishing-hunting">Fishing/Hunting<br>
+        <input type="checkbox" name="user_interests" value="gardening">Gardening/Landscaping<br>
+        <input type="checkbox" name="user_interests" value="hobbies">Hobbies and Crafts<br>
+        <input type="checkbox" name="user_interests" value="movies">Movies/TV<br>
+        <input type="checkbox" name="user_interests" value="museums">Museums and Art<br>
+        <input type="checkbox" name="user_interests" value="music">Music and Concerts<br>
+        <input type="checkbox" name="user_interests" value="exploring">Exploring New Areas<br>
+        <input type="checkbox" name="user_interests" value="nightclubs">Nightclubs/Dancing<br>
+        <input type="checkbox" name="user_interests" value="peforming-arts">Performing Arts<br>
+        <input type="checkbox" name="user_interests" value="cards">Playing Cards<br>
+        <input type="checkbox" name="user_interests" value="playing-sports">Playing Sports<br>
+        <input type="checkbox" name="user_interests" value="political">Politics<br>
+        <input type="checkbox" name="user_interests" value="shopping">Shopping<br>
+        <input type="checkbox" name="user_interests" value="travel">Travel<br>
+        <input type="checkbox" name="user_interests" value="video-games">Video Games<br>
+        <input type="checkbox" name="user_interests" value="volunteering">Volunteering<br>
+        <input type="checkbox" name="user_interests" value="watching-sports">Watching Sportds<br>
+        <input type="checkbox" name="user_interests" value="Wine Tasing">Wine Tasting<br>
+      </fieldset>
+
+{% comment %}User is Looking For...{% endcomment %}
+      <fieldset>
+        <label for="age_min">Minimum Age</label><br>
+        <select name="age_min" id="age_min">
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+          <option value="32">32</option>
+          <option value="33">33</option>
+          <option value="34">34</option>
+          <option value="35">35</option>
+          <option value="36">36</option>
+          <option value="37">37</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+          <option value="41">41</option>
+          <option value="42">42</option>
+          <option value="43">43</option>
+          <option value="44">44</option>
+          <option value="45">45</option>
+          <option value="46">46</option>
+          <option value="47">47</option>
+          <option value="48">48</option>
+          <option value="49">49</option>
+          <option value="50">50</option>
+          <option value="51">51</option>
+          <option value="52">52</option>
+          <option value="53">53</option>
+          <option value="54">54</option>
+          <option value="55">55</option>
+          <option value="56">56</option>
+          <option value="57">57</option>
+          <option value="58">58</option>
+          <option value="59">59</option>
+          <option value="60">60</option>
+          <option value="61">61</option>
+          <option value="62">62</option>
+          <option value="63">63</option>
+          <option value="64">64</option>
+          <option value="65">65</option>
+          <option value="66">66</option>
+          <option value="67">67</option>
+          <option value="68">68</option>
+          <option value="69">69</option>
+          <option value="70">70</option>
+          <option value="71">71</option>
+          <option value="72">72</option>
+          <option value="73">73</option>
+          <option value="74">74</option>
+          <option value="75">75</option>
+        </select>
+      </fieldset>
+       <fieldset>
+        <label for="age_max">Maximum Age</label><br>
+        <select name="age_max" id="age_max">
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+          <option value="32">32</option>
+          <option value="33">33</option>
+          <option value="34">34</option>
+          <option value="35">35</option>
+          <option value="36">36</option>
+          <option value="37">37</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+          <option value="41">41</option>
+          <option value="42">42</option>
+          <option value="43">43</option>
+          <option value="44">44</option>
+          <option value="45">45</option>
+          <option value="46">46</option>
+          <option value="47">47</option>
+          <option value="48">48</option>
+          <option value="49">49</option>
+          <option value="50">50</option>
+          <option value="51">51</option>
+          <option value="52">52</option>
+          <option value="53">53</option>
+          <option value="54">54</option>
+          <option value="55">55</option>
+          <option value="56">56</option>
+          <option value="57">57</option>
+          <option value="58">58</option>
+          <option value="59">59</option>
+          <option value="60">60</option>
+          <option value="61">61</option>
+          <option value="62">62</option>
+          <option value="63">63</option>
+          <option value="64">64</option>
+          <option value="65">65</option>
+          <option value="66">66</option>
+          <option value="67">67</option>
+          <option value="68">68</option>
+          <option value="69">69</option>
+          <option value="70">70</option>
+          <option value="71">71</option>
+          <option value="72">72</option>
+          <option value="73">73</option>
+          <option value="74">74</option>
+          <option value="75">75</option>
+        </select>
+      </fieldset>
+      <fieldset>
+        <label for="seeking_gender">Interested In</label><br>
+        <input type="checkbox" name="seeking_gender" value="male">Male<br>
+        <input type="checkbox" name="seeking_gender" value="female">Female<br>
+        <input type="checkbox" name="seeking_gender" value="other"> Other<br>
+      </fieldset>
+      <fieldset>
+			<label for="min_height">Mininum Height:</label><br>
+			<select name="min_height" id="valueA">
+				<optgroup label="4&rsquo;">
+					<option value="4&rsquo;">4&rsquo;</option>
+					<option value="4&rsquo;&nbsp;1&rdquo;">4&rsquo;&nbsp;1&rdquo;</option>
+					<option value="4&rsquo;&nbsp;2&rdquo;">4&rsquo;&nbsp;2&rdquo;</option>
+					<option value="4&rsquo;&nbsp;3&rdquo;">4&rsquo;&nbsp;3&rdquo;</option>
+					<option value="4&rsquo;&nbsp;4&rdquo;">4&rsquo;&nbsp;4&rdquo;</option>
+					<option value="4&rsquo;&nbsp;5&rdquo;">4&rsquo;&nbsp;5&rdquo;</option>
+					<option value="4&rsquo;&nbsp;6&rdquo;">4&rsquo;&nbsp;6&rdquo;</option>
+					<option value="4&rsquo;&nbsp;7&rdquo;">4&rsquo;&nbsp;7&rdquo;</option>
+					<option value="4&rsquo;&nbsp;8&rdquo;">4&rsquo;&nbsp;8&rdquo;</option>
+					<option value="4&rsquo;&nbsp;9&rdquo;">4&rsquo;&nbsp;9&rdquo;</option>
+					<option value="4&rsquo;&nbsp;10&rdquo;">4&rsquo;&nbsp;10&rdquo;</option>
+					<option value="4&rsquo;&nbsp;11&rdquo;">4&rsquo;&nbsp;11&rdquo;</option>
+				</optgroup>
+				<optgroup label="5&rsquo;"> selected="selected"
+					<option value="5&rsquo;">5&rsquo;</option>
+					<option value="5&rsquo;&nbsp;1&rdquo;">5&rsquo;&nbsp;1&rdquo;</option>
+					<option value="5&rsquo;&nbsp;2&rdquo;">5&rsquo;&nbsp;2&rdquo;</option>
+					<option value="5&rsquo;&nbsp;3&rdquo;">5&rsquo;&nbsp;3&rdquo;</option>
+					<option value="5&rsquo;&nbsp;4&rdquo;">5&rsquo;&nbsp;4&rdquo;</option>
+					<option value="5&rsquo;&nbsp;5&rdquo;">5&rsquo;&nbsp;5&rdquo;</option>
+					<option value="5&rsquo;&nbsp;6&rdquo;">5&rsquo;&nbsp;6&rdquo;</option>
+					<option value="5&rsquo;&nbsp;7&rdquo;">5&rsquo;&nbsp;7&rdquo;</option>
+					<option value="5&rsquo;&nbsp;8&rdquo;">5&rsquo;&nbsp;8&rdquo;</option>
+					<option value="5&rsquo;&nbsp;9&rdquo;">5&rsquo;&nbsp;9&rdquo;</option>
+					<option value="5&rsquo;&nbsp;10&rdquo;">5&rsquo;&nbsp;10&rdquo;</option>
+					<option value="5&rsquo;&nbsp;11&rdquo;">5&rsquo;&nbsp;11&rdquo;</option>
+				</optgroup>
+				<optgroup label="6&rsquo;">
+					<option value="6&rsquo;">6&rsquo;</option>
+					<option value="6&rsquo;&nbsp;1&rdquo;">6&rsquo;&nbsp;1&rdquo;</option>
+					<option value="6&rsquo;&nbsp;2&rdquo;">6&rsquo;&nbsp;2&rdquo;</option>
+					<option value="6&rsquo;&nbsp;3&rdquo;">6&rsquo;&nbsp;3&rdquo;</option>
+					<option value="6&rsquo;&nbsp;4&rdquo;">6&rsquo;&nbsp;4&rdquo;</option>
+					<option value="6&rsquo;&nbsp;5&rdquo;">6&rsquo;&nbsp;5&rdquo;</option>
+					<option value="6&rsquo;&nbsp;6&rdquo;">6&rsquo;&nbsp;6&rdquo;</option>
+					<option value="6&rsquo;&nbsp;7&rdquo;">6&rsquo;&nbsp;7&rdquo;</option>
+					<option value="6&rsquo;&nbsp;8&rdquo;">6&rsquo;&nbsp;8&rdquo;</option>
+					<option value="6&rsquo;&nbsp;9&rdquo;">6&rsquo;&nbsp;9&rdquo;</option>
+					<option value="6&rsquo;&nbsp;10&rdquo;">6&rsquo;&nbsp;10&rdquo;</option>
+					<option value="6&rsquo;&nbsp;11&rdquo;">6&rsquo;&nbsp;11&rdquo;</option>
+				</optgroup>
+			</select>
+		  </fieldset>
+      <label for="max_height">Maximum Height:</label><br>
+			<select name="max_height" id="valueA">
+				<optgroup label="4&rsquo;">
+					<option value="4&rsquo;">4&rsquo;</option>
+					<option value="4&rsquo;&nbsp;1&rdquo;">4&rsquo;&nbsp;1&rdquo;</option>
+					<option value="4&rsquo;&nbsp;2&rdquo;">4&rsquo;&nbsp;2&rdquo;</option>
+					<option value="4&rsquo;&nbsp;3&rdquo;">4&rsquo;&nbsp;3&rdquo;</option>
+					<option value="4&rsquo;&nbsp;4&rdquo;">4&rsquo;&nbsp;4&rdquo;</option>
+					<option value="4&rsquo;&nbsp;5&rdquo;">4&rsquo;&nbsp;5&rdquo;</option>
+					<option value="4&rsquo;&nbsp;6&rdquo;">4&rsquo;&nbsp;6&rdquo;</option>
+					<option value="4&rsquo;&nbsp;7&rdquo;">4&rsquo;&nbsp;7&rdquo;</option>
+					<option value="4&rsquo;&nbsp;8&rdquo;">4&rsquo;&nbsp;8&rdquo;</option>
+					<option value="4&rsquo;&nbsp;9&rdquo;">4&rsquo;&nbsp;9&rdquo;</option>
+					<option value="4&rsquo;&nbsp;10&rdquo;">4&rsquo;&nbsp;10&rdquo;</option>
+					<option value="4&rsquo;&nbsp;11&rdquo;">4&rsquo;&nbsp;11&rdquo;</option>
+				</optgroup>
+				<optgroup label="5&rsquo;"> selected="selected"
+					<option value="5&rsquo;">5&rsquo;</option>
+					<option value="5&rsquo;&nbsp;1&rdquo;">5&rsquo;&nbsp;1&rdquo;</option>
+					<option value="5&rsquo;&nbsp;2&rdquo;">5&rsquo;&nbsp;2&rdquo;</option>
+					<option value="5&rsquo;&nbsp;3&rdquo;">5&rsquo;&nbsp;3&rdquo;</option>
+					<option value="5&rsquo;&nbsp;4&rdquo;">5&rsquo;&nbsp;4&rdquo;</option>
+					<option value="5&rsquo;&nbsp;5&rdquo;">5&rsquo;&nbsp;5&rdquo;</option>
+					<option value="5&rsquo;&nbsp;6&rdquo;">5&rsquo;&nbsp;6&rdquo;</option>
+					<option value="5&rsquo;&nbsp;7&rdquo;">5&rsquo;&nbsp;7&rdquo;</option>
+					<option value="5&rsquo;&nbsp;8&rdquo;">5&rsquo;&nbsp;8&rdquo;</option>
+					<option value="5&rsquo;&nbsp;9&rdquo;">5&rsquo;&nbsp;9&rdquo;</option>
+					<option value="5&rsquo;&nbsp;10&rdquo;">5&rsquo;&nbsp;10&rdquo;</option>
+					<option value="5&rsquo;&nbsp;11&rdquo;">5&rsquo;&nbsp;11&rdquo;</option>
+				</optgroup>
+				<optgroup label="6&rsquo;">
+					<option value="6&rsquo;">6&rsquo;</option>
+					<option value="6&rsquo;&nbsp;1&rdquo;">6&rsquo;&nbsp;1&rdquo;</option>
+					<option value="6&rsquo;&nbsp;2&rdquo;">6&rsquo;&nbsp;2&rdquo;</option>
+					<option value="6&rsquo;&nbsp;3&rdquo;">6&rsquo;&nbsp;3&rdquo;</option>
+					<option value="6&rsquo;&nbsp;4&rdquo;">6&rsquo;&nbsp;4&rdquo;</option>
+					<option value="6&rsquo;&nbsp;5&rdquo;">6&rsquo;&nbsp;5&rdquo;</option>
+					<option value="6&rsquo;&nbsp;6&rdquo;">6&rsquo;&nbsp;6&rdquo;</option>
+					<option value="6&rsquo;&nbsp;7&rdquo;">6&rsquo;&nbsp;7&rdquo;</option>
+					<option value="6&rsquo;&nbsp;8&rdquo;">6&rsquo;&nbsp;8&rdquo;</option>
+					<option value="6&rsquo;&nbsp;9&rdquo;">6&rsquo;&nbsp;9&rdquo;</option>
+					<option value="6&rsquo;&nbsp;10&rdquo;">6&rsquo;&nbsp;10&rdquo;</option>
+					<option value="6&rsquo;&nbsp;11&rdquo;">6&rsquo;&nbsp;11&rdquo;</option>
+				</optgroup>
+			</select>
+		  </fieldset>
+       <fieldset>
+        <label for="seeking_bodytype">Seeking Body Type</label><br>
+        <input type="checkbox" name="seeking_bodytype" value="0">Slim<br>
+        <input type="checkbox" name="seeking_bodytype" value="1"> Average<br>
+        <input type="checkbox" name="seeking_bodytype" value="2">Athletic<br>
+        <input type="checkbox" name="seeking_bodytype" value="3"> Heavyset<br><br>
+        <input type="checkbox" name="deal_seeking_bodytype">This is a dealbreaker<br>
+      </fieldset>
+      <fieldset>
+        <label for="seeking_status">What is the ideal relationship status for a potential partner?</label><br>
+        <input type="checkbox" name="seeking_status" value="single">Never Married<br>
+        <input type="checkbox" name="seeking_status" value="separated">Currently Separated<br>
+        <input type="checkbox" name="seeking_status" value="divorced"> Divorced<br>
+        <input type="checkbox" name="seeking_status" value="widowed">Widowed<br>
+        <input type="checkbox" name="seeking_status" value="other">Don't Care<br><br>
+        <input type="checkbox" name="deal_seeking_status">This is a dealbreaker<br>
+      </fieldset>
+      <fieldset>
+        <label for="seeking_currkids">Is it okay if a potential partner has children?</label><br>
+        <input type="radio" name="seeking_currkids" value="0">No<br>
+        <input type="radio" name="seeking_currkids" value="3">Yes, and their children live with them<br>
+        <input type="radio" name="seeking_currkids" value="2">Yes, and their children sometimes live with them<br>
+        <input type="radio" name="seeking_currkids" value="1">Yes, but their children do not live with them<br><br>
+        <input type="checkbox" name="deal_seeking_currkids">This is a dealbreaker<br>
+      </fieldset>
+      <fieldset>
+        <label for="seeking_edu">Is your partner's education important? If so, select the education level you'd require?</label><br>
+        <input type="checkbox" name="seeking_edu" value="0">No High School<br>
+        <input type="checkbox" name="seeking_edu" value="1">High School<br>
+        <input type="checkbox" name="seeking_edu" value="2">Some College<br>
+        <input type="checkbox" name="seeking_edu" value="3">College Graduate<br>
+        <input type="checkbox" name="seeking_edu" value="4">Graduate School<br>
+        <input type="checkbox" name="seeking_edu" value="5">Doctorate<br><br>
+        <input type="checkbox" name="deal_seeking_salary">This is a dealbreaker<br>
+      </fieldset>
+      <fieldset>
+        <label for="seeking_smoke">Would you go on a date with someone who smokes?</label><br>
+        <input type="radio" name="seeking_smoke" value="0">No<br>
+        <input type="radio" name="seeking_smoke" value="1">Maybe<br>
+        <input type="radio" name="seeking_smoke" value="2">Yes<br><br>
+        <input type="checkbox" name="deal_seeking_smoke">This is a dealbreaker<br>
+      </fieldset>
+      <fieldset>
+        <label for="seeking_drink">Do you want your date to drink?</label><br>
+        <input type="radio" name="seeking_drink" value="0">Never<br>
+        <input type="radio" name="seeking_drink" value="1">Socially<br>
+        <input type="radio" name="seeking_drink" value="2">Moderately<br>
+        <input type="radio" name="seeking_drink" value="3">Regularly<br><br>
+        <input type="checkbox" name="deal_seeking_drink">This is a dealbreaker<br>
+      </fieldset>
+      <fieldset>
+        <label for="seeking_religion">How important should religion be for a potential partner?</label><br>
+        <input type="checkbox" name="seeking_religion" value="religious">Religious<br>
+        <input type="checkbox" name="seeking_religion" value="spiritual">Spritual, but Not Practicing<br>
+        <input type="checkbox" name="seeking_religion" value="not-religious">Not Religious<br><br>
+        <input type="checkbox" name="deal_seeking_religion">This is a dealbreaker<br>
+      </fieldset>
+      <fieldset>
+        <label for="seeking_salary">What would you like a potential partner's financial situation to be?</label><br>
+        <input type="checkbox" name="seeking_salary" value="0">Struggling<br>
+        <input type="checkbox" name="seeking_salary" value="1">Comfortable<br>
+        <input type="checkbox" name="seeking_salary" value="2">Affluent<br><br>
+        <input type="checkbox" name="deal_seeking_salary">This is a dealbreaker<br><br>
+      </fieldset>
+      <button type="submit">Submit</button>
+      </form>
+    </div> 
+  </body>
+
 </html>
