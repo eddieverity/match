@@ -85,10 +85,10 @@ def login(request):
         request.session['id']=curr_user.id
         return redirect('match:index')
       else:
-        messages.error(request, 'password does not match registered user')
+        messages.error(request, 'Incorrect password')
         return redirect('match:register')
     except User.DoesNotExist:
-      messages.error(request, 'email does not exist in database, please register')
+      messages.error(request, 'No account with that email address. Please register')
     return redirect('match:register')
   return render(request, 'match_dot_com/registration_login.html')
 
@@ -102,22 +102,22 @@ def register(request):
     password = request.POST['password'].encode(encoding="utf-8")
     pw_hash=bcrypt.hashpw(password, bcrypt.gensalt())
     if ValidateEmail(email) != True:
-      messages.error(request, 'email address not valid')
+      messages.warning(request, 'email address not valid')
       is_valid = False
     if DupEmail(email):
-      messages.error(request, 'email address in use')
+      messages.warning(request, 'email address in use')
       is_valid= False
     if len(first_name) < 2:
-      messages.error(request, 'name must be at least 2 characters long')
+      messages.warning(request, 'name must be at least 2 characters long')
       is_valid = False
     if len(last_name) < 2:
-      messages.error(request, 'name must be at least 2 characters long')
+      messages.warning(request, 'name must be at least 2 characters long')
       is_valid = False
     if len(password) < 8:
-      messages.error(request, 'password must be at least 8 characters long')
+      messages.warning(request, 'password must be at least 8 characters long')
       is_valid = False
     if password != confirm:
-      messages.error(request, 'passwords do not match')
+      messages.warning(request, 'passwords do not match')
       is_valid = False
     if is_valid:
       curr_user= User.objects.create(
@@ -130,7 +130,7 @@ def register(request):
       request.session['id']=curr_user.id
       return redirect('match:index')
     else:
-      return redirect('match:survey')
+      return redirect('match:login')
   return redirect('match:login')
 
 def ValidateEmail( email ):    

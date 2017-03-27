@@ -14,7 +14,9 @@ h2{
 	display: block;
 	width: 100%;
 }
-
+.alert{
+	margin-top: 10px;
+}
 /*NEW SLIDER STYLES FOR SCALE, ETC*/
 /* slider widget */
 .ui-slider  {

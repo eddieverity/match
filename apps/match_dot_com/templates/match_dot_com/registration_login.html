@@ -37,6 +37,15 @@
 
         <input type="submit" name="submit" value="Register" class="btn btn-primary">
       </form>
+      {% if messages %}
+        {% for message in messages %}
+          {% if 'warning' in message.tags %}
+            <div class="alert alert-danger" role="alert">
+              {{message}}<br>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
     </div>
     <div class="loginbox">
       <h3>Login</h3>
@@ -50,10 +59,13 @@
 
         <input type="submit" name="submit" value="Login" class="btn btn-primary">
       </form>
-
       {% if messages %}
         {% for message in messages %}
+          {% if 'error' in message.tags %}
+        <div class="alert alert-danger" role="alert">
           {{message}}<br>
+        </div>
+        {% endif %}
         {% endfor %}
       {% endif %}
     </div>
