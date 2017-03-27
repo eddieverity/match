@@ -152,6 +152,9 @@ def DupEmail(email):
   except User.DoesNotExist:
     return False
 
+def messages(request):
+  return render(request, 'match_dot_com/messages.html')
+
 def logout(request):
   request.session.clear()
   return redirect('match:login')
