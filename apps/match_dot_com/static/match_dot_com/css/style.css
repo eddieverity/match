@@ -1,3 +1,20 @@
+#wrapper{
+	margin: 0 auto;
+	width: 90%;
+}
+label{
+	width: 100px;
+}
+.loginbox{
+	width: 30%;
+	display: inline-block;
+	vertical-align: top;
+}
+h2{
+	display: block;
+	width: 100%;
+}
+
 /*NEW SLIDER STYLES FOR SCALE, ETC*/
 /* slider widget */
 .ui-slider  {
