@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from django.contrib import messages
 import re
 import bcrypt
+from models import *
 
 # Create your views here.
 def index(request):
@@ -12,10 +13,65 @@ def index(request):
   return render (request,'match_dot_com/registration_login.html')
 
 def survey(request):
+  id = request.session['id']
+
   pass
+  user_gender = request.POST['user_gender']
+  user_age = request.POST['user_age']
+  
+  user_height_ft = request.POST['user_height_ft']
+  user_height_in = request.POST['user_height_in']
+  user_height_total = (height_ft*12)+height_in
+  user_body_type = request.POST['user_body_type']
+  user_relationship_status = request.POST['user_relationship_status']
+  user_current_kids = request.POST['user_current_kids']
+  user_future_kids = request.POST['user_future_kids']
+  user_education = request.POST['user_education']
+  user_smoke = request.POST['user_smoke']
+  user_drink = request.POST['user_drink']
+
+  user_religion = request.POST['user_religion']
+  user_salary = request.POST['user_salary']
+  user_interests = request.POST['user_interests']
+  #calculate Activity, Spending, Artistic, Family scales
 
 
 
+  #Select matches
+  seeking_gender = request.POST['seeking_gender']
+
+  seeking_age_min = request.POST['seeking_age_min']
+  seeking_age_max = request.POST['seeking_age_max']
+
+  seeking_height_min = request.POST['seeking_height_min']
+  seeking_height_max = request.POST['seeking_height_max']
+
+  seeking_body_type = request.POST['seeking_bodytype']
+  deal_seeking_body_type = request.POST['deal_seeking_bodytype']
+
+  seeking_relationship_status = request.POST['seeking_status']
+  deal_relationship_status = request.POST['deal_seeking_status']
+
+  seeking_current_kids = request.POST['seeking_current_kids']
+  deal_seeking_current_kids = request.POST['deal_seeking_current_kids']
+
+  seeking_future_kids = request.POST['seeking_future_kids']
+  deal_seeking_future_kids = request.POST['deal_seeking_future_kids']
+
+  seeking_education = request.POST['seeking_education']
+  deal_seeking_education = request.POST['deal_seeking_education']
+
+  seeking_smoke = request.POST['seeking_smoke']
+  deal_seeking_smoke = request.POST['deal_seeking_smoke']
+
+  seeking_drink = request.POST['seeking_drink']
+  deal_seeking_drink = request.POST['deal_seeking_drink']
+
+  seeking_religion = request.POST['seeking_religion']
+  deal_seeking_religion = request.POST['deal_seeking_religion']
+
+  seeking_salary = request.POST['seeking_salary']
+  deal_seeking_salary = request.POST['deal_seeking_salary']
 
 
 def login(request):
