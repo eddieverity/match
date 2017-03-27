@@ -104,7 +104,10 @@ def register(request):
   if DupEmail(email):
     messages.error(request, 'email address in use')
     is_valid= False
-  if len(name) < 2:
+  if len(first_name) < 2:
+    messages.error(request, 'name must be at least 2 characters long')
+    is_valid = False
+  if len(last_name) < 2:
     messages.error(request, 'name must be at least 2 characters long')
     is_valid = False
   if len(password) < 8:
