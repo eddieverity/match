@@ -1,6 +1,10 @@
 #wrapper{
-	margin: 0 auto;
+	margin: 2em auto;
 	width: 90%;
+}
+#home{
+	width: 80%;
+	margin: 0 auto;
 }
 .loginbox label{
 	width: 100px;
@@ -36,11 +40,27 @@ h2{
 	border-radius: 5px;
 }
 #profile{
-	width: 60%;
-	margin: 2em auto; 
+	width: 80%;
+	margin: 0 auto; 
 }
 #profile form{
 	margin: 0;
+}
+.thumbnail {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+.thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
 }
 /*NEW SLIDER STYLES FOR SCALE, ETC*/
 /* slider widget */

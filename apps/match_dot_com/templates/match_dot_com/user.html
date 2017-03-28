@@ -17,7 +17,9 @@
             <div id="profile">
                 {% if photos %}
                     {% for photo in photos %}
-                        <img class="img-thumbnail float-left" width="200" src="/static/{{ photo.user_pic }}"><br>
+                    <div class="thumbnail">
+                        <img class="float-left"src="/static/match_dot_com/{{ photo.user_pic }}"><br>
+                    </div>
                     {% endfor %}
                 {% endif %}
                 {% if user.id == request.session.id %}

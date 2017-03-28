@@ -14,6 +14,7 @@
 </head>
 <body>
   <div id="wrapper">
+    <div id="home">
     <h1>Match</h1>
     <h3>Other Users</h2>
      {% if others %}
@@ -27,6 +28,7 @@
       <hr>
     <a href="{% url 'match:messages' %}">Messages</a><br>
     <a href="{% url 'match:logout' %}">Logout</a>
+    </div>
   </div>
 </body>
 </html>
