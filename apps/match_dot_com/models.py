@@ -30,10 +30,10 @@ class Profile(models.Model):
   salary=models.IntegerField(blank=True, null=True)
 
 #aggregates determined on a scale of 0-10 in views used for matchmaking
-  activity=models.IntegerField()
-  frugality=models.IntegerField()
-  pragmaticism=models.IntegerField()
-  family=models.IntegerField()
+  activity=models.IntegerField(blank=True, null=True)
+  frugality=models.IntegerField(blank=True, null=True)
+  pragmaticism=models.IntegerField(blank=True, null=True)
+  family=models.IntegerField(blank=True, null=True)
 
 class Seeking(models.Model):
   user=models.ForeignKey(User, related_name='user_seeking') 
@@ -41,14 +41,23 @@ class Seeking(models.Model):
   age=models.IntegerField(blank=True, null=True)
   height=models.IntegerField(blank=True, null=True)
   body=models.IntegerField(blank=True, null=True)
+  deal_body=models.BooleanField(blank=True, null=False)
   relationship_status=models.CharField(max_length=64, blank=True, null=True)
+  deal_relationship_status=models.BooleanField(blank=True, null=False)
   current_kids=models.IntegerField(blank=True, null=True)
+  deal_current_kids=models.BooleanField(blank=True, null=False)
   future_kids=models.IntegerField(blank=True, null=True)
+  deal_future_kids=models.BooleanField(blank=True, null=False)
   education=models.IntegerField(blank=True, null=True)
+  deal_education=models.BooleanField(blank=True, null=False)
   smoke=models.IntegerField(blank=True, null=True)
+  deal_smoke=models.BooleanField(blank=True, null=False)
   drink=models.IntegerField(blank=True, null=True)
+  deal_drink=models.BooleanField(blank=True, null=False)
   religion=models.CharField(max_length=64, blank=True, null=True)
+  deal_religion=models.BooleanField(blank=True, null=False)
   salary=models.IntegerField(blank=True, null=True)
+  deal_salary=models.BooleanField(blank=True, null=False)
 
 #aggregates determined on a scale of 0-10 in views used for matchmaking
   activity=models.IntegerField()
