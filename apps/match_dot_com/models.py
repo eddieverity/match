@@ -7,6 +7,7 @@ class User(models.Model):
   last_name=models.CharField(max_length=64)
   email=models.CharField(max_length=64, unique=True)
   password=models.CharField(max_length=512)
+  zipcode=models.IntegerField()
 
 class Profile(models.Model):
   user=models.ForeignKey(User, related_name='user_profile')
