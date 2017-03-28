@@ -134,7 +134,7 @@ def register(request):
         )
       request.session['first_name']=request.POST['first_name']
       request.session['id']=curr_user.id
-      return redirect('match:index')
+      return render (request, 'match_dot_com/survey.html')
     else:
       return redirect('match:login')
   return redirect('match:login')
