@@ -5,11 +5,16 @@ from django.contrib import messages
 import re
 import bcrypt
 from models import *
+from django.db.models import Q
 
 # Create your views here.
 def index(request):
   if 'id' in request.session:
-    return render (request, 'match_dot_com/index.html')
+    id = request.session['id']
+    context = {
+      'others': User.objects.exclude(id=id),
+    }
+    return render (request, 'match_dot_com/index.html', context)
   return redirect ('match:login')
 
 def survey(request):
@@ -153,7 +158,7 @@ def DupEmail(email):
   except User.DoesNotExist:
     return False
 
-def messages(request):
+def matchmsg(request):
   if 'id' in request.session:
     id = request.session['id']
     context = {
@@ -165,9 +170,10 @@ def messages(request):
 
 def messenger(request, id):
   if 'id' in request.session:
+    userid = request.session['id']
     context = {
       'others': User.objects.get(id=id),
-      'pastmessages': Messages.objects.filter(sender=id),
+      'pastmessages': Messages.objects.filter(Q(sender=id) | Q(recipient=id, sender=userid)),
       # need to write logic for message sent by user TO the recipient
     }
     if request.method == 'POST':
@@ -175,7 +181,7 @@ def messenger(request, id):
       other_id = User.objects.get(id=id)
       message_text = request.POST['message_text']
       Messages.objects.create(sender=user_id, recipient=other_id, description=message_text)
-      return redirect('match:messages')
+      return render(request, 'match_dot_com/partials.html', context)
     return render(request, 'match_dot_com/messenger.html', context)
   return redirect('match:login')
 
