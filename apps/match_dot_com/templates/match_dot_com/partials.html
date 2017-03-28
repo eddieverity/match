@@ -1,0 +1,10 @@
+{% if pastmessages %}
+    {% for message in pastmessages %}
+        <div class="msgcontents">
+            {{ message.sender.first_name }} at {{ message.created_at }}:<br>
+            <div class="msgtxt">
+                {{ message.description }}
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
