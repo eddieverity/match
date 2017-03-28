@@ -152,77 +152,71 @@ def survey_seeking(request):
 
 def seeking_entry(request):
 
-  pass
-
   my_id = request.session['id']
 
+  seeking_gender = request.POST.get('seeking_gender', None)
 
+  seeking_age_min = request.POST.get('age_min', None)
+  seeking_age_max = request.POST.get('age_max', None)
 
-  #user_gender = request.POST.get('user_gender', 'null')
-  #Select matches
-  seeking_gender = request.POST.get('seeking_gender', 'null')
+  seeking_height_min = request.POST.get('min_height', None)
+  seeking_height_max = request.POST.get('max_height', None)
 
-  seeking_age_min = request.POST.get('age_min', 'null')
-  seeking_age_max = request.POST.get('age_max', 'null')
-
-  seeking_height_min = request.POST.get('min_height', 'null')
-  seeking_height_max = request.POST.get('max_height', 'null')
-
-  seeking_body_type = request.POST.get('seeking_bodytype', 'null')
-  
+  seeking_body_type = request.POST.get('seeking_bodytype', None) 
   deal_seeking_body_type = request.POST.getlist('deal_seeking_bodytype', False)
   
-
   seeking_relationship_status = request.POST.get('seeking_status', 'null')
   deal_seeking_relationship_status = request.POST.getlist('deal_seeking_relationship_status', False)
 
-  seeking_current_kids = request.POST.get('seeking_current_kids', 'null')
+  seeking_current_kids = request.POST.get('seeking_current_kids', None)
   deal_current_kids = request.POST.getlist('deal_current_kids', False)
 
-  seeking_future_kids = request.POST.get('seeking_future_kids', 'null')
+  seeking_future_kids = request.POST.get('seeking_future_kids', None)
   deal_seeking_kids = request.POST.getlist('deal_seeking_kids', False)
 
-  seeking_education = request.POST.get('seeking_education', 'null')
+  seeking_education = request.POST.get('seeking_education', None)
   deal_seeking_education = request.POST.getlist('deal_seeking_education', False)
 
-  seeking_smoke = request.POST.get('seeking_smoke', 'null')
+  seeking_smoke = request.POST.get('seeking_smoke', None)
   deal_seeking_smoke = request.POST.getlist('deal_seeking_smoke', False)
 
-  seeking_drink = request.POST.get('seeking_drink', 'null')
+  seeking_drink = request.POST.get('seeking_drink', None)
   deal_seeking_drink = request.POST.getlist('deal_seeking_drink', False)
 
-  seeking_religion = request.POST.get('seeking_religion', 'null')
+  seeking_religion = request.POST.get('seeking_religion', None)
   deal_seeking_religion = request.POST.getlist('deal_seeking_religion', False)
 
-  seeking_salary = request.POST.get('seeking_salary', 'null')
+  seeking_salary = request.POST.get('seeking_salary', None)
   deal_seeking_salary = request.POST.getlist('deal_seeking_salary', False)
-
+  print seeking_salary
+  print deal_seeking_salary
   seek_user= Seeking.objects.create(
-      user_id=my_id,
-      gender=seeking_gender,
-      age_min=seeking_age_min,
-      age_max=seeking_age_max,
-      height_min=seeking_height_min,
-      height_max=seeking_height_max,
-      body=seeking_body_type,
-      deal_body=deal_seeking_body_type,
-      relationship_status=seeking_relationship_status,
-      deal_relationship_status=deal_seeking_relationship_status,
-      current_kids=seeking_current_kids,
-      deal_current_kids=deal_seeking_current_kids,
-      future_kids=seeking_future_kids,
-      deal_future_kids=deal_seeking_future_kids,
-      education=seeking_education,
-      deal_education=deal_seeking_education,
-      smoke=seeking_smoke,
-      deal_smoke=deal_seeking_smoke,
-      drink=seeking_drink,
-      deal_drink=deal_seeking_drink,
-      religion=seeking_religion,
-      deal_religion=deal_seeking_religion,
-      salary=seeking_salary,
-      deal_salary=deal_seeking_salary,
+    seeking_user_id=my_id,
+    gender=seeking_gender,
+    age_min=seeking_age_min,
+    age_max=seeking_age_max,
+    height_min=seeking_height_min,
+    height_max=seeking_height_max,
+    body=seeking_body_type,
+    deal_body=deal_seeking_body_type,
+    relationship_status=seeking_relationship_status,
+    deal_relationship_status=deal_seeking_relationship_status,
+    current_kids=seeking_current_kids,
+    deal_current_kids=deal_current_kids,
+    future_kids=seeking_future_kids,
+    deal_future_kids=deal_seeking_kids,
+    education=seeking_education,
+    deal_education=deal_seeking_education,
+    smoke=seeking_smoke,
+    deal_smoke=deal_seeking_smoke,
+    drink=seeking_drink,
+    deal_drink=deal_seeking_drink,
+    religion=seeking_religion,
+    deal_religion=deal_seeking_religion,
+    salary=seeking_salary,
+    deal_salary=deal_seeking_salary,
   )
+  return redirect('match:index')
 
 def login(request):
   
@@ -237,6 +231,7 @@ def login(request):
         request.session['id']=curr_user.id
         try:
           user_survey= Profile.objects.get(user_id=curr_user.id)
+          print 'hit the .get for profile'
           return redirect('match:index')
         except:
           return render(request, 'match_dot_com/survey.html')
