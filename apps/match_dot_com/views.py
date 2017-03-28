@@ -124,6 +124,7 @@ def register(request):
         first_name=request.POST['first_name'],
         last_name=request.POST['last_name'],
         email=request.POST['email'],
+        zipcode=request.POST['zipcode'],
         password= pw_hash
         )
       request.session['first_name']=request.POST['first_name']
