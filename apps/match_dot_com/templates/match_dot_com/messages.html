@@ -13,6 +13,20 @@
     <title>Messages</title>
 </head>
     <body>
-    
+        <div id="wrapper">
+            <h2>Messages</h2>
+            {% if messages %}
+                {% for message in messages %}
+                    <a href="{% url 'match:messenger' id=message.sender.id %}">{{ message.sender.first_name }}</a> {{ message.created_at }}<br>
+                {% endfor %}
+            {% endif %}
+            <h3>Other Users</h3>
+            {% if others %}
+                {% for o in others %}
+                    {{ o.first_name }} {{ o.last_name }} <a href="{% url 'match:messenger' id=o.id %}">Send Message </a><br>
+                {% endfor %}
+            {% endif %}
+            <a href="{% url 'match:logout' %}">Logout</a>
+        </div>
     </body>
 </html>

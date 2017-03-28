@@ -153,7 +153,30 @@ def DupEmail(email):
     return False
 
 def messages(request):
-  return render(request, 'match_dot_com/messages.html')
+  if 'id' in request.session:
+    id = request.session['id']
+    context = {
+      'others': User.objects.exclude(id=id),
+      'messages': Messages.objects.filter(recipient=id),
+    }
+    return render(request, 'match_dot_com/messages.html', context)
+  return redirect('match:login')
+
+def messenger(request, id):
+  if 'id' in request.session:
+    context = {
+      'others': User.objects.get(id=id),
+      'pastmessages': Messages.objects.filter(sender=id),
+      # need to write logic for message sent by user TO the recipient
+    }
+    if request.method == 'POST':
+      user_id = User.objects.get(id=request.session['id'])
+      other_id = User.objects.get(id=id)
+      message_text = request.POST['message_text']
+      Messages.objects.create(sender=user_id, recipient=other_id, description=message_text)
+      return redirect('match:messages')
+    return render(request, 'match_dot_com/messenger.html', context)
+  return redirect('match:login')
 
 def logout(request):
   request.session.clear()

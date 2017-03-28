@@ -7,6 +7,8 @@ class User(models.Model):
   last_name=models.CharField(max_length=64)
   email=models.CharField(max_length=64, unique=True)
   password=models.CharField(max_length=512)
+  created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+  updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
 
 class Profile(models.Model):
   user=models.ForeignKey(User, related_name='user_profile')
@@ -53,12 +55,20 @@ class Seeking(models.Model):
 class Images(models.Model):
   user=models.ForeignKey(User, related_name='user_pics')
   user_pic=models.ImageField(upload_to = 'pic/folder/', default='pic/folder/none/no-img.jpg')
+  created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+  updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
 
 class Messages(models.Model):
   sender=models.ForeignKey(User, related_name='user')
   recipient=models.ForeignKey(User, related_name='user_recipient')
   description=models.CharField(max_length=1024)
+  message_read=models.NullBooleanField(blank=True, null=True)
+  created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+  updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
 
 class Wink(models.Model):
   sender=models.ForeignKey(User, related_name='user_wink')
   recipient=models.ForeignKey(User, related_name='wink_recipient')
+  wink_seen=models.NullBooleanField(blank=True, null=True)
+  created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+  updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
