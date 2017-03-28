@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^logout$', logout, name='logout'),
     url(r'^messages$', messages, name='messages'),
     url(r'^messenger/(?P<id>\d+)$', messenger, name='messenger'),
+    url(r'^user/(?P<id>\d+)$', user, name='user'),
 ]

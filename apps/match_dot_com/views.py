@@ -178,6 +178,15 @@ def messenger(request, id):
     return render(request, 'match_dot_com/messenger.html', context)
   return redirect('match:login')
 
+def user(request, id):
+  if 'id' in request.session:
+    userprofile = User.objects.get(id=id)
+    context = {
+      'user': userprofile
+    }
+    return render(request, 'match_dot_com/user.html', context)
+  return redirect('match:login')
+
 def logout(request):
   request.session.clear()
   return redirect('match:login')

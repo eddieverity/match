@@ -26,10 +26,14 @@ h2{
 	display: block;
 }
 .msgtxt{
-	background: #54C7FC;
+	background: #007AFF;
 	color: white;
 	padding: 4px;
 	border-radius: 5px;
+}
+#profile{
+	width: 60%;
+	margin: 2em auto; 
 }
 /*NEW SLIDER STYLES FOR SCALE, ETC*/
 /* slider widget */

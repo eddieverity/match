@@ -10,23 +10,20 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{% static 'match_dot_com/css/style.css' %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'match_dot_com/img/favicon.ico' %}"/>
-    <title>Messages</title>
+    <title>Match | Profile</title>
 </head>
     <body>
         <div id="wrapper">
-            <h2>Messages</h2>
-            {% if messages %}
-                {% for message in messages %}
-                    <a href="{% url 'match:messenger' id=message.sender.id %}">{{ message.sender.first_name }}</a> {{ message.created_at }}<br>
-                {% endfor %}
-            {% endif %}
-            <h3>Other Users</h3>
-            {% if others %}
-                {% for o in others %}
-                    <a href="{% url 'match:user' id=o.id %}">{{ o.first_name }} {{ o.last_name }}</a> - <a href="{% url 'match:messenger' id=o.id %}">Send Message </a><br>
-                {% endfor %}
-            {% endif %}
-            <a href="{% url 'match:logout' %}">Logout</a>
-        </div>
+            <div id="profile">
+                {% if user %}
+                    Name: {{ user.first_name }} {{ user.last_name }}<br>
+                    Joined: {{ user.created_at|date:"M d, Y" }}<br>
+                    <a href="{% url 'match:messenger' id=user.id %}">Send Message</a>
+                {% endif %}
+                <hr>
+                <a href="{% url 'match:index' %}">Home</a><br>
+                <a href="{% url 'match:logout' %}">Logout</a>
+            </div>
+        </div> 
     </body>
 </html>
