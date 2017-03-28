@@ -38,8 +38,10 @@ class Profile(models.Model):
 class Seeking(models.Model):
   user=models.ForeignKey(User, related_name='user_seeking') 
   gender=models.CharField(max_length=64, blank=True, null=True)
-  age=models.IntegerField(blank=True, null=True)
-  height=models.IntegerField(blank=True, null=True)
+  age_min=models.IntegerField(blank=True, null=True)
+  age_max=models.IntegerField(blank=True, null=True)
+  height_min=models.IntegerField(blank=True, null=True)
+  height_max=models.IntegerField(blank=True, null=True)
   body=models.IntegerField(blank=True, null=True)
   deal_body=models.BooleanField(blank=True, null=False)
   relationship_status=models.CharField(max_length=64, blank=True, null=True)
@@ -60,10 +62,7 @@ class Seeking(models.Model):
   deal_salary=models.BooleanField(blank=True, null=False)
 
 #aggregates determined on a scale of 0-10 in views used for matchmaking
-  activity=models.IntegerField()
-  frugality=models.IntegerField()
-  pragmaticism=models.IntegerField()
-  family=models.IntegerField()
+
 
 class Images(models.Model):
   user=models.ForeignKey(User, related_name='user_pics')
