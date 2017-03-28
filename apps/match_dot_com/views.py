@@ -26,22 +26,21 @@ def survey(request):
     #request.POST.get('is_private', False);
 
     user_gender = request.POST.get('user_gender', 'null')
-    user_age = request.POST['age']
+    user_age = request.POST.get('age', 'null')
     
-    user_height_total = request.POST['valueA']
-    # user_height_in = request.POST['user_height_in']
-    # user_height_total = (height_ft*12)+height_in
-    user_body_type = request.POST['user_bodytype']
-    user_relationship_status = request.POST['user_status']
-    user_marriage = request.POST['user_marriage']
-    user_current_kids = request.POST['user_currkids']
-    user_future_kids = request.POST['user_futurekids']
-    user_education = request.POST['user_edu']
-    user_smoke = request.POST['user_smoke']
-    user_drink = request.POST['user_drink']
+    user_height_total = request.POST.get('valueA', 'null')
 
-    user_religion = request.POST['user_religion']
-    user_salary = request.POST['user_salary']
+    user_body_type = request.POST.get('user_bodytype', 'null')
+    user_relationship_status = request.POST.get('user_status', 'null')
+    user_marriage = request.POST.get('user_marriage', 'null')
+    user_current_kids = request.POST.get('user_currkids', 'null')
+    user_future_kids = request.POST.get('user_futurekids', 'null')
+    user_education = request.POST.get('user_edu', 'null')
+    user_smoke = request.POST.get('user_smoke', 'null')
+    user_drink = request.POST.get('user_drink', 'null')
+
+    user_religion = request.POST.get('user_religion', 'null')
+    user_salary = request.POST.get('user_salary', 'null')
 
     activity=0
     frugality=0
@@ -120,15 +119,7 @@ def survey(request):
         activity-=1
       if interest == 'wine':
         frugality+=1
-        pragmaticism+=1
-
-    print user_height_total
-    print family
-    print frugality
-    print activity
-    print pragmaticism
-
-    
+        pragmaticism+=1   
 
     curr_user= Profile.objects.create(
       user_id=my_id,
@@ -157,24 +148,35 @@ def survey_seeking(request):
   return render(request, 'match_dot_com/survey_seeking.html')
 
 def seeking_entry(request):
+
   pass
+
+  my_id = request.session['id']
+
+
+
+  #user_gender = request.POST.get('user_gender', 'null')
   #Select matches
-  seeking_gender = request.POST['seeking_gender']
+  seeking_gender = request.POST.get('seeking_gender', 'null')
 
-  seeking_age_min = request.POST['seeking_age_min']
-  seeking_age_max = request.POST['seeking_age_max']
+  seeking_age_min = request.POST.get('seeking_age_min', 'null')
+  seeking_age_max = request.POST.get('seeking_age_max', 'null')
 
-  seeking_height_min = request.POST['seeking_height_min']
-  seeking_height_max = request.POST['seeking_height_max']
+  seeking_height_min = request.POST.get('seeking_height_min', 'null')
+  seeking_height_max = request.POST.get('seeking_height_max', 'null')
 
-  seeking_body_type = request.POST['seeking_bodytype']
-  deal_seeking_body_type = request.POST['deal_seeking_bodytype']
+  seeking_body_type = request.POST.get('seeking_bodytype', 'null')
+  
+  deal_seeking_body_type = request.POST.getlist('deal_seeking_bodytype', False)
+  
+
+
 
   seeking_relationship_status = request.POST['seeking_status']
-  deal_relationship_status = request.POST['deal_seeking_status']
+  deal_seeking_relationship_status = request.POST.getlist('deal_seeking_relationship_status', False)
 
   seeking_current_kids = request.POST['seeking_current_kids']
-  deal_seeking_current_kids = request.POST['deal_seeking_current_kids']
+  seeking_relationship_status
 
   seeking_future_kids = request.POST['seeking_future_kids']
   deal_seeking_future_kids = request.POST['deal_seeking_future_kids']
