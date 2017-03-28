@@ -17,6 +17,24 @@ h2{
 .alert{
 	margin-top: 10px;
 }
+#messenger{
+	width: 40%;
+	margin: 0 auto;
+}
+.msgcontents{
+	margin: 2em 2em;
+	display: block;
+}
+.msgtxt{
+	background: #007AFF;
+	color: white;
+	padding: 4px;
+	border-radius: 5px;
+}
+#profile{
+	width: 60%;
+	margin: 2em auto; 
+}
 /*NEW SLIDER STYLES FOR SCALE, ETC*/
 /* slider widget */
 .ui-slider  {

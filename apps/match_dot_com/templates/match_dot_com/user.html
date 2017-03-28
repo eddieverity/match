@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head lang="en">
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script type="text/javascript" src="{% static 'match_dot_com/js/script.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'match_dot_com/css/style.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'match_dot_com/img/favicon.ico' %}"/>
+    <title>Match | Profile</title>
+</head>
+    <body>
+        <div id="wrapper">
+            <div id="profile">
+                {% if user %}
+                    Name: {{ user.first_name }} {{ user.last_name }}<br>
+                    Joined: {{ user.created_at|date:"M d, Y" }}<br>
+                    <a href="{% url 'match:messenger' id=user.id %}">Send Message</a>
+                {% endif %}
+                <hr>
+                <a href="{% url 'match:index' %}">Home</a><br>
+                <a href="{% url 'match:logout' %}">Logout</a>
+            </div>
+        </div> 
+    </body>
+</html>
