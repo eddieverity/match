@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect, reverse
+from django.http import HttpResponseForbidden
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.contrib import messages
@@ -6,6 +7,8 @@ import re
 import bcrypt
 from models import *
 from django.db.models import Q
+from .forms import *
+
 
 # Create your views here.
 def index(request):
@@ -173,7 +176,7 @@ def messenger(request, id):
     userid = request.session['id']
     context = {
       'others': User.objects.get(id=id),
-      'pastmessages': Messages.objects.filter(Q(sender=id) | Q(recipient=id, sender=userid)),
+      'pastmessages': Messages.objects.filter(Q(sender=id) | Q(recipient=id, sender=userid)).order_by('created_at'),
       # need to write logic for message sent by user TO the recipient
     }
     if request.method == 'POST':
@@ -189,10 +192,19 @@ def user(request, id):
   if 'id' in request.session:
     userprofile = User.objects.get(id=id)
     context = {
-      'user': userprofile
+      'user': userprofile,
+      'photos': Images.objects.filter(user=userprofile),
     }
     return render(request, 'match_dot_com/user.html', context)
   return redirect('match:login')
+
+def upload_pic(request):
+    if request.method == 'POST':
+      userid = request.session['id']
+      image = request.FILES['user_pic']
+      Images.objects.create(user_id=userid, user_pic=image)
+      return HttpResponse('image upload success')
+    return HttpResponseForbidden('allowed only via POST')
 
 def logout(request):
   request.session.clear()

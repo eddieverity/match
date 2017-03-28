@@ -22,6 +22,9 @@
         {% endfor %}
       {% endif %}
       <hr>
+      <h3>My Profile</h3>
+      <a href="{% url 'match:user' id=request.session.id %}">View my Profile</a>
+      <hr>
     <a href="{% url 'match:messages' %}">Messages</a><br>
     <a href="{% url 'match:logout' %}">Logout</a>
   </div>

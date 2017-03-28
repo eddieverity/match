@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-
+from django import forms
 from django.db import models
 
 class User(models.Model):
@@ -58,7 +58,7 @@ class Seeking(models.Model):
 
 class Images(models.Model):
   user=models.ForeignKey(User, related_name='user_pics')
-  user_pic=models.ImageField(upload_to = 'pic/folder/', default='pic/folder/none/no-img.jpg')
+  user_pic=models.FileField(upload_to = 'img')
   created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
   updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
 

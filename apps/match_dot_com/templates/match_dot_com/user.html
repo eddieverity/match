@@ -15,11 +15,31 @@
     <body>
         <div id="wrapper">
             <div id="profile">
+                {% if photos %}
+                    {% for photo in photos %}
+                        <img class="img-thumbnail float-left" width="200" src="/static/{{ photo.user_pic }}"><br>
+                    {% endfor %}
+                {% endif %}
+                {% if user.id == request.session.id %}
+                <form action="{% url 'match:upload_pic' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                    <label id="piclabel" for="user_pic">Upload more photos:</label>
+                    <p>
+                        <input id="id_image" type="file" class="" name="user_pic">
+                    </p>
+                    <input type="submit" value="Submit" />
+                </form>
+                {% endif %}
                 {% if user %}
                     Name: {{ user.first_name }} {{ user.last_name }}<br>
                     Joined: {{ user.created_at|date:"M d, Y" }}<br>
-                    <a href="{% url 'match:messenger' id=user.id %}">Send Message</a>
+
+                    {% if user.id != request.session.id %}
+                        <a href="{% url 'match:messenger' id=user.id %}">Send Message</a>
+                    {% endif %}
+
                 {% endif %}
+                
                 <hr>
                 <a href="{% url 'match:index' %}">Home</a><br>
                 <a href="{% url 'match:logout' %}">Logout</a>

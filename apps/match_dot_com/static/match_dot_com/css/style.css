@@ -2,8 +2,12 @@
 	margin: 0 auto;
 	width: 90%;
 }
-label{
+.loginbox label{
 	width: 100px;
+}
+#piclabel{
+	widows: 200px;
+	display: block;
 }
 .loginbox{
 	width: 30%;
@@ -34,6 +38,9 @@ h2{
 #profile{
 	width: 60%;
 	margin: 2em auto; 
+}
+#profile form{
+	margin: 0;
 }
 /*NEW SLIDER STYLES FOR SCALE, ETC*/
 /* slider widget */
