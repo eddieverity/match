@@ -179,25 +179,25 @@ def seeking_entry(request):
   deal_seeking_relationship_status = request.POST.getlist('deal_seeking_relationship_status', False)
 
   seeking_current_kids = request.POST['seeking_current_kids']
-  seeking_relationship_status
+  deal_current_kids = request.POST.getlist('deal_current_kids', False)
 
   seeking_future_kids = request.POST['seeking_future_kids']
-  deal_seeking_future_kids = request.POST['deal_seeking_future_kids']
+  deal_seeking_kids = request.POST.getlist('deal_seeking_kids', False)
 
   seeking_education = request.POST['seeking_education']
-  deal_seeking_education = request.POST['deal_seeking_education']
+  deal_seeking_education = request.POST.getlist('deal_seeking_education', False)
 
   seeking_smoke = request.POST['seeking_smoke']
-  deal_seeking_smoke = request.POST['deal_seeking_smoke']
+  deal_seeking_smoke = request.POST.getlist('deal_seeking_smoke', False)
 
   seeking_drink = request.POST['seeking_drink']
-  deal_seeking_drink = request.POST['deal_seeking_drink']
+  deal_seeking_drink = request.POST.getlist('deal_seeking_drink', False)
 
   seeking_religion = request.POST['seeking_religion']
-  deal_seeking_religion = request.POST['deal_seeking_religion']
+  deal_seeking_religion = request.POST.getlist('deal_seeking_religion', False)
 
   seeking_salary = request.POST['seeking_salary']
-  deal_seeking_salary = request.POST['deal_seeking_salary']
+  deal_seeking_salary = request.POST.getlist('deal_seeking_salary', False)
 
 
 def login(request):
