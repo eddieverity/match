@@ -153,7 +153,7 @@ def DupEmail(email):
   except User.DoesNotExist:
     return False
 
-def messages(request):
+def matchmsg(request):
   if 'id' in request.session:
     id = request.session['id']
     context = {
@@ -175,7 +175,7 @@ def messenger(request, id):
       other_id = User.objects.get(id=id)
       message_text = request.POST['message_text']
       Messages.objects.create(sender=user_id, recipient=other_id, description=message_text)
-      return redirect('match:messages')
+      return redirect('match:matchmsg')
     return render(request, 'match_dot_com/messenger.html', context)
   return redirect('match:login')
 
