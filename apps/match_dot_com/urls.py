@@ -16,5 +16,9 @@ urlpatterns = [
     url(r'^user/(?P<id>\d+)$', user, name='user'),
     url(r'^upload$', upload_pic, name='upload_pic'),
     url(r'^user/(?P<id>\d+)/edit$', editprofile, name='profileeditor'),
+
     url(r'^user/(?P<id>\d+)/seeking$', editseeking, name='editseeking'),
+
+    url(r'^matchsort$', matchsort, name='matchsort'),
+
 ]

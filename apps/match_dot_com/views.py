@@ -50,9 +50,12 @@ def survey(request):
     pragmaticism=0
     family=0
 
-    # family+=int(user_current_kids)
-    # family+=int(user_future_kids)
-    # family+=int(user_marriage)
+    if type(user_current_kids) == int:
+      family+=int(user_current_kids)
+    if type(user_future_kids) == int:
+      family+=int(user_future_kids)
+    if type(user_marriage) == int:
+      family+=int(user_marriage)
     
     user_interests = request.POST.getlist('user_interests')
     for interest in user_interests:
@@ -141,7 +144,7 @@ def survey(request):
       activity=activity,
       frugality=frugality,
       pragmaticism=pragmaticism,
-      family=family,
+      family=family
       )
 
     return redirect('match:survey_seeking')
@@ -212,8 +215,7 @@ def seeking_entry(request):
 
   print 'seeking_user_id=', my_id, 'gender=', seeking_gender, 'age_min=', seeking_age_min, 'age_max=', seeking_age_max, 'height_min=', seeking_height_min, 'height_max=', seeking_height_max, 'body=', seeking_body_type, 'deal_body=', deal_seeking_body_type, 'relationship_status=', seeking_relationship_status, 'deal_relationship_status=', deal_seeking_relationship_status, 'current_kids=', seeking_current_kids, 'deal_current_kids=', deal_current_kids, 'future_kids=', seeking_future_kids, 'deal_future_kids=', deal_seeking_kids, 'education=', seeking_education, 'deal_education=', deal_seeking_education, 'smoke=', seeking_smoke, 'deal_smoke=', deal_seeking_smoke, 'drink=', seeking_drink, 'deal_drink=', deal_seeking_drink, 'religion=', seeking_religion, 'deal_religion=', deal_seeking_religion, 'salary=', seeking_salary, 'deal_salary=', deal_seeking_salary
 
-  print seeking_salary
-  print deal_seeking_salary
+
   seek_user= Seeking.objects.create(
     seeking_user_id=my_id,
     gender=seeking_gender,
@@ -238,7 +240,7 @@ def seeking_entry(request):
     religion=seeking_religion,
     deal_religion=deal_seeking_religion,
     salary=seeking_salary,
-    deal_salary=deal_seeking_salary
+    #deal_salary=deal_seeking_salary
   )
   return redirect('match:index')
 
@@ -481,6 +483,111 @@ def editseeking(request, id):
       return render(request, 'match_dot_com/editseeking.html', context)
     return redirect(reverse('match:user', kwargs={'id': userid}))
   return redirect('match:login')
+
+
+def matchsort(request):
+
+  pass
+  if 'id' in request.session:
+    id = request.session['id']
+    active_user=Seeking.objects.get(seeking_user_id=request.session['id'])
+    filtertron={}
+    
+    filtertron['gender'] = active_user.gender
+
+  
+    if active_user.deal_body == 1:
+      filtertron['body'] = active_user.seeking_body
+    if active_user.deal_relationship_status == 1:
+      filtertron['relationship_status'] = active_user.relationship_status
+    if active_user.deal_current_kids == 1:
+      filtertron['current_kids'] = active_user.current_kids
+    if active_user.deal_future_kids == 1:
+      filtertron['future_kids']= active_user.future_kids
+    if active_user.deal_education == 1:
+      filtertron['education'] = active_user.education
+    if active_user.deal_smoke == 1:
+      filtertron['smoke'] = active_user.smoke
+    if active_user.deal_drink == 1:
+      filtertron['drink']=active_user.drink
+    if active_user.deal_religion == 1:
+      filtertron['religion']=active_user.religion
+    if active_user.deal_salary == 1:
+      filtertron['salary'] = active_user.salary
+      
+    bulk_match=Profile.objects.filter(**filtertron)
+
+    delta_arr=[]
+    id_arr=[]
+    total_delta=0
+    for keys in bulk_match:
+      try:
+        body_delta = abs(active_user.body - keys.body)
+      except:
+        pass
+      try:
+        relationship_status_delta = abs(active_user.relationship_status - keys.relationship_status)
+        total_delta+=relationship_status_delta
+      except:
+        pass
+      try:
+        current_kids_delta = abs(active_user.current_kids - keys.current_kids)
+        total_delta+=current_kids_delta
+      except:
+        pass
+      try:
+        future_kids_delta = abs(active_user.future_kids - keys.future_kids)
+        total_delta+=future_kids_delta
+      except:
+        pass
+      try:
+        education_delta = abs(active_user.education - keys.education)
+        total_delta+=education_delta
+      except:
+        pass
+      try:
+        smoke_delta = abs(active_user.smoke - keys.smoke)
+        total_delta+=smoke_delta
+      except:
+        pass
+      try:
+        drink_delta = abs(active_user.drink - keys.drink)
+        total_delta+=drink_delta
+      except:
+        pass
+      try:
+        religion_delta = abs(active_user.religion - keys.religion)
+        total_delta+=religion_delta
+      except:
+        pass
+      try:
+        salary_delta = abs(active_user.salary - keys.salary)
+        total_delta+=salary_delta
+      except:
+        pass
+      
+      delta_arr.append(total_delta)
+      id_arr.append(keys.user_id)
+    looping=True
+    while looping:
+      looping=False
+      i=1  
+      while i<len(delta_arr):
+        if delta_arr[i-1]<delta_arr[i]:
+          #sort based on lowest delta
+          temp=delta_arr[i]
+          delta_arr[i]=delta_arr[i-1]
+          delta_arr[i-1]=temp
+          #sort mirrored id_arr to match indices of delta_arr
+          temp=id_arr[i]
+          id_arr[i]=id_arr[i-1]
+          id_arr[i-1]=temp
+          looping=True        
+        i+=1
+    print id_arr
+    
+    return HttpResponse(id_arr)
+  return redirect ('match:login')
 
 def logout(request):
   request.session.clear()
