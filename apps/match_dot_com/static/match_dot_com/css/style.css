@@ -51,17 +51,43 @@ h2{
   width: 200px;
   height: 200px;
   overflow: hidden;
+  margin-bottom: .5em;
 }
 .thumbnail img {
   position: absolute;
   left: 50%;
   top: 50%;
-  height: 100%;
-  width: auto;
+  width: 100%;
   -webkit-transform: translate(-50%,-50%);
       -ms-transform: translate(-50%,-50%);
           transform: translate(-50%,-50%);
 }
+.resultstxt{
+	position: relative;
+	width: 200px;
+	display: block;
+	padding-right: 0;
+	padding-left: .5em;
+}
+.container { 
+    width: 200px; 
+    height: 150px; 
+    overflow: hidden;
+}
+.container img { 
+    width: 120%;
+	margin-left: -10%;
+	margin-top: -15%;
+}
+.profileresults{
+	display: inline-block;
+}
+.profiledata{
+	display: inline-block;
+	width: 40%;
+	vertical-align: top;
+}
+
 /*NEW SLIDER STYLES FOR SCALE, ETC*/
 /* slider widget */
 .ui-slider  {
