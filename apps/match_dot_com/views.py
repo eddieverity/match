@@ -161,25 +161,41 @@ def seeking_entry(request):
   seeking_height_max = request.POST.get('max_height', None)
 
   seeking_body_type = request.POST.get('seeking_bodytype', None) 
-  deal_seeking_body_type = request.POST.getlist('deal_seeking_bodytype', 0)
+  deal_seeking_body_type = 0
+  if 'deal_seeking_body_type' in request.POST:
+    deal_seeking_body_type = 1
   
   seeking_relationship_status = request.POST.get('seeking_status', None)
-  deal_seeking_relationship_status = request.POST.getlist('deal_seeking_relationship_status', 0)
+  deal_seeking_relationship_status = 0
+  if 'deal_seeking_relationship_status' in request.POST:
+    deal_seeking_relationship_status = 1
 
   seeking_current_kids = request.POST.get('seeking_current_kids', None)
-  deal_current_kids = request.POST.getlist('deal_current_kids', 0)
+  deal_current_kids = 0
+  if 'deal_current_kids' in request.POST:
+    deal_current_kids = 1
 
   seeking_future_kids = request.POST.get('seeking_future_kids', None)
-  deal_seeking_kids = request.POST.getlist('deal_seeking_kids', 0)
+  deal_seeking_kids = 0
+  if 'deal_seeking_kids' in request.POST:
+    deal_seeking_kids = 1
+
 
   seeking_education = request.POST.get('seeking_education', None)
-  deal_seeking_education = request.POST.getlist('deal_seeking_education', 0)
+  deal_seeking_education = 0
+  if 'deal_seeking_education' in request.POST:
+    deal_seeking_education = 1
 
   seeking_smoke = request.POST.get('seeking_smoke', None)
-  deal_seeking_smoke = request.POST.getlist('deal_seeking_smoke', 0)
+  deal_seeking_smoke = 0
+  if 'deal_seeking_smoke' in request.POST:
+    deal_seeking_smoke = 1
 
   seeking_drink = request.POST.get('seeking_drink', None)
-  deal_seeking_drink = request.POST.getlist('deal_seeking_drink', False)
+  deal_seeking_drink = 0
+  if 'deal_seeking_drink' in request.POST:
+    deal_seeking_drink = 1
+  
 
   seeking_religion = request.POST.get('seeking_religion', None)
   deal_seeking_religion = 0
@@ -378,3 +394,4 @@ def upload_pic(request):
 def logout(request):
   request.session.clear()
   return redirect('match:login')
+
