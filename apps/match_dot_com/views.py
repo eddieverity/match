@@ -367,6 +367,14 @@ def upload_pic(request):
       return redirect(reverse('match:user', kwargs={'id': userid}))
     return HttpResponseForbidden('allowed only via POST')
 
+def editprofile(request, id):
+  if 'id' in request.session:
+    if request.method == 'POST':
+      userid = request.session['id']
+      return redirect(reverse('match:user', kwargs={'id': userid}))
+    return render(request, 'match_dot_com/editprofile.html')
+  return redirect('match:login')
+
 def logout(request):
   request.session.clear()
   return redirect('match:login')

@@ -7,9 +7,8 @@ class User(models.Model):
   last_name=models.CharField(max_length=64)
   email=models.CharField(max_length=64, unique=True)
   password=models.CharField(max_length=512)
-
+  bio=models.CharField(max_length=500, null=True, blank=True)
   zipcode=models.IntegerField()
-
   created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
   updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
 
