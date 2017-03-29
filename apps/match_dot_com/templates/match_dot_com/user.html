@@ -25,6 +25,10 @@
                         </div>
                         <a href="#_" class="lightbox" id="img1"><img src="/static/match_dot_com/img/{{ photo.user_pic }}"></a>
                         {% endfor %}
+                        {% else %}
+                        <div class="thumbnail">
+                            <img src="/static/match_dot_com/img/default.png"><br>
+                        </div>
                     {% endif %}
                     {% if user.id == request.session.id %}
                     <form action="{% url 'match:upload_pic' %}" method="POST" enctype="multipart/form-data">

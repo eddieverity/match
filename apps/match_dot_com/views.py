@@ -305,6 +305,7 @@ def register(request):
         zipcode=request.POST['zipcode'],
         password= pw_hash
         )
+      Images.objects.create(user=curr_user, user_pic="default.png")
       request.session['first_name']=request.POST['first_name']
       request.session['id']=curr_user.id
       return redirect ('match:survey')

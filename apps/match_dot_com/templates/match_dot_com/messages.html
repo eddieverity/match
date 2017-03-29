@@ -14,19 +14,28 @@
 </head>
     <body>
         <div id="wrapper">
+            <div id="inbox">
+            <h1>&#9829;</h1>
             <h2>Messages</h2>
+            <h3>Inbox</h3>
             {% if messages %}
                 {% for message in messages %}
                     <a href="{% url 'match:messenger' id=message.sender.id %}">{{ message.sender.first_name }}</a> {{ message.created_at }}<br>
                 {% endfor %}
+                {% else %}
+                <p>No messages yet! Check out <a href="{% url 'match:index' %}">your matches</a>!</p>
             {% endif %}
+            <hr>
             <h3>Other Users</h3>
             {% if others %}
                 {% for o in others %}
                     <a href="{% url 'match:user' id=o.id %}">{{ o.first_name }} {{ o.last_name }}</a> - <a href="{% url 'match:messenger' id=o.id %}">Send Message </a><br>
                 {% endfor %}
             {% endif %}
+            <hr>
+            <a href="{% url 'match:index' %}">Return to Matches</a><br>
             <a href="{% url 'match:logout' %}">Logout</a>
+            </div>
         </div>
     </body>
 </html>
