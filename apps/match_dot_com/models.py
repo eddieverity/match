@@ -45,31 +45,31 @@ class Seeking(models.Model):
   height_max=models.IntegerField(blank=True, null=True)
 
   body=models.IntegerField(blank=True, null=True)
-  deal_body=models.BooleanField(blank=True, null=False)
+  deal_body=models.IntegerField(blank=True, null=True)
 
   relationship_status=models.IntegerField(blank=True, null=True)
-  deal_relationship_status=models.BooleanField(blank=True, null=False)
+  deal_relationship_status=models.IntegerField(blank=True, null=True)
 
   current_kids=models.IntegerField(blank=True, null=True)
-  deal_current_kids=models.BooleanField(blank=True, null=False)
+  deal_current_kids=models.IntegerField(blank=True, null=True)
 
   future_kids=models.IntegerField(blank=True, null=True)
-  deal_future_kids=models.BooleanField(blank=True, null=False)
+  deal_future_kids=models.IntegerField(blank=True, null=True)
 
   education=models.IntegerField(blank=True, null=True)
-  deal_education=models.BooleanField(blank=True, null=False)
+  deal_education=models.IntegerField(blank=True, null=True)
 
   smoke=models.IntegerField(blank=True, null=True)
-  deal_smoke=models.BooleanField(blank=True, null=False)
+  deal_smoke=models.IntegerField(blank=True, null=True)
 
   drink=models.IntegerField(blank=True, null=True)
-  deal_drink=models.BooleanField(blank=True, null=False)
+  deal_drink=models.IntegerField(blank=True, null=True)
 
   religion=models.IntegerField(blank=True, null=True)
-  deal_religion=models.BooleanField(blank=True, null=False)
+  deal_religion=models.IntegerField(blank=True, null=True)
 
   salary=models.IntegerField(blank=True, null=True)
-  deal_salary=models.BooleanField(blank=True, null=False)
+  deal_salary=models.IntegerField(blank=True, null=True)
 
 #aggregates determined on a scale of 0-10 in views used for matchmaking
 
