@@ -16,21 +16,22 @@
   </head>
   <body>
     <div id="wrapper">
+      <div id="initialsurvey">
       <h3>Tell us about yourself</h3>
       <p>Age, Gender and Height are required fields</p>
       <form action="{% url 'match:survey' %}" method="POST">
       {% csrf_token %}
-      <fieldset>
-        <label for="user_age">Your Age</label><br>
+      <fieldset class="form-group">
+        <label for="user_age">Your Age:</label>
         <input type="number" name="age" min="18" max="75" class="form-control">
       </fieldset>
-      <fieldset>
-        <label for="yourgender">Your Gender</label><br>
+      <fieldset class="form-group">
+        <label for="yourgender">Your Gender</label><hr>
         <input class="form-check-input" type="radio" name="user_gender" value="male">Male<br>
         <input class="form-check-input" type="radio" name="user_gender" value="female">Female<br>
         <input class="form-check-input" type="radio" name="user_gender" value="other">Other<br>
       </fieldset>
-      <fieldset>
+      <fieldset class="form-group">
 			<label for="valueA">Your Height:</label>
 			<select name="valueA" id="valueA" class="form-control">
  
@@ -79,36 +80,36 @@
 				</optgroup>
 			</select>
 		  </fieldset>
-      <fieldset>
-        <label for="user_bodytype">Body Type</label><br>
+      <fieldset class="form-group">
+        <label for="user_bodytype">Body Type</label><hr>
         <input type="radio" name="user_bodytype" value="0" class="form-check-input">Slim<br>
         <input type="radio" name="user_bodytype" value="1" class="form-check-input"> Average<br>
         <input type="radio" name="user_bodytype" value="2" class="form-check-input">Athletic<br>
         <input type="radio" name="user_bodytype" value="3" class="form-check-input"> Heavyset<br>
       </fieldset>
-      <fieldset>
-        <label for="user_status">Relationship Status</label><br>
+      <fieldset class="form-group">
+        <label for="user_status">Relationship Status</label><hr>
         <input type="radio" name="user_status" value="0" class="form-check-input">Never Married<br>
         <input type="radio" name="user_status" value="1" class="form-check-input">Currently Separated<br>
         <input type="radio" name="user_status" value="2" class="form-check-input"> Divorced<br>
         <input type="radio" name="user_status" value="3" class="form-check-input">Widowed<br>
         <input type="radio" name="user_status" value="4" class="form-check-input">Other<br>
       </fieldset>
-       <fieldset>
-        <label for="user_marriage">Are you interested in marriage?</label><br>
+       <fieldset class="form-group">
+        <label for="user_marriage">Are you interested in marriage?</label><hr>
         <input class="form-check-input" type="radio" name="user_marriage" value="0">Never<br>
         <input class="form-check-input" type="radio" name="user_marriage" value="1">Possibly<br>
         <input class="form-check-input" type="radio" name="user_marriage" value="2">Someday<br>
       </fieldset>
-      <fieldset>
-        <label for="user_currkids">Do you have children?</label><br>
+      <fieldset class="form-group">
+        <label for="user_currkids">Do you have children?</label><hr>
         <input class="form-check-input" type="radio" name="user_currkids" value="0">No<br>
         <input class="form-check-input" type="radio" name="user_currkids" value="3">Yes, and they live with me<br>
         <input class="form-check-input" type="radio" name="user_currkids" value="2">Yes, and they sometimes live with me<br>
         <input class="form-check-input" type="radio" name="user_currkids" value="1">Yes, but they do not live with me<br>
       </fieldset>
-      <fieldset>
-        <label for="user_futurekids">Do you want children?</label><br>
+      <fieldset class="form-group">
+        <label for="user_futurekids">Do you want children?</label><hr>
         <input class="form-check-input" type="radio" name="user_futurekids" value="5">Definitely<br>
         <input class="form-check-input" type="radio" name="user_futurekids" value="4">Someday<br>
         <input class="form-check-input" type="radio" name="user_futurekids" value="2">Not Sure<br>
@@ -116,8 +117,8 @@
         <input class="form-check-input" type="radio" name="user_futurekids" value="0">No<br>
         <input class="form-check-input" type="radio" name="user_futurekids" value="3">No, but it's okay if my partner does.<br>
       </fieldset>
-      <fieldset>
-        <label for="user_edu">Highest Education</label><br>
+      <fieldset class="form-group">
+        <label for="user_edu">Highest Education</label><hr>
         <input class="form-check-input" type="radio" name="user_edu" value="0">No Highschool<br>
         <input class="form-check-input" type="radio" name="user_edu" value="1">High School<br>
         <input class="form-check-input" type="radio" name="user_edu" value="2">Some College<br>
@@ -125,35 +126,35 @@
         <input class="form-check-input" type="radio" name="user_edu" value="4">Graduate School<br>
         <input class="form-check-input" type="radio" name="user_edu" value="5">Doctorate<br>
       </fieldset>
-      <fieldset>
-        <label for="user_smoke">Do you smoke?</label><br>
+      <fieldset class="form-group">
+        <label for="user_smoke">Do you smoke?</label><hr>
         <input class="form-check-input" type="radio" name="user_smoke" value="0">No<br>
         <input class="form-check-input" type="radio" name="user_smoke" value="2">Occasionally<br>
         <input class="form-check-input" type="radio" name="user_smoke" value="3">Daily<br>
         <input class="form-check-input" type="radio" name="user_smoke" value="4">Like A Chimney<br>
         <input class="form-check-input" type="radio" name="user_smoke" value="1">Trying to Quit<br>
       </fieldset>
-      <fieldset>
-        <label for="user_drink">Do you drink?</label><br>
+      <fieldset class="form-group">
+        <label for="user_drink">Do you drink?</label><hr>
         <input class="form-check-input" type="radio" name="user_drink" value="0">Never<br>
         <input class="form-check-input" type="radio" name="user_drink" value="1">Social Drinker<br>
         <input class="form-check-input" type="radio" name="user_drink" value="2">Moderately<br>
         <input class="form-check-input" type="radio" name="user_drink" value="3">Regularly<br>
       </fieldset>
-      <fieldset>
-        <label for="user_religion">What is your religious affiliation?</label><br>
+      <fieldset class="form-group">
+        <label for="user_religion">What is your religious affiliation?</label><hr>
         <input class="form-check-input" type="radio" name="user_religion" value="2">Religious<br>
         <input class="form-check-input" type="radio" name="user_religion" value="1">Spritual, but Not Practicing<br>
         <input class="form-check-input" type="radio" name="user_religion" value="0">Not Religious<br>
       </fieldset>
-      <fieldset>
-        <label for="user_salary">What is your financial situation?</label><br>
+      <fieldset class="form-group">
+        <label for="user_salary">What is your financial situation?</label><hr>
         <input class="form-check-input" type="radio" name="user_salary" value="0">Struggling<br>
         <input class="form-check-input" type="radio" name="user_salary" value="1">Comfortable<br>
         <input class="form-check-input" type="radio" name="user_salary" value="2">Affluent<br>
       </fieldset>
-      <fieldset>
-        <label for="user_interests">What are your interests?</label>
+      <fieldset class="interests">
+        <label for="user_interests">What are your interests?</label><hr>
         <input class="form-check-input" type="checkbox" name="user_interests" value="book-club">Book Club
         <input class="form-check-input" type="checkbox" name="user_interests" value="camping">Camping
         <input class="form-check-input" type="checkbox" name="user_interests" value="coffee">Coffee and Conversation
@@ -180,8 +181,8 @@
         <input class="form-check-input" type="checkbox" name="user_interests" value="Wine">Wine Tasting
       </fieldset>
       <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+      </form>
+      </div>
     </div> 
   </body>
-
 </html>
