@@ -20,8 +20,9 @@
                 {% if photos %}
                     {% for photo in photos %}
                     <div class="thumbnail">
-                        <img src="/static/match_dot_com/img/{{ photo.user_pic }}"><br>
+                        <a href="#img1"><img src="/static/match_dot_com/img/{{ photo.user_pic }}"></a><br>
                     </div>
+                    <a href="#_" class="lightbox" id="img1"><img src="/static/match_dot_com/img/{{ photo.user_pic }}"></a>
                     {% endfor %}
                 {% endif %}
                 {% if user.id == request.session.id %}
@@ -44,24 +45,49 @@
                     {% if user.id != request.session.id %}
                         <a href="{% url 'match:messenger' id=user.id %}">Send Message</a>
                     {% endif %}
+                    {% if user.id == request.session.id %}
+                        <a href="{% url 'match:profileeditor' id=user.id %}">Edit Profile</a><br>
+                    {% endif %}
                 {% endif %}
                 <hr>
                 {% if profiledata %}
                 <h3>Info</h3>
                 <div class="profiledata">
-                    <p>Gender: {{ profiledata.gender | title }}</p>
-                    <p>Age: {{ profiledata.age }}</p>
-                    <p>Height: {{ profiledata.height }}</p>
-                    <p>Body Type: {{ profiledata.body }}</p>
-                    <p>Relationship Status: {{ profiledata.relationship_status | title }}</p>
-                    <p>Education: {{ profiledata.education }}</p>
+                    {% if profiledata.gender %}
+                        <p>Gender: {{ profiledata.gender | title }}</p>
+                    {% endif %}
+                    {% if profiledata.age %}
+                        <p>Age: {{ profiledata.age }}</p>
+                    {% endif %}
+                    {% if profiledata.height %}
+                        <p>Height: {{ profiledata.height }}</p>
+                    {% endif %}
+                    {% if profiledata.body %}
+                        <p>Body Type: {{ profiledata.body }}</p>
+                    {% endif %}
+                    {% if profiledata.relationship_status %}
+                        <p>Relationship Status: {{ profiledata.relationship_status | title }}</p>
+                    {% endif %}
+                    {% if profiledata.education %}
+                        <p>Education: {{ profiledata.education }}</p>
+                    {% endif %}
                 </div>
                 <div class="profiledata">
-                    <p>Kids: {{ profiledata.current_kids }}</p>
-                    <p>Wants Kids: {{ profiledata.future_kids }}</p>
-                    <p>Smoker: {{ profiledata.smoke }}</p>
-                    <p>Alcohol: {{ profiledata.drink }}</p>
-                    <p>Religion: {{ profiledata.religion | title }}</p>
+                    {% if profiledata.current_kids %}
+                        <p>Kids: {{ profiledata.current_kids }}</p>
+                    {% endif %}
+                    {% if profiledata.future_kids %}
+                        <p>Wants Kids: {{ profiledata.future_kids }}</p>
+                    {% endif %}
+                    {% if profiledata.smoke %}
+                        <p>Smoker: {{ profiledata.smoke }}</p>
+                    {% endif %}
+                    {% if profiledata.smoke %}
+                        <p>Alcohol: {{ profiledata.drink }}</p>
+                    {% endif %}
+                    {% if profiledata.smoke %}
+                        <p>Religion: {{ profiledata.religion | title }}</p>
+                    {% endif %}
                 </div>
                 {% endif %}
                 <hr>
