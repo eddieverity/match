@@ -240,7 +240,7 @@ def seeking_entry(request):
     religion=seeking_religion,
     deal_religion=deal_seeking_religion,
     salary=seeking_salary,
-    #deal_salary=deal_seeking_salary
+    deal_salary=deal_seeking_salary
   )
   return redirect('match:index')
 
@@ -449,6 +449,53 @@ def editseeking(request, id):
         'profile': Seeking.objects.get(seeking_user=id),
         }
       if request.method == 'POST':
+        seeking_body_type = request.POST.get('seeking_bodytype', None) 
+        deal_seeking_body_type = 0
+        if 'deal_seeking_body_type' in request.POST:
+          deal_seeking_body_type = 1
+        
+        seeking_relationship_status = request.POST.get('seeking_status', None)
+        deal_seeking_relationship_status = 0
+        if 'deal_seeking_relationship_status' in request.POST:
+          deal_seeking_relationship_status = 1
+
+        seeking_current_kids = request.POST.get('seeking_current_kids', None)
+        deal_current_kids = 0
+        if 'deal_current_kids' in request.POST:
+          deal_current_kids = 1
+
+        seeking_future_kids = request.POST.get('seeking_future_kids', None)
+        deal_seeking_kids = 0
+        if 'deal_seeking_kids' in request.POST:
+          deal_seeking_kids = 1
+
+
+        seeking_education = request.POST.get('seeking_education', None)
+        deal_seeking_education = 0
+        if 'deal_seeking_education' in request.POST:
+          deal_seeking_education = 1
+
+        seeking_smoke = request.POST.get('seeking_smoke', None)
+        deal_seeking_smoke = 0
+        if 'deal_seeking_smoke' in request.POST:
+          deal_seeking_smoke = 1
+
+        seeking_drink = request.POST.get('seeking_drink', None)
+        deal_seeking_drink = 0
+        if 'deal_seeking_drink' in request.POST:
+          deal_seeking_drink = 1
+        
+
+        seeking_religion = request.POST.get('seeking_religion', None)
+        deal_seeking_religion = 0
+        if 'deal_seeking_religion' in request.POST:
+          deal_seeking_religion = 1
+
+
+        seeking_salary = request.POST.get('seeking_salary', None) 
+        deal_seeking_salary = 0
+        if 'deal_seeking_salary' in request.POST:
+          deal_seeking_salary = 1
         age_min = request.POST['age_min']
         age_max = request.POST['age_max']
         seeking_gender = request.POST['seeking_gender']
@@ -477,7 +524,16 @@ def editseeking(request, id):
           smoke=smoke,
           drink=drink,
           religion=religion,
-          salary=salary
+          salary=salary,
+          deal_body=deal_seeking_body_type,
+          deal_relationship_status=deal_seeking_relationship_status,
+          deal_current_kids=deal_current_kids,
+          deal_future_kids=deal_seeking_kids,
+          deal_education=deal_seeking_education,
+          deal_smoke=deal_seeking_smoke,
+          deal_drink=deal_seeking_drink,
+          deal_religion=deal_seeking_religion,
+          deal_salary=deal_seeking_salary,
           )
         return redirect(reverse('match:user', kwargs={'id': userid}))
       return render(request, 'match_dot_com/editseeking.html', context)
