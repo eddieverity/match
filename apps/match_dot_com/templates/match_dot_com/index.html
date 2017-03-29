@@ -18,12 +18,26 @@
     <h1>Match</h1>
     <h3>Other Users</h2>
      {% if others %}
-        {% for o in others %}
-            <a href="{% url 'match:user' id=o.id %}">{{ o.first_name }} {{ o.last_name }}</a> - <a href="{% url 'match:messenger' id=o.id %}">Send Message </a><br>
+        {% for o in others %}  
+        <div class="profileresults">
+            <div class="thumbnail">
+              <a href="{% url 'match:user' id=o.id %}"><img src="/static/match_dot_com/img/{{o.user_pics.user_pic}}"></a>
+            </div>
+        <div class="resultstxt">
+          Name: <a href="{% url 'match:user' id=o.id %}">{{ o.first_name }}</a><br>
+          {% for profiles in o.user_profile.all %}
+          Age: {{ profiles.age }}<br>
+          {% endfor %}
+          <a href="{% url 'match:messenger' id=o.id %}">Send {{ o.first_name }} A Message </a>
+          </div>
+        </div>
         {% endfor %}
       {% endif %}
       <hr>
       <h3>My Profile</h3>
+      <div class="thumbnail">
+        <a href="{% url 'match:user' id=request.session.id %}"><img src="/static/match_dot_com/img/{{me.user_pics.user_pic}}"></a>
+      </div>
       <a href="{% url 'match:user' id=request.session.id %}">View my Profile</a>
       <hr>
     <a href="{% url 'match:messages' %}">Messages</a><br>

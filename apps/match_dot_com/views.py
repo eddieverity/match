@@ -9,7 +9,7 @@ import math
 from models import *
 from django.db.models import Q
 from .forms import *
-
+from translator import translate
 
 
 # Create your views here.
@@ -18,6 +18,9 @@ def index(request):
     id = request.session['id']
     context = {
       'others': User.objects.exclude(id=id),
+      'me': User.objects.get(id=id),
+      'profiles': Profile.objects.exclude(user=id).order_by('user'),
+      'images': Images.objects.all().order_by('user'),
     }
     return render (request, 'match_dot_com/index.html', context)
   return redirect ('match:login')
@@ -341,20 +344,37 @@ def messenger(request, id):
 
 def user(request, id):
   if 'id' in request.session:
+    # try:
     userprofile = User.objects.get(id=id)
     context = {
       'user': userprofile,
       'photos': Images.objects.filter(user=userprofile),
+      'profiledata': Profile.objects.get(user=userprofile),
+      # 'seekingdata': Seeking.objects.get(user=userprofile),
     }
+    
+    context['profiledata'].body=translate('body', context['profiledata'].body)
+    context['profiledata'].smoke=translate('smoke', context['profiledata'].smoke)
+    context['profiledata'].current_kids=translate('current_kids', context['profiledata'].current_kids)
+    context['profiledata'].future_kids=translate('future_kids', context['profiledata'].future_kids)
+    context['profiledata'].education=translate('education', context['profiledata'].education)
+    context['profiledata'].drink=translate('drink', context['profiledata'].drink)
+    context['profiledata'].salary=translate('salary', context['profiledata'].salary)
+
     return render(request, 'match_dot_com/user.html', context)
+    # except:
+    #   return redirect('match:survey')
   return redirect('match:login')
 
 def upload_pic(request):
     if request.method == 'POST':
       userid = request.session['id']
       image = request.FILES['user_pic']
-      Images.objects.create(user_id=userid, user_pic=image)
-      return HttpResponse('image upload success')
+      try:
+        Images.objects.create(user_id=userid, user_pic=image)
+      except:
+        Images.objects.filter(user_id=userid).update(user_pic=image)
+      return redirect(reverse('match:user', kwargs={'id': userid}))
     return HttpResponseForbidden('allowed only via POST')
 
 def logout(request):

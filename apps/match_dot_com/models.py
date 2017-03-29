@@ -65,8 +65,14 @@ class Seeking(models.Model):
 
 
 class Images(models.Model):
-  user=models.ForeignKey(User, related_name='user_pics')
-  user_pic=models.FileField(upload_to = 'img')
+  user=models.OneToOneField(User, related_name='user_pics')
+  user_pic=models.FileField(upload_to='img', default='img/default.png')
+  created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+  updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
+
+class Gallery(models.Model):
+  user=models.ForeignKey(User, related_name='user_gallery')
+  user_pic=models.FileField(upload_to='img', default='img/default.png')
   created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
   updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
 
