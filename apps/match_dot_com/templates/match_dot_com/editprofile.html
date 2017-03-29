@@ -15,6 +15,139 @@
     <body>
         <div id="wrapper">
             <div id="editprofile">
+                <h1>&#9829;</h1>
+                <h3>Edit {{user.first_name}} {{user.last_name}}'s Info</h2>
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    <label for="bio">Bio</label>
+                    <textarea name="bio" class="form-control" cols="3" maxlength="500">{{ user.bio }}</textarea>
+                    <label for="user_age">Your Age</label>
+                    <input type="number" name="age" min="18" max="75" class="form-control" value="{{profile.age}}">
+                    <label for="valueA">Your Height:</label>
+                        <select name="valueA" id="valueA" class="form-control">
+                            <optgroup label="4&rsquo;">
+                                <option selected diabled hidden style='display: none' value='{{ profile.height }}'></option>
+                                <option value="48">4&rsquo;</option>
+                                <option value="49">4&rsquo;&nbsp;1&rdquo;</option>
+                                <option value="50">4&rsquo;&nbsp;2&rdquo;</option>
+                                <option value="51">4&rsquo;&nbsp;3&rdquo;</option>
+                                <option value="52">4&rsquo;&nbsp;4&rdquo;</option>
+                                <option value="53">4&rsquo;&nbsp;5&rdquo;</option>
+                                <option value="54">4&rsquo;&nbsp;6&rdquo;</option>
+                                <option value="55">4&rsquo;&nbsp;7&rdquo;</option>
+                                <option value="56">4&rsquo;&nbsp;8&rdquo;</option>
+                                <option value="57">4&rsquo;&nbsp;9&rdquo;</option>
+                                <option value="58">4&rsquo;&nbsp;10&rdquo;</option>
+                                <option value="59">4&rsquo;&nbsp;11&rdquo;</option>
+                            </optgroup>
+                            <optgroup label="5&rsquo;"> selected="selected"
+                                <option value="60">5&rsquo;</option>
+                                <option value="61">5&rsquo;&nbsp;1&rdquo;</option>
+                                <option value="62">5&rsquo;&nbsp;2&rdquo;</option>
+                                <option value="63">5&rsquo;&nbsp;3&rdquo;</option>
+                                <option value="64">5&rsquo;&nbsp;4&rdquo;</option>
+                                <option value="65">5&rsquo;&nbsp;5&rdquo;</option>
+                                <option value="66">5&rsquo;&nbsp;6&rdquo;</option>
+                                <option value="67">5&rsquo;&nbsp;7&rdquo;</option>
+                                <option value="68">5&rsquo;&nbsp;8&rdquo;</option>
+                                <option value="69">5&rsquo;&nbsp;9&rdquo;</option>
+                                <option value="70">5&rsquo;&nbsp;10&rdquo;</option>
+                                <option value="71">5&rsquo;&nbsp;11&rdquo;</option>
+                            </optgroup>
+                            <optgroup label="6&rsquo;">
+                                <option value="72">6&rsquo;</option>
+                                <option value="73">6&rsquo;&nbsp;1&rdquo;</option>
+                                <option value="74">6&rsquo;&nbsp;2&rdquo;</option>
+                                <option value="75">6&rsquo;&nbsp;3&rdquo;</option>
+                                <option value="76">6&rsquo;&nbsp;4&rdquo;</option>
+                                <option value="77">6&rsquo;&nbsp;5&rdquo;</option>
+                                <option value="78">6&rsquo;&nbsp;6&rdquo;</option>
+                                <option value="79">6&rsquo;&nbsp;7&rdquo;</option>
+                                <option value="80">6&rsquo;&nbsp;8&rdquo;</option>
+                                <option value="81">6&rsquo;&nbsp;9&rdquo;</option>
+                                <option value="82">6&rsquo;&nbsp;10&rdquo;</option>
+                                <option value="83">6&rsquo;&nbsp;11&rdquo;</option>
+                            </optgroup>
+                        </select>
+                    <fieldset class="form-group">
+                        <label for="user_bodytype">Body Type</label><hr>
+                        <input selected diabled hidden style='display: none' name="user_bodytype" value='{{ profile.body }}'>
+                        <input type="radio" name="user_bodytype" value="0" class="form-check-input"> Slim<br>
+                        <input type="radio" name="user_bodytype" value="1" class="form-check-input"> Average<br>
+                        <input type="radio" name="user_bodytype" value="2" class="form-check-input"> Athletic<br>
+                        <input type="radio" name="user_bodytype" value="3" class="form-check-input"> Heavyset<br>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="user_status">Relationship Status</label><hr>
+                        <input selected diabled hidden style='display: none' name="user_status" value='{{ profile.relationship_status }}'>
+                        <input type="radio" name="user_status" value="0" class="form-check-input"> Never Married<br>
+                        <input type="radio" name="user_status" value="1" class="form-check-input"> Currently Separated<br>
+                        <input type="radio" name="user_status" value="2" class="form-check-input"> Divorced<br>
+                        <input type="radio" name="user_status" value="3" class="form-check-input"> Widowed<br>
+                        <input type="radio" name="user_status" value="4" class="form-check-input"> Other<br>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="user_edu">Highest Education</label><hr>
+                        <input selected diabled hidden style='display: none' name="user_edu" value='{{ profile.education }}'>
+                        <input class="form-check-input" type="radio" name="user_edu" value="0"> No Highschool<br>
+                        <input class="form-check-input" type="radio" name="user_edu" value="1"> High School<br>
+                        <input class="form-check-input" type="radio" name="user_edu" value="2"> Some College<br>
+                        <input class="form-check-input" type="radio" name="user_edu" value="3"> College Graduate<br>
+                        <input class="form-check-input" type="radio" name="user_edu" value="4"> Graduate School<br>
+                        <input class="form-check-input" type="radio" name="user_edu" value="5"> Doctorate<br>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="user_currkids">Do you have children?</label><hr>
+                        <input selected diabled hidden style='display: none' name="user_currkids" value='{{ profile.current_kids }}'>
+                        <input class="form-check-input" type="radio" name="user_currkids" value="0">No<br>
+                        <input class="form-check-input" type="radio" name="user_currkids" value="3"> Yes, and they live with me<br>
+                        <input class="form-check-input" type="radio" name="user_currkids" value="2"> Yes, and they sometimes live with me<br>
+                        <input class="form-check-input" type="radio" name="user_currkids" value="1"> Yes, but they do not live with me<br>
+                    </fieldset>
+                     <fieldset class="form-group">
+                        <label for="user_futurekids">Do you want children?</label><hr>
+                        <input selected diabled hidden style='display: none' name="user_futurekids" value='{{ profile.future_kids }}'>
+                        <input class="form-check-input" type="radio" name="user_futurekids" value="5"> Definitely<br>
+                        <input class="form-check-input" type="radio" name="user_futurekids" value="4"> Someday<br>
+                        <input class="form-check-input" type="radio" name="user_futurekids" value="2"> Not Sure<br>
+                        <input class="form-check-input" type="radio" name="user_futurekids" value="1"> Probably Not<br>
+                        <input class="form-check-input" type="radio" name="user_futurekids" value="0"> No<br>
+                        <input class="form-check-input" type="radio" name="user_futurekids" value="3"> No, but it's okay if my partner does.<br>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="user_smoke">Do you smoke?</label><hr>
+                        <input selected diabled hidden style='display: none' name="user_smoke" value='{{ profile.smoke }}'>
+                        <input class="form-check-input" type="radio" name="user_smoke" value="0"> No<br>
+                        <input class="form-check-input" type="radio" name="user_smoke" value="2"> Occasionally<br>
+                        <input class="form-check-input" type="radio" name="user_smoke" value="3"> Daily<br>
+                        <input class="form-check-input" type="radio" name="user_smoke" value="4"> Like A Chimney<br>
+                        <input class="form-check-input" type="radio" name="user_smoke" value="1"> Trying to Quit<br>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="user_drink">Do you drink?</label><hr>
+                        <input selected diabled hidden style='display: none' name="user_drink" value='{{ profile.drink }}'>
+                        <input class="form-check-input" type="radio" name="user_drink" value="0"> Never<br>
+                        <input class="form-check-input" type="radio" name="user_drink" value="1"> Social Drinker<br>
+                        <input class="form-check-input" type="radio" name="user_drink" value="2"> Moderately<br>
+                        <input class="form-check-input" type="radio" name="user_drink" value="3"> Regularly<br>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="user_religion">What is your religious affiliation?</label><hr>
+                        <input selected diabled hidden style='display: none' name="user_religion" value='{{ profile.religion }}'>
+                        <input class="form-check-input" type="radio" name="user_religion" value="2"> Religious<br>
+                        <input class="form-check-input" type="radio" name="user_religion" value="1"> Spritual, but Not Practicing<br>
+                        <input class="form-check-input" type="radio" name="user_religion" value="0"> Not Religious<br>
+                    </fieldset>
+                    <fieldset>
+                        <label for="user_salary">What is your financial situation?</label><hr>
+                        <input selected diabled hidden style='display: none' name="user_salary" value='{{ profile.salary }}'>
+                        <input class="form-check-input" type="radio" name="user_salary" value="0"> Struggling<br>
+                        <input class="form-check-input" type="radio" name="user_salary" value="1"> Comfortable<br>
+                        <input class="form-check-input" type="radio" name="user_salary" value="2"> Affluent<br>
+                    </fieldset>
+                    <button class="btn btn-primary">Submit</button>
+                </form>
+                <hr>
                 <a href="{% url 'match:user' id=request.session.id %}">Return to My Profile</a>
             </div>
         </div>

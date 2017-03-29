@@ -52,9 +52,11 @@ TRANSLATOR_DICTIONARY = {
     },
 
     "relationship_status": {
-        "0": "Never",
-        "1": "Possibly",
-        "2": "Someday"
+        "0": "Never Married",
+        "1": "Currently Separated",
+        "2": "Divorced",
+        "3": "Widowed",
+        "4": "Other"
     },
 
     "current_kids": {

@@ -92,6 +92,58 @@ h2{
 	width: 80%;
 	margin: 0 auto;
 }
+#editprofile fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 1em;
+	width: 25%;
+}
+#editprofile label{
+	display: block;
+	float: none;
+}
+#editprofile hr{
+	margin: 0 0 .5em 0;
+}
+#editprofile button{
+	display: block;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+#editprofile input{
+	padding-top: 1em;
+}
+.profilesection{
+	display: inline-block;
+	vertical-align: top;
+	width: 45%;
+	margin: 1em;
+}
+#seekingsurvey{
+	width: 80%;
+	margin: 0 auto;
+}
+#seekingsurvey fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 1em;
+	width: 25%;
+}
+#seekingsurvey label{
+	display: block;
+	float: none;
+}
+#seekingsurvey hr{
+	margin: 0 0 .5em 0;
+}
+#seekingsurvey button{
+	display: block;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+#seekingsurvey input{
+	padding-top: 1em;
+}
 
 /*LIGHTBOX*/
 

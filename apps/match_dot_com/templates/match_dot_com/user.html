@@ -15,40 +15,48 @@
     <body>
         <div id="wrapper">
             <div id="profile">
-                <h1>Match</h1>
+                <h1>&#9829;</h1>
                 <h3>{{user.first_name}} {{user.last_name}}</h2>
-                {% if photos %}
-                    {% for photo in photos %}
-                    <div class="thumbnail">
-                        <a href="#img1"><img src="/static/match_dot_com/img/{{ photo.user_pic }}"></a><br>
-                    </div>
-                    <a href="#_" class="lightbox" id="img1"><img src="/static/match_dot_com/img/{{ photo.user_pic }}"></a>
-                    {% endfor %}
-                {% endif %}
-                {% if user.id == request.session.id %}
-                <form action="{% url 'match:upload_pic' %}" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                    <label id="piclabel" for="user_pic">Upload more photos:</label>
-                    <p>
-                        <input id="id_image" type="file" class="" name="user_pic">
-                    </p>
-                    <input type="submit" value="Submit" />
-                </form>
-                {% endif %}
-                {% if user %}
-                    Name: {{ user.first_name }} {{ user.last_name }}<br>
-                    Joined: {{ user.created_at|date:"M d, Y" }}<br>
-                    {% comment %}{% if seekingdata %}
-                    Interested In: {{ seekingdata.gender }}
-                    {% endif %}{% endcomment %}
-
-                    {% if user.id != request.session.id %}
-                        <a href="{% url 'match:messenger' id=user.id %}">Send Message</a>
+                <div class="profilesection">
+                    {% if photos %}
+                        {% for photo in photos %}
+                        <div class="thumbnail">
+                            <a href="#img1"><img src="/static/match_dot_com/img/{{ photo.user_pic }}"></a><br>
+                        </div>
+                        <a href="#_" class="lightbox" id="img1"><img src="/static/match_dot_com/img/{{ photo.user_pic }}"></a>
+                        {% endfor %}
                     {% endif %}
                     {% if user.id == request.session.id %}
-                        <a href="{% url 'match:profileeditor' id=user.id %}">Edit Profile</a><br>
+                    <form action="{% url 'match:upload_pic' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        <label id="piclabel" for="user_pic" class="custom-file">
+                            <input id="id_image" type="file" class="custom-file-input" name="user_pic">
+                            <span class="custom-file-control"></span>
+                        </label>
+                        <input type="submit" value="Submit" class="btn btn-primary"/>
+                    </form>
                     {% endif %}
-                {% endif %}
+                    {% if user %}
+                        <strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}<br>
+                        <strong>Joined:</strong> {{ user.created_at|date:"M d, Y" }}<br>
+                        {% comment %}{% if seekingdata %}
+                        Interested In: {{ seekingdata.gender }}
+                        {% endif %}{% endcomment %}
+
+                        {% if user.id != request.session.id %}
+                            <a href="{% url 'match:messenger' id=user.id %}">Send Message</a>
+                        {% endif %}
+                        {% if user.id == request.session.id %}
+                            <a href="{% url 'match:profileeditor' id=user.id %}">Edit Profile</a><br>
+                            <a href="{% url 'match:editseeking' id=user.id %}">Update Search Criteria</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div class="profilesection">
+                    {% if user.bio %}
+                        <p><strong>Bio:</strong> {{ user.bio }}</p>
+                    {% endif %}
+                </div>
                 <hr>
                 {% if profiledata %}
                 <h3>Info</h3>

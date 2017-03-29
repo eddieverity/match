@@ -400,10 +400,86 @@ def upload_pic(request):
 
 def editprofile(request, id):
   if 'id' in request.session:
-    if request.method == 'POST':
-      userid = request.session['id']
-      return redirect(reverse('match:user', kwargs={'id': userid}))
-    return render(request, 'match_dot_com/editprofile.html')
+    userid = request.session['id']
+    if int(id) == userid:
+      context = {
+        'user': User.objects.get(id=id),
+        'profile': Profile.objects.get(user=id),
+        }
+      if request.method == 'POST':
+        bio = request.POST['bio']
+        age = request.POST['age']
+        height = request.POST['valueA']
+        body = request.POST['user_bodytype']
+        relationship_status = request.POST['user_status']
+        current_kids = request.POST['user_currkids']
+        future_kids = request.POST['user_futurekids']
+        education = request.POST['user_edu']
+        smoke = request.POST['user_smoke']
+        drink = request.POST['user_drink']
+        religion = request.POST['user_religion']
+        salary = request.POST['user_salary']
+        Profile.objects.filter(user_id=id).update(
+          age=age, 
+          height=height, 
+          body=body, 
+          relationship_status=relationship_status,
+          current_kids=current_kids,
+          future_kids=future_kids,
+          education=education,
+          smoke=smoke,
+          drink=drink,
+          religion=religion,
+          salary=salary
+          )
+        User.objects.filter(id=id).update(bio=bio)
+        return redirect(reverse('match:user', kwargs={'id': userid}))
+      return render(request, 'match_dot_com/editprofile.html', context)
+    return redirect(reverse('match:user', kwargs={'id': userid}))
+  return redirect('match:login')
+
+def editseeking(request, id):
+  if 'id' in request.session:
+    userid = request.session['id']
+    if int(id) == userid:
+      context = {
+        'user': User.objects.get(id=id),
+        'profile': Seeking.objects.get(seeking_user=id),
+        }
+      if request.method == 'POST':
+        age_min = request.POST['age_min']
+        age_max = request.POST['age_max']
+        seeking_gender = request.POST['seeking_gender']
+        min_height = request.POST['min_height']
+        max_height = request.POST['max_height']
+        body = request.POST['seeking_bodytype']
+        relationship_status = request.POST['seeking_status']
+        current_kids = request.POST['seeking_currkids']
+        future_kids = request.POST['seeking_future_kids']
+        education = request.POST['seeking_edu']
+        smoke = request.POST['seeking_smoke']
+        drink = request.POST['seeking_drink']
+        religion = request.POST['seeking_religion']
+        salary = request.POST['seeking_salary']
+        Seeking.objects.filter(seeking_user=id).update(
+          age_min=age_min,
+          age_max=age_max,
+          gender=seeking_gender,
+          height_min=min_height, 
+          height_max=max_height, 
+          body=body, 
+          relationship_status=relationship_status,
+          current_kids=current_kids,
+          future_kids=future_kids,
+          education=education,
+          smoke=smoke,
+          drink=drink,
+          religion=religion,
+          salary=salary
+          )
+        return redirect(reverse('match:user', kwargs={'id': userid}))
+      return render(request, 'match_dot_com/editseeking.html', context)
+    return redirect(reverse('match:user', kwargs={'id': userid}))
   return redirect('match:login')
 
 def logout(request):
