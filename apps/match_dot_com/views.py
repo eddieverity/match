@@ -240,7 +240,7 @@ def seeking_entry(request):
     religion=seeking_religion,
     deal_religion=deal_seeking_religion,
     salary=seeking_salary,
-    #deal_salary=deal_seeking_salary
+    deal_salary=deal_seeking_salary
   )
   return redirect('match:index')
 
