@@ -148,29 +148,29 @@ h2{
 	width: 85%;
 	margin: 0 auto;
 }
-#initialsurvey{
+.initialsurvey{
 	width: 85%;
 	margin: 0 auto;
 }
-#initialsurvey fieldset{
+.initialsurvey fieldset{
 	display: inline-block;
 	vertical-align: top;
 	margin-right: 2em;
 	width: 25%;
 }
-#initialsurvey label{
+.initialsurvey label{
 	display: block;
 	float: none;
 }
-#initialsurvey hr{
+.initialsurvey hr{
 	margin: 0 0 .5em 0;
 }
-#initialsurvey button{
+.initialsurvey button{
 	display: block;
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
-#initialsurvey input{
+.initialsurvey input{
 	padding-top: 1em;
 }
 #interests{
