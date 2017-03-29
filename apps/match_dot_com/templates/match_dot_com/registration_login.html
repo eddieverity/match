@@ -10,67 +10,83 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="{% static 'match_dot_com/css/style.css' %}">
   <link rel="shortcut icon" type="image/png" href="{% static 'match_dot_com/img/favicon.ico' %}"/>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('.megaheart').click(function(){
+      var back = ["#darkred","deepskyblue","pink","green","lightslategrey","mediumpurple","yellow","greenyellow","palevioletred"];
+      var rand = back[Math.floor(Math.random() * back.length)];
+      var rand2 = back[Math.floor(Math.random() * back.length)];
+      $(this).css('color', rand);
+      $('body').css('background-color', rand2);
+      });
+      });
+  </script>
   <title>Match | Login</title>
 </head>
 <body>
   <div id="wrapper">
-    <h2>Welcome to  <a href="{% url 'match:index' %}">&#9829;</a> .com!</h2>
-    <div class="loginbox">
-      <h3>Register</h3>
-      <form action="{% url 'match:register' %}" method="POST">
-        {% csrf_token %}
-        <label>First Name:</label>
-        <input type="text" name="first_name" class="form-control"><br>
+    <div id="loginwrapper">
+      <h2>Welcome to  <a href="{% url 'match:index' %}">&#9829;</a> .com!</h2>
+      <div class="loginbox">
+        <h3>Register</h3>
+        <form action="{% url 'match:register' %}" method="POST">
+          {% csrf_token %}
+          <label>First Name:</label>
+          <input type="text" name="first_name" class="form-control"><br>
 
-        <label>Last Name:</label>
-        <input type="text" name="last_name" class="form-control"><br>
+          <label>Last Name:</label>
+          <input type="text" name="last_name" class="form-control"><br>
 
-        <label>Email:</label>
-        <input type="email" name="email" class="form-control"><br>
-            
-        <label>Password:</label>
-        <input type="password" name="password" class="form-control"><br>
-        
-        <label>Confirm:</label>
-        <input type="password" name="confirm" class="form-control"><br>
+          <label>Email:</label>
+          <input type="email" name="email" class="form-control"><br>
+              
+          <label>Password:</label>
+          <input type="password" name="password" class="form-control"><br>
+          
+          <label>Confirm:</label>
+          <input type="password" name="confirm" class="form-control"><br>
 
-        <label>Zip Code:</label>
-        <input type="text" name="zipcode" class="form-control"><br>
+          <label>Zip Code:</label>
+          <input type="text" name="zipcode" class="form-control"><br>
 
 
-        <input type="submit" name="submit" value="Register" class="btn btn-primary">
-      </form>
-      {% if messages %}
-        {% for message in messages %}
-          {% if 'warning' in message.tags %}
-            <div class="alert alert-danger" role="alert">
-              {{message}}<br>
-            </div>
-          {% endif %}
-        {% endfor %}
-      {% endif %}
-    </div>
-    <div class="loginbox">
-      <h3>Login</h3>
-      <form action="{% url 'match:login' %}" method="POST">
-        {% csrf_token %}
-        <label>Email:</label>
-        <input type="email" name="l_email" class="form-control"><br>
-
-        <label>Password:</label>
-        <input type="password" name="l_password" class="form-control"><br>
-
-        <input type="submit" name="submit" value="Login" class="btn btn-primary">
-      </form>
-      {% if messages %}
-        {% for message in messages %}
-          {% if 'error' in message.tags %}
-        <div class="alert alert-danger" role="alert">
-          {{message}}<br>
-        </div>
+          <input type="submit" name="submit" value="Register" class="btn btn-primary">
+        </form>
+        {% if messages %}
+          {% for message in messages %}
+            {% if 'warning' in message.tags %}
+              <div class="alert alert-danger" role="alert">
+                {{message}}<br>
+              </div>
+            {% endif %}
+          {% endfor %}
         {% endif %}
-        {% endfor %}
-      {% endif %}
+      </div>
+      <div class="loginbox">
+        <h3>Login</h3>
+        <form action="{% url 'match:login' %}" method="POST">
+          {% csrf_token %}
+          <label>Email:</label>
+          <input type="email" name="l_email" class="form-control"><br>
+
+          <label>Password:</label>
+          <input type="password" name="l_password" class="form-control"><br>
+
+          <input type="submit" name="submit" value="Login" class="btn btn-primary">
+        </form>
+        {% if messages %}
+          {% for message in messages %}
+            {% if 'error' in message.tags %}
+          <div class="alert alert-danger" role="alert">
+            {{message}}<br>
+          </div>
+          {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
+      <span class="megaheart">&#9829;</span>
+      <hr>
+      <p class="templateinfo">&#169; &#9829; | Ed & Peter were here | xoxo </p>
     </div>
   </div>
 </body>

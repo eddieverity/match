@@ -2,6 +2,13 @@
 	margin: 2em auto;
 	width: 90%;
 }
+#loginwrapper{
+	width: 85%;
+	margin: 0 auto;
+}
+.megaheart{
+	font-size: 35em;
+}
 #home{
 	width: 85%;
 	margin: 0 auto;
@@ -55,18 +62,30 @@ h2{
 	float: right;
 }
 #msginput{
-	width: 50%;
-	display: inline-block;
+	width: 35%;
 	vertical-align: top;
+	position: fixed;
 }
 .msgcontents{
 	margin: 2em 2em;
 	display: block;
+	float: left;
 }
 .msgtxt{
 	background: #007AFF;
 	color: white;
-	padding: 4px;
+	padding: 6px 12px 6px 12px;
+	border-radius: 5px;
+}
+.mymsgcontents{
+	margin: 2em 2em;
+	display: block;
+	float:right;
+}
+.mymsgtxt{
+	background: darkgrey;
+	color: white;
+	padding: 6px 12px 6px 12px;
 	border-radius: 5px;
 }
 #profile{
