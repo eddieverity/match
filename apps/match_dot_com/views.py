@@ -161,31 +161,55 @@ def seeking_entry(request):
   seeking_height_max = request.POST.get('max_height', None)
 
   seeking_body_type = request.POST.get('seeking_bodytype', None) 
-  deal_seeking_body_type = request.POST.getlist('deal_seeking_bodytype', False)
+  deal_seeking_body_type = 0
+  if 'deal_seeking_body_type' in request.POST:
+    deal_seeking_body_type = 1
   
-  seeking_relationship_status = request.POST.get('seeking_status', 'null')
-  deal_seeking_relationship_status = request.POST.getlist('deal_seeking_relationship_status', False)
+  seeking_relationship_status = request.POST.get('seeking_status', None)
+  deal_seeking_relationship_status = 0
+  if 'deal_seeking_relationship_status' in request.POST:
+    deal_seeking_relationship_status = 1
 
   seeking_current_kids = request.POST.get('seeking_current_kids', None)
-  deal_current_kids = request.POST.getlist('deal_current_kids', False)
+  deal_current_kids = 0
+  if 'deal_current_kids' in request.POST:
+    deal_current_kids = 1
 
   seeking_future_kids = request.POST.get('seeking_future_kids', None)
-  deal_seeking_kids = request.POST.getlist('deal_seeking_kids', False)
+  deal_seeking_kids = 0
+  if 'deal_seeking_kids' in request.POST:
+    deal_seeking_kids = 1
+
 
   seeking_education = request.POST.get('seeking_education', None)
-  deal_seeking_education = request.POST.getlist('deal_seeking_education', False)
+  deal_seeking_education = 0
+  if 'deal_seeking_education' in request.POST:
+    deal_seeking_education = 1
 
   seeking_smoke = request.POST.get('seeking_smoke', None)
-  deal_seeking_smoke = request.POST.getlist('deal_seeking_smoke', False)
+  deal_seeking_smoke = 0
+  if 'deal_seeking_smoke' in request.POST:
+    deal_seeking_smoke = 1
 
   seeking_drink = request.POST.get('seeking_drink', None)
-  deal_seeking_drink = request.POST.getlist('deal_seeking_drink', False)
+  deal_seeking_drink = 0
+  if 'deal_seeking_drink' in request.POST:
+    deal_seeking_drink = 1
+  
 
   seeking_religion = request.POST.get('seeking_religion', None)
-  deal_seeking_religion = request.POST.getlist('deal_seeking_religion', False)
+  deal_seeking_religion = 0
+  if 'deal_seeking_religion' in request.POST:
+    deal_seeking_religion = 1
 
-  seeking_salary = request.POST.get('seeking_salary', None)
-  deal_seeking_salary = request.POST.getlist('deal_seeking_salary', False)
+
+  seeking_salary = request.POST.get('seeking_salary', None) 
+  deal_seeking_salary = 0
+  if 'deal_seeking_salary' in request.POST:
+    deal_seeking_salary = 1
+
+  print 'seeking_user_id=', my_id, 'gender=', seeking_gender, 'age_min=', seeking_age_min, 'age_max=', seeking_age_max, 'height_min=', seeking_height_min, 'height_max=', seeking_height_max, 'body=', seeking_body_type, 'deal_body=', deal_seeking_body_type, 'relationship_status=', seeking_relationship_status, 'deal_relationship_status=', deal_seeking_relationship_status, 'current_kids=', seeking_current_kids, 'deal_current_kids=', deal_current_kids, 'future_kids=', seeking_future_kids, 'deal_future_kids=', deal_seeking_kids, 'education=', seeking_education, 'deal_education=', deal_seeking_education, 'smoke=', seeking_smoke, 'deal_smoke=', deal_seeking_smoke, 'drink=', seeking_drink, 'deal_drink=', deal_seeking_drink, 'religion=', seeking_religion, 'deal_religion=', deal_seeking_religion, 'salary=', seeking_salary, 'deal_salary=', deal_seeking_salary
+
   print seeking_salary
   print deal_seeking_salary
   seek_user= Seeking.objects.create(
@@ -212,7 +236,7 @@ def seeking_entry(request):
     religion=seeking_religion,
     deal_religion=deal_seeking_religion,
     salary=seeking_salary,
-    deal_salary=deal_seeking_salary,
+    deal_salary=deal_seeking_salary
   )
   return redirect('match:index')
 
@@ -378,3 +402,4 @@ def editprofile(request, id):
 def logout(request):
   request.session.clear()
   return redirect('match:login')
+
