@@ -14,7 +14,7 @@
 </head>
 <body>
   <div id="wrapper">
-    <h2>Welcome to  &#9829; .com!</h2>
+    <h2>Welcome to  <a href="{% url 'match:index' %}">&#9829;</a> .com!</h2>
     <div class="loginbox">
       <h3>Register</h3>
       <form action="{% url 'match:register' %}" method="POST">

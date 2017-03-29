@@ -18,4 +18,5 @@ urlpatterns = [
     url(r'^matchsort$', matchsort, name='matchsort'),
     url(r'^wink/(?P<id>\d+)$', wink, name='wink'),
     url(r'^winks$', winks, name='winks'),
+    url(r'^regional$', regional, name='regional'),
 ]
