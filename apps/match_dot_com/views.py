@@ -3,6 +3,8 @@ from django.http import HttpResponseForbidden
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.contrib import messages
+from slugify import slugify
+import os
 import re
 import bcrypt
 import math
@@ -376,6 +378,9 @@ def user(request, id):
     context['profiledata'].education=translate('education', context['profiledata'].education)
     context['profiledata'].drink=translate('drink', context['profiledata'].drink)
     context['profiledata'].salary=translate('salary', context['profiledata'].salary)
+    context['profiledata'].relationship_status=translate('relationship_status', context['profiledata'].relationship_status)
+    context['profiledata'].religion=translate('religion', context['profiledata'].religion)
+    context['profiledata'].height=translate('height', context['profiledata'].height)
 
     return render(request, 'match_dot_com/user.html', context)
     # except:
@@ -386,6 +391,8 @@ def upload_pic(request):
     if request.method == 'POST':
       userid = request.session['id']
       image = request.FILES['user_pic']
+      extension = os.path.splitext(image.name)[1]
+      image.name = slugify(image.name) + extension
       try:
         Images.objects.create(user_id=userid, user_pic=image)
       except:
