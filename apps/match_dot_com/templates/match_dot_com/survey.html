@@ -16,11 +16,13 @@
   </head>
   <body>
     <div id="wrapper">
+      <h3>Tell us about yourself</h3>
+      <p>Age, Gender and Height are required fields</p>
       <form action="{% url 'match:survey' %}" method="POST">
       {% csrf_token %}
       <fieldset>
         <label for="user_age">Your Age</label><br>
-        <input type="number" name="age" min="18" max="75">
+        <input type="number" name="age" min="18" max="75" value=''>
       </fieldset>
       <fieldset>
         <label for="yourgender">Your Gender</label><br>
@@ -31,7 +33,9 @@
       <fieldset>
 			<label for="valueA">Your Height:</label>
 			<select name="valueA" id="valueA">
+ 
 				<optgroup label="4&rsquo;">
+          <option selected diabled hidden style='display: none' value=''></option>
 					<option value="48">4&rsquo;</option>
 					<option value="49">4&rsquo;&nbsp;1&rdquo;</option>
 					<option value="50">4&rsquo;&nbsp;2&rdquo;</option>
@@ -84,11 +88,11 @@
       </fieldset>
       <fieldset>
         <label for="user_status">Relationship Status</label><br>
-        <input type="radio" name="user_status" value="single">Never Married<br>
-        <input type="radio" name="user_status" value="separated">Currently Separated<br>
-        <input type="radio" name="user_status" value="divorced"> Divorced<br>
-        <input type="radio" name="user_status" value="widowed">Widowed<br>
-        <input type="radio" name="user_status" value="other">Other<br>
+        <input type="radio" name="user_status" value="0">Never Married<br>
+        <input type="radio" name="user_status" value="1">Currently Separated<br>
+        <input type="radio" name="user_status" value="2"> Divorced<br>
+        <input type="radio" name="user_status" value="3">Widowed<br>
+        <input type="radio" name="user_status" value="4">Other<br>
       </fieldset>
        <fieldset>
         <label for="user_marriage">Are you interested in marriage?</label><br>
@@ -138,9 +142,9 @@
       </fieldset>
       <fieldset>
         <label for="user_religion">What is your religious affiliation?</label><br>
-        <input type="radio" name="user_religion" value="religious">Religious<br>
-        <input type="radio" name="user_religion" value="spiritual">Spritual, but Not Practicing<br>
-        <input type="radio" name="user_religion" value="not-religious">Not Religious<br>
+        <input type="radio" name="user_religion" value="2">Religious<br>
+        <input type="radio" name="user_religion" value="1">Spritual, but Not Practicing<br>
+        <input type="radio" name="user_religion" value="0">Not Religious<br>
       </fieldset>
       <fieldset>
         <label for="user_salary">What is your financial situation?</label><br>

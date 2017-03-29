@@ -16,6 +16,7 @@
   <body>
     <div id="wrapper">
       <h2>Describe your ideal &#9829;</h2>
+      <p>Age, Gender and Height are required fields</p>
 
 {% comment %}User is Looking For...{% endcomment %}
       <form action="{% url 'match:seeking_entry' %}" method="POST">
@@ -251,7 +252,7 @@
         <input type="radio" name="seeking_bodytype" value="1"> Average<br>
         <input type="radio" name="seeking_bodytype" value="2">Athletic<br>
         <input type="radio" name="seeking_bodytype" value="3"> Heavyset<br><br>
-        <input type="checkbox" name="deal_seeking_bodytype" value="True">This is a dealbreaker<br>
+        <input type="checkbox" name="deal_seeking_bodytype" value=True>This is a dealbreaker<br>
       </fieldset>
       <fieldset>
         <label for="seeking_status">What is the ideal relationship status for a potential partner?</label><br>
@@ -259,7 +260,7 @@
         <input type="radio" name="seeking_status" value="1">Currently Separated<br>
         <input type="radio" name="seeking_status" value="2"> Divorced<br>
         <input type="radio" name="seeking_status" value="3">Widowed<br>
-        <input type="checkbox" name="deal_seeking_status" value="True">This is a dealbreaker<br>
+        <input type="checkbox" name="deal_seeking_status" value=True>This is a dealbreaker<br>
       </fieldset>
       <fieldset>
         <label for="seeking_currkids">Is it okay if a potential partner has children?</label><br>
@@ -267,15 +268,15 @@
         <input type="radio" name="seeking_currkids" value="3">Yes, I love kids!<br>
         <input type="radio" name="seeking_currkids" value="2">Yea, and it's ok if they're around sometimes<br>
         <input type="radio" name="seeking_currkids" value="1">It's ok, but i don't want to interact with them<br><br>
-        <input type="checkbox" name="deal_seeking_currkids" value="True">This is a dealbreaker<br>
+        <input type="checkbox" name="deal_seeking_currkids" value=True>This is a dealbreaker<br>
       </fieldset>
       <fieldset>
         <label for="seeking_future_kids">Is it okay for your potential partner to want to have children?</label><br>
-        <input type="radio" name="seeking_currkids" value="0">No<br>
-        <input type="radio" name="seeking_currkids" value="3">Yes, I love kids!<br>
-        <input type="radio" name="seeking_currkids" value="2">Possibly in the future<br>
-        <input type="radio" name="seeking_currkids" value="1">Maybe<br><br>
-        <input type="checkbox" name="deal_seeking_currkids" value="True">This is a dealbreaker<br>
+        <input type="radio" name="seeking_future_kids" value="0">No<br>
+        <input type="radio" name="seeking_future_kids" value="3">Yes, I love kids!<br>
+        <input type="radio" name="seeking_future_kids" value="2">Possibly in the future<br>
+        <input type="radio" name="seeking_future_kids" value="1">Maybe<br><br>
+        <input type="checkbox" name="deal_seeking_currkids" value=True>This is a dealbreaker<br>
       </fieldset>
       <fieldset>
         <label for="seeking_edu">Is your partner's education important? If so, select the education level you'd require?</label><br>
@@ -285,14 +286,14 @@
         <input type="radio" name="seeking_edu" value="3">College Graduate<br>
         <input type="radio" name="seeking_edu" value="4">Graduate School<br>
         <input type="radio" name="seeking_edu" value="5">Doctorate<br><br>
-        <input type="checkbox" name="deal_seeking_salary" value="True">This is a dealbreaker<br>
+        <input type="checkbox" name="deal_seeking_salary" value=True>This is a dealbreaker<br>
       </fieldset>
       <fieldset>
         <label for="seeking_smoke">Would you go on a date with someone who smokes?</label><br>
         <input type="radio" name="seeking_smoke" value="0">No<br>
         <input type="radio" name="seeking_smoke" value="1">Maybe<br>
         <input type="radio" name="seeking_smoke" value="2">Yes<br><br>
-        <input type="checkbox" name="deal_seeking_smoke" value="True">This is a dealbreaker<br>
+        <input type="checkbox" name="deal_seeking_smoke" value=True>This is a dealbreaker<br>
       </fieldset>
       <fieldset>
         <label for="seeking_drink">Is it permissable for your date to drink?</label><br>
@@ -300,14 +301,14 @@
         <input type="radio" name="seeking_drink" value="1">Socially<br>
         <input type="radio" name="seeking_drink" value="2">Moderately<br>
         <input type="radio" name="seeking_drink" value="3">Lets party<br><br>
-        <input type="checkbox" name="deal_seeking_drink" value="True">This is a dealbreaker<br>
+        <input type="checkbox" name="deal_seeking_drink" value=True>This is a dealbreaker<br>
       </fieldset>
       <fieldset>
         <label for="seeking_religion">How important should religion be for a potential partner?</label><br>
-        <input type="radio" name="seeking_religion" value="religious">Religious<br>
-        <input type="radio" name="seeking_religion" value="spiritual">Spritual, but Not Practicing<br>
-        <input type="radio" name="seeking_religion" value="not-religious">Not Religious<br><br>
-        <input type="checkbox" name="deal_seeking_religion" value="True">This is a dealbreaker<br>
+        <input type="radio" name="seeking_religion" value="2">Religious<br>
+        <input type="radio" name="seeking_religion" value="1">Spritual, but Not Practicing<br>
+        <input type="radio" name="seeking_religion" value="0">Not Religious<br><br>
+        <input type="checkbox" name="deal_seeking_religion" value=True>This is a dealbreaker<br>
       </fieldset>
       <fieldset>
         <label for="seeking_salary">What would you like a potential partner's financial situation to be?</label><br>
