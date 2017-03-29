@@ -621,9 +621,31 @@ def matchsort(request):
         total_delta+=salary_delta
       except:
         pass
-      
+      try:      
+        activity_delta = abs(active_user.activity - keys.activity)
+        total_delta+=activity_delta
+      except:
+        pass
+      try:
+        frugality_delta = abs(active_user.frugality - keys.frugality)
+        total_delta+=frugality_delta
+      except:
+        pass
+      try:
+        pragmaticism_delta = abs(active_user.pragmaticism - keys.pragmaticism)
+        total_delta+=pragmaticism_delta
+      except:
+        pass
+      try:
+        family_delta = abs(active_user.family - keys.family)
+        total_delta+=family_delta*5
+      except:
+        pass
+
       delta_arr.append(total_delta)
       id_arr.append(keys.user_id)
+
+    #sorts mirrored arrays
     looping=True
     while looping:
       looping=False
