@@ -15,7 +15,7 @@
     <body>
         <div id="wrapper">
             <div id="profile">
-                <h1>&#9829;</h1>
+                <h1><a href="{% url 'match:index' %}">&#9829;</a></h1>
                 <h3>{{user.first_name}} {{user.last_name}}</h2>
                 <div class="profilesection">
                     {% if photos %}

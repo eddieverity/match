@@ -20,5 +20,6 @@ urlpatterns = [
     url(r'^user/(?P<id>\d+)/seeking$', editseeking, name='editseeking'),
 
     url(r'^matchsort$', matchsort, name='matchsort'),
+    url(r'^regional$', regional, name='regional'),
 
 ]

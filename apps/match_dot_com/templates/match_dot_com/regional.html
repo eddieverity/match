@@ -1,0 +1,13 @@
+{% if pastmessages %}
+    {% for message in pastmessages %}
+        <div class="msgcontents">
+            {{ message.sender.first_name }} at {{ message.created_at }}:<br>
+            <div class="msgtxt">
+                {{ message.description }}
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+https://www.zipcodeapi.com/rest/T0rL6kxrFEJyuza4H9jsHeQVheFFxDNrDfcKzJcfnVOSvYWd7gFPvvKMJqsg4gII/radius.json/<zip_code>/40/mile

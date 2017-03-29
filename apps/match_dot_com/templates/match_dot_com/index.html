@@ -15,8 +15,8 @@
 <body>
   <div id="wrapper">
     <div id="home">
-    <h1>&#9829;</h1>
-    <h3>Other Users</h2>
+    <h1><a href="{% url 'match:index' %}">&#9829;</a></h1>
+    <h3>All Users</h2>
      {% if others %}
         {% for o in others %}  
         <div class="profileresults">

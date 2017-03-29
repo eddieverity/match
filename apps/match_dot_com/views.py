@@ -12,6 +12,7 @@ from models import *
 from django.db.models import Q
 from .forms import *
 from translator import translate
+import requests
 
 
 # Create your views here.
@@ -372,16 +373,47 @@ def user(request, id):
       # 'seekingdata': Seeking.objects.get(user=userprofile),
     }
     
-    context['profiledata'].body=translate('body', context['profiledata'].body)
-    context['profiledata'].smoke=translate('smoke', context['profiledata'].smoke)
-    context['profiledata'].current_kids=translate('current_kids', context['profiledata'].current_kids)
-    context['profiledata'].future_kids=translate('future_kids', context['profiledata'].future_kids)
-    context['profiledata'].education=translate('education', context['profiledata'].education)
-    context['profiledata'].drink=translate('drink', context['profiledata'].drink)
-    context['profiledata'].salary=translate('salary', context['profiledata'].salary)
-    context['profiledata'].relationship_status=translate('relationship_status', context['profiledata'].relationship_status)
-    context['profiledata'].religion=translate('religion', context['profiledata'].religion)
-    context['profiledata'].height=translate('height', context['profiledata'].height)
+    try:
+      context['profiledata'].body=translate('body', context['profiledata'].body)
+    except:
+      context['profiledata'].body='Not Specified'
+
+    try:  
+      context['profiledata'].smoke=translate('smoke', context['profiledata'].smoke)
+    except:
+      context['profiledata'].smoke='Not Specified'
+    try:  
+      context['profiledata'].current_kids=translate('current_kids', context['profiledata'].current_kids)
+    except:
+      context['profiledata'].current_kids='Not Specified'
+    try:
+      context['profiledata'].future_kids=translate('future_kids', context['profiledata'].future_kids)
+    except:
+      context['profiledata'].future_kids='Not Specified'
+    try:
+      context['profiledata'].education=translate('education', context['profiledata'].education)
+    except:
+      context['profiledata'].education='Not Specified'
+    try: 
+      context['profiledata'].drink=translate('drink', context['profiledata'].drink)
+    except:
+      context['profiledata'].drink='Not Specified'
+    try:
+      context['profiledata'].salary=translate('salary', context['profiledata'].salary)
+    except:
+      context['profiledata'].salary='Not Specified'
+    try:
+      context['profiledata'].relationship_status=translate('relationship_status', context['profiledata'].relationship_status)
+    except:
+      context['profiledata'].relationship_status='Not Specified'
+    try:
+      context['profiledata'].religion=translate('religion', context['profiledata'].religion)
+    except:
+      context['profiledata'].religion='Not Specified'
+    try:
+      context['profiledata'].height=translate('height', context['profiledata'].height)
+    except:
+      context['profiledata'].height='Not Specified'
 
     return render(request, 'match_dot_com/user.html', context)
     # except:
@@ -400,6 +432,30 @@ def upload_pic(request):
         Images.objects.filter(user_id=userid).update(user_pic=image)
       return redirect(reverse('match:user', kwargs={'id': userid}))
     return HttpResponseForbidden('allowed only via POST')
+
+
+def regional(request):
+  user_id = request.session['id']
+  user_prof = User.objects.get(id=user_id)
+  user_zip = str(user_prof.zipcode)
+  url = 'https://www.zipcodeapi.com/rest/T0rL6kxrFEJyuza4H9jsHeQVheFFxDNrDfcKzJcfnVOSvYWd7gFPvvKMJqsg4gII/radius.json/'+user_zip+'/30/mile'
+  req = requests.get(url)
+  
+  context = {
+      'others': User.objects.exclude(id=user_id),
+  }
+  for user in context:
+    for item in req:
+      if user.zipcode == item.zipcode:
+        ###that shit be true, but what do i do
+        pass
+
+
+  #response = req.json()
+  print context
+  return HttpResponse(req)
+  pass
+
 
 def editprofile(request, id):
   if 'id' in request.session:

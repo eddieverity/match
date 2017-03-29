@@ -6,6 +6,13 @@
 	width: 85%;
 	margin: 0 auto;
 }
+h1 a:link{
+	text-decoration: none;
+}
+h2 a:link{
+	text-decoration: none;
+}
+
 .loginbox label{
 	width: 100px;
 }
