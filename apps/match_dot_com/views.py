@@ -44,6 +44,7 @@ def survey(request):
     user_drink = request.POST.get('user_drink', None)
     user_religion = request.POST.get('user_religion', None)
     user_salary = request.POST.get('user_salary', None)
+    bio = request.POST['bio']
 
     activity=0
     frugality=0
@@ -146,6 +147,8 @@ def survey(request):
       pragmaticism=pragmaticism,
       family=family
       )
+
+    User.objects.filter(id=my_id).update(bio=bio)
 
     return redirect('match:survey_seeking')
   return render(request, 'match_dot_com/survey.html')
@@ -347,8 +350,7 @@ def messenger(request, id):
     userid = request.session['id']
     context = {
       'others': User.objects.get(id=id),
-      'pastmessages': Messages.objects.filter(Q(sender=id) | Q(recipient=id, sender=userid)).order_by('created_at'),
-      # need to write logic for message sent by user TO the recipient
+      'pastmessages': Messages.objects.filter(Q(sender=id, recipient=userid) | Q(recipient=id, sender=userid)).order_by('created_at'),
     }
     if request.method == 'POST':
       user_id = User.objects.get(id=request.session['id'])
@@ -667,6 +669,24 @@ def matchsort(request):
     
     return HttpResponse(id_arr)
   return redirect ('match:login')
+
+def wink(request, id):
+  if 'id' in request.session:
+    sender_id = request.session['id']
+    recipient_id = id
+    Wink.objects.create(sender_id=sender_id, recipient_id=recipient_id)
+    return redirect(reverse('match:user', kwargs={'id': id}))
+  return redirect('match:login')
+
+def winks(request):
+  if 'id' in request.session:
+    id = request.session['id']
+    context = {
+      'users': User.objects.all(),
+      'allwinks': Wink.objects.filter(Q(sender_id=id) | Q(recipient_id=id)),
+    }
+    return render(request, 'match_dot_com/winks.html', context)
+  return redirect('match:login')
 
 def logout(request):
   request.session.clear()

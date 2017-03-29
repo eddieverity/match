@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head lang="en">
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script type="text/javascript" src="{% static 'match_dot_com/js/script.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'match_dot_com/css/style.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'match_dot_com/img/favicon.ico' %}"/>
+    <title>Messages</title>
+</head>
+    <body>
+        <div id="wrapper">
+            <div id="inbox">
+            <h1><a href="{% url 'match:index' %}">&#9829;</a></h1>
+            <ul>
+                <li><a href="{% url 'match:messages' %}">Messages</a></li>
+                <li>Winks</li>
+                <li><a href="{% url 'match:user' id=request.session.id %}">My Profile</a></li>
+                <li><a href="{% url 'match:logout' %}">Logout</a></li>
+            </ul>
+            <h2>Winks</h2>
+            <h3>Who Winked at Me</h3>
+             {% if allwinks %}
+                {% for wink in allwinks %}
+                    {% if wink.recipient_id == request.session.id %}
+                        <div class="profileresults">
+                            <div class="thumbnail">
+                                {% if wink.sender.user_pics.user_pic %}
+                                    <a href="{% url 'match:user' id=wink.sender.id %}"><img src="/static/match_dot_com/img/{{wink.sender.user_pics.user_pic}}"></a>
+                                {% else %}
+                                    <a href="{% url 'match:user' id=wink.sender.id %}"><img src="/static/match_dot_com/img/default.png"></a>
+                                {% endif %}
+                            </div>
+                            <div class="resultstxt">
+                                Name: <a href="{% url 'match:user' id=wink.sender.id %}">{{ wink.sender.first_name }}</a><br>
+                                <a href="{% url 'match:messenger' id=wink.sender.id %}">Send {{ wink.sender.first_name }} a Message </a><br>
+                            </div>
+                        </div>
+                    {% else %}
+                    <p>No winks yet! Check out <a href="{% url 'match:index' %}">your matches</a>!</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            <hr>
+            <h3>My Winks</h3>
+             {% if allwinks %}
+                {% for wink in allwinks %}
+                    {% if wink.sender_id == request.session.id %}
+                        <div class="profileresults">
+                            <div class="thumbnail">
+                                {% if wink.recipient.user_pics.user_pic %}
+                                    <a href="{% url 'match:user' id=wink.recipient.id %}"><img src="/static/match_dot_com/img/{{wink.recipient.user_pics.user_pic}}"></a>
+                                {% else %}
+                                    <a href="{% url 'match:user' id=wink.recipient.id %}"><img src="/static/match_dot_com/img/default.png"></a>
+                                {% endif %}
+                            </div>
+                            <div class="resultstxt">
+                                Name: <a href="{% url 'match:user' id=wink.recipient.id %}">{{ wink.recipient.first_name }}</a><br>
+                                <a href="{% url 'match:messenger' id=wink.recipient.id %}">Send {{ wink.recipient.first_name }} a Message </a><br>
+                            </div>
+                        </div>
+                {% else %}
+                    <p>No winks yet! Check out <a href="{% url 'match:index' %}">your matches</a>!</p>
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+            <hr>
+            <p><a href="{% url 'match:index' %}">Matches</a> | <a href="{% url 'match:messages' %}">Messages</a> | <a href="{% url 'match:winks' %}">Winks</a> | <a href="{% url 'match:logout' %}">Logout</a></p>
+            <p class="templateinfo">&#169; &#9829; | Ed & Peter were here | xoxo </p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -26,28 +26,46 @@
     <body>
     <div id="wrapper">
         <div id="messenger">
-            <h1>&#9829;</h1>
+            <h1><a href="{% url 'match:index' %}">&#9829;</a></h1>
+            <ul>
+                <li><a href="{% url 'match:messages' %}">Messages</a></li>
+                <li><a href="{% url 'match:winks' %}">Winks</a></li>
+                <li><a href="{% url 'match:user' id=request.session.id %}">My Profile</a></li>
+                <li><a href="{% url 'match:logout' %}">Logout</a></li>
+            </ul>
             <div id="recent">
             {% if pastmessages %}
                 {% for message in pastmessages %}
-                <div class="msgcontents">
-                    {{ message.sender.first_name }} at {{ message.created_at }}:<br>
-                    <div class="msgtxt">
-                        {{ message.description }}
-                    </div>
-                </div>
+                    {% if message.sender.id != request.session.id %}
+                        <div class="msgcontents">
+                            {{ message.sender.first_name }} at {{ message.created_at }}:<br>
+                            <div class="msgtxt">
+                                {{ message.description }}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="mymsgcontents">
+                            {{ message.sender.first_name }} at {{ message.created_at }}:<br>
+                            <div class="mymsgtxt">
+                                {{ message.description }}
+                            </div>
+                        </div>
+                    {% endif %}
                 {% endfor %}
             {% endif %}
             </div>
+            <div id="msginput">
             <form action="{% url 'match:messenger' id=others.id %}" method="POST">
                 {% csrf_token %}
-                <h3>Send {{others.first_name}} a message</h3>
+                <h3>Send <a href="{% url 'match:user' id=others.id %}">{{others.first_name}}</a> a message</h3>
                 <textarea placeholder="Say something nice!" cols="30" rows="10" class="form-control" id="messagetxtinput" name="message_text"></textarea><br>
                 <button type="submit" class="btn btn-primary">Send Message</button>
             </form>
+            </div>
+            <hr>
+            <p><a href="{% url 'match:index' %}">Matches</a> | <a href="{% url 'match:messages' %}">Messages</a> | <a href="{% url 'match:winks' %}">Winks</a> | <a href="{% url 'match:logout' %}">Logout</a></p>
+            <p class="templateinfo">&#169; &#9829; | Ed & Peter were here | xoxo </p>
         </div>
-        <a href="{% url 'match:messages' %}">Back to Message Inbox</a><br>
-        <a href="{% url 'match:logout' %}">Logout</a>
     </div>
     </body>
 </html>

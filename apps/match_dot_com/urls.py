@@ -9,16 +9,13 @@ urlpatterns = [
     url(r'^survey_seeking$', survey_seeking, name='survey_seeking'),
     url(r'^seeking_entry$', seeking_entry, name='seeking_entry'),
     url(r'^logout$', logout, name='logout'),
-
     url(r'^messages$', matchmsg, name='messages'),
-
     url(r'^messenger/(?P<id>\d+)$', messenger, name='messenger'),
     url(r'^user/(?P<id>\d+)$', user, name='user'),
     url(r'^upload$', upload_pic, name='upload_pic'),
     url(r'^user/(?P<id>\d+)/edit$', editprofile, name='profileeditor'),
-
     url(r'^user/(?P<id>\d+)/seeking$', editseeking, name='editseeking'),
-
     url(r'^matchsort$', matchsort, name='matchsort'),
-
+    url(r'^wink/(?P<id>\d+)$', wink, name='wink'),
+    url(r'^winks$', winks, name='winks'),
 ]
