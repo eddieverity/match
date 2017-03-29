@@ -16,6 +16,7 @@
   <body>
     <div id="wrapper">
       <h2>Describe your ideal &#9829;</h2>
+      <p>Age, Gender and Height are required fields</p>
 
 {% comment %}User is Looking For...{% endcomment %}
       <form action="{% url 'match:seeking_entry' %}" method="POST">
@@ -314,7 +315,7 @@
         <input type="radio" name="seeking_salary" value="0">Struggling<br>
         <input type="radio" name="seeking_salary" value="1">Comfortable<br>
         <input type="radio" name="seeking_salary" value="2">Affluent<br><br>
-        <input type="checkbox" name="deal_seeking_salary" value=True>This is a dealbreaker<br><br>
+        <input type="checkbox" name="deal_seeking_salary" value="True">This is a dealbreaker<br><br>
       </fieldset>
       <button type="submit">Submit</button>
       </form>

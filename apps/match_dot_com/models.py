@@ -20,13 +20,13 @@ class Profile(models.Model):
   age=models.IntegerField(blank=True, null=True)
   height=models.IntegerField(blank=True, null=True)
   body=models.IntegerField(blank=True, null=True)
-  relationship_status=models.CharField(max_length=64, blank=True, null=True)
+  relationship_status=models.IntegerField(blank=True, null=True)
   current_kids=models.IntegerField(blank=True, null=True)
   future_kids=models.IntegerField(blank=True, null=True)
   education=models.IntegerField(blank=True, null=True)
   smoke=models.IntegerField(blank=True, null=True)
   drink=models.IntegerField(blank=True, null=True)
-  religion=models.CharField(max_length=64, blank=True, null=True)
+  religion=models.IntegerField(blank=True, null=True)
   salary=models.IntegerField(blank=True, null=True)
 
 #aggregates determined on a scale of 0-10 in views used for matchmaking

@@ -26,33 +26,28 @@ def survey(request):
   if request.method=='POST':
     my_id = request.session['id']
 
-    #request.POST.get('is_private', False);
-
-    user_gender = request.POST.get('user_gender', 'null')
-    user_age = request.POST.get('age', 'null')
-    
-    user_height_total = request.POST.get('valueA', 'null')
-
-    user_body_type = request.POST.get('user_bodytype', 'null')
-    user_relationship_status = request.POST.get('user_status', 'null')
-    user_marriage = request.POST.get('user_marriage', 'null')
-    user_current_kids = request.POST.get('user_currkids', 'null')
-    user_future_kids = request.POST.get('user_futurekids', 'null')
-    user_education = request.POST.get('user_edu', 'null')
-    user_smoke = request.POST.get('user_smoke', 'null')
-    user_drink = request.POST.get('user_drink', 'null')
-
-    user_religion = request.POST.get('user_religion', 'null')
-    user_salary = request.POST.get('user_salary', 'null')
+    user_gender = request.POST.get('user_gender', None)
+    user_age = request.POST.get('age', None)
+    user_height_total = request.POST.get('valueA', None)
+    user_body_type = request.POST.get('user_bodytype', None)
+    user_relationship_status = request.POST.get('user_status', None)
+    user_marriage = request.POST.get('user_marriage', None)
+    user_current_kids = request.POST.get('user_currkids', None)
+    user_future_kids = request.POST.get('user_futurekids', None)
+    user_education = request.POST.get('user_edu', None)
+    user_smoke = request.POST.get('user_smoke', None)
+    user_drink = request.POST.get('user_drink', None)
+    user_religion = request.POST.get('user_religion', None)
+    user_salary = request.POST.get('user_salary', None)
 
     activity=0
     frugality=0
     pragmaticism=0
     family=0
 
-    family+=int(user_current_kids)
-    family+=int(user_future_kids)
-    family+=int(user_marriage)
+    # family+=int(user_current_kids)
+    # family+=int(user_future_kids)
+    # family+=int(user_marriage)
     
     user_interests = request.POST.getlist('user_interests')
     for interest in user_interests:
