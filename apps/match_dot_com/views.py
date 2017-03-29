@@ -179,10 +179,17 @@ def seeking_entry(request):
   deal_seeking_drink = request.POST.getlist('deal_seeking_drink', False)
 
   seeking_religion = request.POST.get('seeking_religion', None)
-  deal_seeking_religion = request.POST.getlist('deal_seeking_religion', False)
+  deal_seeking_religion = False
+  if 'deal_seeking_religion' in request.POST:
+    deal_seeking_religion = True
 
-  seeking_salary = request.POST.get('seeking_salary', None)
-  deal_seeking_salary = request.POST.getlist('deal_seeking_salary', False)
+
+  seeking_salary = request.POST.get('seeking_salary', None) 
+  deal_seeking_salary = False
+  if 'deal_seeking_salary' in request.POST:
+    deal_seeking_salary = True
+
+
   print seeking_salary
   print deal_seeking_salary
   seek_user= Seeking.objects.create(
@@ -209,7 +216,7 @@ def seeking_entry(request):
     religion=seeking_religion,
     deal_religion=deal_seeking_religion,
     salary=seeking_salary,
-    deal_salary=deal_seeking_salary,
+    deal_salary=bool(deal_seeking_salary),
   )
   return redirect('match:index')
 
