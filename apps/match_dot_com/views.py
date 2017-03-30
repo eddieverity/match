@@ -661,9 +661,8 @@ def matchsort(request):
       filtertron['salary'] = active_user.salary
     
     bulk_match=Profile.objects.filter(**filtertron)
-    if len(bulk_match) == 0:
-      messages.error(request, 'No Results Found:   Try widening your net to catch more fish!')
-      return redirect('match:regional')
+    
+
       
 
 
@@ -776,14 +775,18 @@ def matchsort(request):
     matches=[]
     k=0
     while k<len(id_arr):
-      matchipus=User.objects.get(id=id_arr[k])
-      matchipus.percent= percent_arr[k]
-          #example
-          #filtertron['future_kids']= active_user.future_kids
-      print percent_arr[k]
-      matches.append(matchipus)
-      k+=1
-    
+      try:
+        matchipus=User.objects.get(id=id_arr[k])
+        matchipus.percent= percent_arr[k]
+            #example
+            #filtertron['future_kids']= active_user.future_kids
+        print percent_arr[k]
+        matches.append(matchipus)
+        k+=1
+      except DoesNotExist:
+        messages.error(request, 'No Results Found:   Try widening your net to catch more fish!')
+        return redirect('match:regional')
+      
     percent_obj=[]
     l=0
     while l<len(percent_arr):
