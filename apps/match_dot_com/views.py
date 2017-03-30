@@ -13,6 +13,8 @@ from django.db.models import Q
 from .forms import *
 from translator import translate
 import requests
+from urllib2 import urlopen
+import json
 
 
 # Create your views here.
@@ -451,24 +453,25 @@ def regional(request):
   user_id = request.session['id']
   user_prof = User.objects.get(id=user_id)
   user_zip = str(user_prof.zipcode)
-  url = 'https://www.zipcodeapi.com/rest/T0rL6kxrFEJyuza4H9jsHeQVheFFxDNrDfcKzJcfnVOSvYWd7gFPvvKMJqsg4gII/radius.json/'+user_zip+'/30/mile'
-  req = requests.get(url)
-  
-  context = {
-      'others': User.objects.exclude(id=user_id),
+  url = 'https://www.zipcodeapi.com/rest/T0rL6kxrFEJyuza4H9jsHeQVheFFxDNrDfcKzJcfnVOSvYWd7gFPvvKMJqsg4gII/radius.json/' + user_zip + '/10/mile'
+  # req = requests.get(url)
+  req = urlopen(url)
+  json_obj = json.load(req)
+  context = {}
+  otherusers = {
+    "others": User.objects.exclude(id=user_id),
   }
-  for user in context:
-    for item in req:
-      if user.zipcode == item.zipcode:
-        ###that shit be true, but what do i do
-        pass
 
 
-  #response = req.json()
-  print context
-  return HttpResponse(req)
-  pass
-
+  for i in json_obj['zip_codes']:
+    for user in otherusers.keys():
+      for x in otherusers[user]:
+        if str(x.zipcode) == str(i['zip_code']):
+          print x.zipcode
+          context[x.id] = x
+          print context
+  
+  return render(request, 'match_dot_com/regional.html', context)
 
 def editprofile(request, id):
   if 'id' in request.session:
@@ -776,4 +779,3 @@ def delete(request, id):
 def logout(request):
   request.session.clear()
   return redirect('match:login')
-
