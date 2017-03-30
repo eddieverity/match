@@ -18,6 +18,15 @@
       <div id="seekingsurvey">
       <h2>Describe your ideal &#9829;</h2>
       <p>Age, Gender and Height are required fields</p>
+        {% if messages %}
+          {% for message in messages %}
+            {% if 'error' in message.tags %}
+              <div class="alert alert-danger" role="alert">
+                {{ message | safe }}<br>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
 
 {% comment %}User is Looking For...{% endcomment %}
       <form action="{% url 'match:seeking_entry' %}" method="POST">

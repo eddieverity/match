@@ -19,6 +19,15 @@
       <div class="initialsurvey">
       <h3>Tell us about yourself</h3>
       <p>Age, Gender and Height are required fields</p>
+        {% if messages %}
+          {% for message in messages %}
+            {% if 'error' in message.tags %}
+              <div class="alert alert-danger" role="alert">
+                {{ message | safe }}<br>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
       <form action="{% url 'match:survey' %}" method="POST">
       {% csrf_token %}
       <fieldset class="form-group">
