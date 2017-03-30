@@ -23,7 +23,14 @@
 	#mobilegallery{
 		display: block;
 	}
-
+	#recent{
+	width: 100%;
+	display: block;
+	}
+	#msginput{
+	width: 100%;
+	display: block;
+	}
 }
 @media only screen and (min-width: 481px) {
 	.gallerysection{
@@ -52,6 +59,14 @@
 	#mobilegallery{
 		display: block;
 	}
+	#recent{
+	width: 100%;
+	display: block;
+	}
+	#msginput{
+	width: 100%;
+	display: block;
+	}
 }
 @media only screen and (min-width: 512px) {
 	.gallerysection{
@@ -69,6 +84,15 @@
 	#mobilegallery{
 		display: none;
 	}
+	#recent{
+	width: 50%;
+	float: right;
+	}
+	#msginput{
+	width: 35%;
+	vertical-align: top;
+	position: fixed;
+	}
 }
 @media only screen and (min-width: 825px) {
     .gallerysection{
@@ -83,6 +107,15 @@
 	#mobilegallery{
 		display: none;
 	}  
+	#recent{
+	width: 50%;
+	float: right;
+	}
+	#msginput{
+	width: 35%;
+	vertical-align: top;
+	position: fixed;
+	}
 }
 @media only screen and (min-width: 1024px) {
  .gallerysection{
@@ -96,6 +129,15 @@
 	}
 	#mobilegallery{
 		display: none;
+	}
+	#recent{
+	width: 50%;
+	float: right;
+	}
+	#msginput{
+	width: 35%;
+	vertical-align: top;
+	position: fixed;
 	}
 }
 
@@ -149,15 +191,6 @@ h2{
 #messenger{
 	width: 85%;
 	margin: 0 auto;
-}
-#recent{
-	width: 50%;
-	float: right;
-}
-#msginput{
-	width: 35%;
-	vertical-align: top;
-	position: fixed;
 }
 .msgcontents{
 	margin: 2em 2em;
@@ -285,6 +318,13 @@ h2{
 	margin-top: -1.5em;
 }
 .gallerysection .thumbnail{
+	display: inline-block;
+	vertical-align: top;
+}
+.galleryviewer h3{
+	margin-bottom: 1em;
+}
+.galleryviewer .thumbnail{
 	display: inline-block;
 	vertical-align: top;
 }

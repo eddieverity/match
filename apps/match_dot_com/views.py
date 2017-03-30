@@ -380,57 +380,60 @@ def user(request, id):
   if 'id' in request.session:
     # try:
     userprofile = User.objects.get(id=id)
-    context = {
-      'user': userprofile,
-      'photos': Images.objects.filter(user=userprofile),
-      'profiledata': Profile.objects.get(user=userprofile),
-      'gallery': Gallery.objects.filter(user=userprofile).order_by('-created_at'),
-      'seekingdata': Seeking.objects.get(seeking_user=userprofile),
-    }
-    
     try:
-      context['profiledata'].body=translate('body', context['profiledata'].body)
-    except:
-      context['profiledata'].body='Not Specified'
+      context = {
+        'user': userprofile,
+        'photos': Images.objects.filter(user=userprofile),
+        'profiledata': Profile.objects.get(user=userprofile),
+        'gallery': Gallery.objects.filter(user=userprofile).order_by('-created_at'),
+        'seekingdata': Seeking.objects.get(seeking_user=userprofile),
+      }
+      
+      try:
+        context['profiledata'].body=translate('body', context['profiledata'].body)
+      except:
+        context['profiledata'].body='Not Specified'
 
-    try:  
-      context['profiledata'].smoke=translate('smoke', context['profiledata'].smoke)
-    except:
-      context['profiledata'].smoke='Not Specified'
-    try:  
-      context['profiledata'].current_kids=translate('current_kids', context['profiledata'].current_kids)
-    except:
-      context['profiledata'].current_kids='Not Specified'
-    try:
-      context['profiledata'].future_kids=translate('future_kids', context['profiledata'].future_kids)
-    except:
-      context['profiledata'].future_kids='Not Specified'
-    try:
-      context['profiledata'].education=translate('education', context['profiledata'].education)
-    except:
-      context['profiledata'].education='Not Specified'
-    try: 
-      context['profiledata'].drink=translate('drink', context['profiledata'].drink)
-    except:
-      context['profiledata'].drink='Not Specified'
-    try:
-      context['profiledata'].salary=translate('salary', context['profiledata'].salary)
-    except:
-      context['profiledata'].salary='Not Specified'
-    try:
-      context['profiledata'].relationship_status=translate('relationship_status', context['profiledata'].relationship_status)
-    except:
-      context['profiledata'].relationship_status='Not Specified'
-    try:
-      context['profiledata'].religion=translate('religion', context['profiledata'].religion)
-    except:
-      context['profiledata'].religion='Not Specified'
-    try:
-      context['profiledata'].height=translate('height', context['profiledata'].height)
-    except:
-      context['profiledata'].height='Not Specified'
+      try:  
+        context['profiledata'].smoke=translate('smoke', context['profiledata'].smoke)
+      except:
+        context['profiledata'].smoke='Not Specified'
+      try:  
+        context['profiledata'].current_kids=translate('current_kids', context['profiledata'].current_kids)
+      except:
+        context['profiledata'].current_kids='Not Specified'
+      try:
+        context['profiledata'].future_kids=translate('future_kids', context['profiledata'].future_kids)
+      except:
+        context['profiledata'].future_kids='Not Specified'
+      try:
+        context['profiledata'].education=translate('education', context['profiledata'].education)
+      except:
+        context['profiledata'].education='Not Specified'
+      try: 
+        context['profiledata'].drink=translate('drink', context['profiledata'].drink)
+      except:
+        context['profiledata'].drink='Not Specified'
+      try:
+        context['profiledata'].salary=translate('salary', context['profiledata'].salary)
+      except:
+        context['profiledata'].salary='Not Specified'
+      try:
+        context['profiledata'].relationship_status=translate('relationship_status', context['profiledata'].relationship_status)
+      except:
+        context['profiledata'].relationship_status='Not Specified'
+      try:
+        context['profiledata'].religion=translate('religion', context['profiledata'].religion)
+      except:
+        context['profiledata'].religion='Not Specified'
+      try:
+        context['profiledata'].height=translate('height', context['profiledata'].height)
+      except:
+        context['profiledata'].height='Not Specified'
 
-    return render(request, 'match_dot_com/user.html', context)
+      return render(request, 'match_dot_com/user.html', context)
+    except:
+      return redirect('match:index')
     # except:
     #   return redirect('match:survey')
   return redirect('match:login')
@@ -458,6 +461,14 @@ def upload_gallery(request):
       return redirect(reverse('match:user', kwargs={'id': userid}))
     return HttpResponseForbidden('allowed only via POST')
 
+def gallery(request, id):
+  if 'id' in request.session:
+    context= {
+      'gallery': Gallery.objects.filter(user=id),
+      'user': User.objects.get(id=id),
+    }
+    return render(request,'match_dot_com/gallery.html', context)
+  return redirect('match:login')
 
 def regional(request):
   user_id = request.session['id']

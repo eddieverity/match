@@ -65,10 +65,6 @@
                         </div>
                         <a href="#_" class="lightbox" id="img1"><img src="/static/match_dot_com/img/{{ photo.user_pic }}"></a>
                         {% endfor %}
-                        {% else %}
-                        <div class="thumbnail">
-                            <img src="/static/match_dot_com/img/default.png"><br>
-                        </div>
                     {% endif %}
                     {% if user.id == request.session.id %}
                     <form action="{% url 'match:upload_pic' %}" method="POST" enctype="multipart/form-data">
@@ -113,10 +109,10 @@
                     {% endif %}
                 </div>
                 <div id="mobilegallery">
-                    <h2><a href="#">Image Gallery</a></h2>
+                    <h2><a href="{% url 'match:galleryviewer' id=user.id %}">Image Gallery</a></h2>
                 </div>
                 <div class="gallerysection">
-                    <h3>Gallery</h3>
+                    <h3><a href="{% url 'match:galleryviewer' id=user.id %}">Gallery</a></h3>
                     {% if gallery %}
                         {% for pic in gallery|slice:':6' %}
                             <div class="thumbnail">
