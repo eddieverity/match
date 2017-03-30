@@ -137,26 +137,29 @@ def survey(request):
         frugality+=1
         pragmaticism+=1   
 
-    curr_user= Profile.objects.create(
-      user_id=my_id,
-      gender=user_gender,
-      age=user_age,
-      height=user_height_total,
-      body=user_body_type,
-      relationship_status=user_relationship_status,
-      current_kids=user_current_kids,
-      future_kids=user_future_kids,
-      education=user_education,
-      smoke=user_smoke,
-      drink=user_drink,
-      religion=user_religion,
-      salary=user_salary,
-      activity=activity,
-      frugality=frugality,
-      pragmaticism=pragmaticism,
-      family=family
-      )
-
+    try:
+      curr_user= Profile.objects.create(
+        user_id=my_id,
+        gender=user_gender,
+        age=user_age,
+        height=user_height_total,
+        body=user_body_type,
+        relationship_status=user_relationship_status,
+        current_kids=user_current_kids,
+        future_kids=user_future_kids,
+        education=user_education,
+        smoke=user_smoke,
+        drink=user_drink,
+        religion=user_religion,
+        salary=user_salary,
+        activity=activity,
+        frugality=frugality,
+        pragmaticism=pragmaticism,
+        family=family
+        )
+    except:
+      messages.error(request, 'Age, Gender & Height are required fields!')
+      return redirect('match:survey')
     User.objects.filter(id=my_id).update(bio=bio)
 
     return redirect('match:survey_seeking')
@@ -225,35 +228,36 @@ def seeking_entry(request):
   if 'deal_seeking_salary' in request.POST:
     deal_seeking_salary = 1
 
-  print 'seeking_user_id=', my_id, 'gender=', seeking_gender, 'age_min=', seeking_age_min, 'age_max=', seeking_age_max, 'height_min=', seeking_height_min, 'height_max=', seeking_height_max, 'body=', seeking_body_type, 'deal_body=', deal_seeking_body_type, 'relationship_status=', seeking_relationship_status, 'deal_relationship_status=', deal_seeking_relationship_status, 'current_kids=', seeking_current_kids, 'deal_current_kids=', deal_current_kids, 'future_kids=', seeking_future_kids, 'deal_future_kids=', deal_seeking_kids, 'education=', seeking_education, 'deal_education=', deal_seeking_education, 'smoke=', seeking_smoke, 'deal_smoke=', deal_seeking_smoke, 'drink=', seeking_drink, 'deal_drink=', deal_seeking_drink, 'religion=', seeking_religion, 'deal_religion=', deal_seeking_religion, 'salary=', seeking_salary, 'deal_salary=', deal_seeking_salary
-
-
-  seek_user= Seeking.objects.create(
-    seeking_user_id=my_id,
-    gender=seeking_gender,
-    age_min=seeking_age_min,
-    age_max=seeking_age_max,
-    height_min=seeking_height_min,
-    height_max=seeking_height_max,
-    body=seeking_body_type,
-    deal_body=deal_seeking_body_type,
-    relationship_status=seeking_relationship_status,
-    deal_relationship_status=deal_seeking_relationship_status,
-    current_kids=seeking_current_kids,
-    deal_current_kids=deal_current_kids,
-    future_kids=seeking_future_kids,
-    deal_future_kids=deal_seeking_kids,
-    education=seeking_education,
-    deal_education=deal_seeking_education,
-    smoke=seeking_smoke,
-    deal_smoke=deal_seeking_smoke,
-    drink=seeking_drink,
-    deal_drink=deal_seeking_drink,
-    religion=seeking_religion,
-    deal_religion=deal_seeking_religion,
-    salary=seeking_salary,
-    deal_salary=deal_seeking_salary
-  )
+  try:  
+    seek_user= Seeking.objects.create(
+      seeking_user_id=my_id,
+      gender=seeking_gender,
+      age_min=seeking_age_min,
+      age_max=seeking_age_max,
+      height_min=seeking_height_min,
+      height_max=seeking_height_max,
+      body=seeking_body_type,
+      deal_body=deal_seeking_body_type,
+      relationship_status=seeking_relationship_status,
+      deal_relationship_status=deal_seeking_relationship_status,
+      current_kids=seeking_current_kids,
+      deal_current_kids=deal_current_kids,
+      future_kids=seeking_future_kids,
+      deal_future_kids=deal_seeking_kids,
+      education=seeking_education,
+      deal_education=deal_seeking_education,
+      smoke=seeking_smoke,
+      deal_smoke=deal_seeking_smoke,
+      drink=seeking_drink,
+      deal_drink=deal_seeking_drink,
+      religion=seeking_religion,
+      deal_religion=deal_seeking_religion,
+      salary=seeking_salary,
+      deal_salary=deal_seeking_salary
+    )
+  except:
+    messages.error(request, 'Age, Gender & Height are required fields!')
+    return redirect('match:survey_seeking')
   return redirect('match:index')
 
 def login(request):
