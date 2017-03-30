@@ -11,7 +11,41 @@
     <link rel="stylesheet" href="{% static 'match_dot_com/css/style.css' %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'match_dot_com/img/favicon.ico' %}"/>
     <title>{{user.first_name}} {{user.last_name}}</title>
-</head>
+    <script>
+        window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+        });
+    }, 4000);
+    $(function() {
+
+  // We can attach the `fileselect` event to all file inputs on the page
+        $(document).on('change', ':file', function() {
+            var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [numFiles, label]);
+        });
+
+        // We can watch for our custom `fileselect` event like this
+        $(document).ready( function() {
+            $(':file').on('fileselect', function(event, numFiles, label) {
+
+                var input = $(this).parents('.input-group').find(':text'),
+                    log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+                if( input.length ) {
+                    input.val(log);
+                } else {
+                    if( log ) alert(log);
+                }
+
+            });
+        });
+        
+        });
+    </script>
+    </head>
     <body>
         <div id="wrapper">
             <div id="profile">
@@ -39,11 +73,15 @@
                     {% if user.id == request.session.id %}
                     <form action="{% url 'match:upload_pic' %}" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                        <label id="piclabel" for="user_pic" class="custom-file">
-                            <input id="id_image" type="file" class="custom-file-input" name="user_pic">
-                            <span class="custom-file-control"></span>
-                        </label>
-                        <input type="submit" value="Submit" class="btn btn-primary"/>
+                        <div class="input-group">
+                            <label class="input-group-btn">
+                                <span class="btn btn-primary">
+                                    Browse&hellip; <input type="file" style="display: none;" name="user_pic">
+                                </span>
+                            </label>
+                            <input type="text" class="form-control" readonly>
+                        </div>
+                        <input type="submit" value="Upload" class="btn btn-primary profilepicuploader"/>
                     </form>
                     {% endif %}
                     {% if user %}
@@ -57,6 +95,15 @@
                         {% endif %}
                         {% if user.id != request.session.id %}
                             <a href="{% url 'match:messenger' id=user.id %}">Send Message</a>
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {% if 'error' in message.tags %}
+                                    <div class="alert alert-success" role="alert">
+                                        {{message}}<br>
+                                    </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
                         {% endif %}
                         {% if user.id == request.session.id %}
                             <a href="{% url 'match:profileeditor' id=user.id %}">Edit Profile</a><br>
@@ -79,12 +126,26 @@
                     {% if user.id == request.session.id %}
                     <form action="{% url 'match:gallery' %}" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
+                        <div class="input-group">
+                            <label class="input-group-btn">
+                                <span class="btn btn-primary">
+                                    Browse&hellip; <input type="file" style="display: none;" name="gallery_pic">
+                                </span>
+                            </label>
+                            <input type="text" class="form-control" readonly id="galleryuploader">
+                        </div>
+                        <input type="submit" value="Upload" class="btn btn-primary profilepicuploader"/>
+                    </form>
+
+
+                    {% comment %}<form action="{% url 'match:gallery' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
                         <label class="custom-file">
                             <input type="file" id="file" class="custom-file-input" name="gallery_pic">
                             <span class="custom-file-control"></span>
                             <button class="btn btn-primary" value="submit">Upload</button>
                         </label>
-                    </form>
+                    </form>{% endcomment %}
                     {% endif %}
                 </div>
                 <hr>

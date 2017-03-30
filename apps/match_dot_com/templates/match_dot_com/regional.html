@@ -34,12 +34,12 @@
               {% endif %}
             </div>
             <div class="resultstxt">
-              Name: <a href="{% url 'match:user' id=o %}">{{ o.first_name }}</a><br>
+              Name: <a href="{% url 'match:user' id=o.id %}">{{ o.first_name }}</a><br>
               {% for profiles in o.user_profile.all %}
               Age: {{ profiles.age }}<br>
               {% endfor %}
-              <a href="{% url 'match:messenger' id=o%}">Send {{ o.first_name }} a Message </a><br>
-              <a href="{% url 'match:wink' id=o %}">Wink at {{ o.first_name }}</a>
+              <a href="{% url 'match:messenger' id=o.id %}">Send {{ o.first_name }} a Message </a><br>
+              <a href="{% url 'match:wink' id=o.id %}">Wink at {{ o.first_name }}</a>
             </div>
         </div>
         {% endfor %}
