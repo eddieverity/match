@@ -52,7 +52,9 @@
                         {% comment %}{% if seekingdata %}
                         Interested In: {{ seekingdata.gender }}
                         {% endif %}{% endcomment %}
-
+                        {% if user.bio %}
+                        <p><strong>Bio:</strong> {{ user.bio }}</p>
+                        {% endif %}
                         {% if user.id != request.session.id %}
                             <a href="{% url 'match:messenger' id=user.id %}">Send Message</a>
                         {% endif %}
@@ -62,9 +64,26 @@
                         {% endif %}
                     {% endif %}
                 </div>
-                <div class="profilesection">
-                    {% if user.bio %}
-                        <p><strong>Bio:</strong> {{ user.bio }}</p>
+                <div class="gallerysection">
+                    <h3>Gallery</h3>
+                    {% if gallery %}
+                        {% for pic in gallery %}
+                            <div class="thumbnail">
+                                <img src="/static/match_dot_com/{{ pic.user_pic }}"><br>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                    <p>{{ user.first_name }} hasn't uploaded any photos yet.</p>
+                    {% endif %}
+                    {% if user.id == request.session.id %}
+                    <form action="{% url 'match:gallery' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label class="custom-file">
+                            <input type="file" id="file" class="custom-file-input" name="gallery_pic">
+                            <span class="custom-file-control"></span>
+                            <button class="btn btn-primary" value="submit">Upload</button>
+                        </label>
+                    </form>
                     {% endif %}
                 </div>
                 <hr>

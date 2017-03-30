@@ -22,10 +22,9 @@
                 <li><a href="{% url 'match:user' id=request.session.id %}">My Profile</a></li>
                 <li><a href="{% url 'match:logout' %}">Logout</a></li>
             </ul>
-            <h2>Winks</h2>
             <h3>Who Winked at Me</h3>
-             {% if allwinks %}
-                {% for wink in allwinks %}
+             {% if winksatme %}
+                {% for wink in winksatme %}
                     {% if wink.recipient_id == request.session.id %}
                         <div class="profileresults">
                             <div class="thumbnail">
@@ -40,15 +39,15 @@
                                 <a href="{% url 'match:messenger' id=wink.sender.id %}">Send {{ wink.sender.first_name }} a Message </a><br>
                             </div>
                         </div>
-                    {% else %}
-                    <p>No winks yet! Check out <a href="{% url 'match:index' %}">your matches</a>!</p>
                     {% endif %}
                 {% endfor %}
+            {% else %}
+                    <p>No winks yet! Check out <a href="{% url 'match:index' %}">your matches</a>!</p>
             {% endif %}
             <hr>
             <h3>My Winks</h3>
-             {% if allwinks %}
-                {% for wink in allwinks %}
+             {% if mywinks %}
+                {% for wink in mywinks %}
                     {% if wink.sender_id == request.session.id %}
                         <div class="profileresults">
                             <div class="thumbnail">
@@ -63,10 +62,10 @@
                                 <a href="{% url 'match:messenger' id=wink.recipient.id %}">Send {{ wink.recipient.first_name }} a Message </a><br>
                             </div>
                         </div>
-                {% else %}
-                    <p>No winks yet! Check out <a href="{% url 'match:index' %}">your matches</a>!</p>
-                {% endif %}
+                    {% endif %}
                 {% endfor %}
+            {% else %}
+                    <p>No winks yet! Check out <a href="{% url 'match:index' %}">your matches</a>!</p>
             {% endif %}
             <hr>
             <p><a href="{% url 'match:index' %}">Matches</a> | <a href="{% url 'match:messages' %}">Messages</a> | <a href="{% url 'match:winks' %}">Winks</a> | <a href="{% url 'match:logout' %}">Logout</a></p>

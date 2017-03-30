@@ -173,7 +173,21 @@ h2{
 	display: inline-block;
 	vertical-align: top;
 	width: 20%;
-	margin: 1em;
+	margin-top: 1em;
+	margin-right: 2em;
+}
+.gallerysection h3{
+	margin-bottom: 1em;
+	margin-top: -1.5em;
+}
+.gallerysection{
+	display: inline-block;
+	vertical-align: top;
+	width: 70%;
+}
+.gallerysection .thumbnail{
+	display: inline-block;
+	vertical-align: top;
 }
 #seekingsurvey{
 	width: 85%;

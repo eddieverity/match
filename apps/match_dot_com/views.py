@@ -372,6 +372,7 @@ def user(request, id):
       'user': userprofile,
       'photos': Images.objects.filter(user=userprofile),
       'profiledata': Profile.objects.get(user=userprofile),
+      'gallery': Gallery.objects.filter(user=userprofile),
       # 'seekingdata': Seeking.objects.get(user=userprofile),
     }
     
@@ -432,6 +433,16 @@ def upload_pic(request):
         Images.objects.create(user_id=userid, user_pic=image)
       except:
         Images.objects.filter(user_id=userid).update(user_pic=image)
+      return redirect(reverse('match:user', kwargs={'id': userid}))
+    return HttpResponseForbidden('allowed only via POST')
+
+def upload_gallery(request):
+    if request.method == 'POST':
+      userid = request.session['id']
+      image = request.FILES['gallery_pic']
+      extension = os.path.splitext(image.name)[1]
+      image.name = slugify(image.name) + extension
+      Gallery.objects.create(user_id=userid, user_pic=image)
       return redirect(reverse('match:user', kwargs={'id': userid}))
     return HttpResponseForbidden('allowed only via POST')
 
@@ -742,7 +753,8 @@ def winks(request):
     id = request.session['id']
     context = {
       'users': User.objects.all(),
-      'allwinks': Wink.objects.filter(Q(sender_id=id) | Q(recipient_id=id)),
+      'mywinks': Wink.objects.filter(sender_id=id),
+      'winksatme': Wink.objects.filter(recipient_id=id),
     }
     return render(request, 'match_dot_com/winks.html', context)
   return redirect('match:login')

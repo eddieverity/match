@@ -19,4 +19,5 @@ urlpatterns = [
     url(r'^wink/(?P<id>\d+)$', wink, name='wink'),
     url(r'^winks$', winks, name='winks'),
     url(r'^regional$', regional, name='regional'),
+    url(r'^gallery$', upload_gallery, name='gallery'),
 ]
