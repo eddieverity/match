@@ -10,7 +10,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{% static 'match_dot_com/css/style.css' %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'match_dot_com/img/favicon.ico' %}"/>
-    <title>Match | Profile</title>
+    <title>{{user.first_name}} {{user.last_name}}</title>
 </head>
     <body>
         <div id="wrapper">
@@ -49,9 +49,9 @@
                     {% if user %}
                         <strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}<br>
                         <strong>Joined:</strong> {{ user.created_at|date:"M d, Y" }}<br>
-                        {% comment %}{% if seekingdata %}
-                        Interested In: {{ seekingdata.gender }}
-                        {% endif %}{% endcomment %}
+                        {% if seekingdata %}
+                            <strong>Interested In:</strong> {{ seekingdata.gender|title }}s
+                        {% endif %}
                         {% if user.bio %}
                         <p><strong>Bio:</strong> {{ user.bio }}</p>
                         {% endif %}
@@ -61,13 +61,14 @@
                         {% if user.id == request.session.id %}
                             <a href="{% url 'match:profileeditor' id=user.id %}">Edit Profile</a><br>
                             <a href="{% url 'match:editseeking' id=user.id %}">Update Search Criteria</a>
+                            <a href="{% url 'match:delete' id=user.id %}">Delete My Profile</a>
                         {% endif %}
                     {% endif %}
                 </div>
                 <div class="gallerysection">
                     <h3>Gallery</h3>
                     {% if gallery %}
-                        {% for pic in gallery %}
+                        {% for pic in gallery|slice:':6' %}
                             <div class="thumbnail">
                                 <img src="/static/match_dot_com/{{ pic.user_pic }}"><br>
                             </div>

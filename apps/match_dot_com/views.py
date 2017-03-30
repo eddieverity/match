@@ -373,8 +373,8 @@ def user(request, id):
       'user': userprofile,
       'photos': Images.objects.filter(user=userprofile),
       'profiledata': Profile.objects.get(user=userprofile),
-      'gallery': Gallery.objects.filter(user=userprofile),
-      # 'seekingdata': Seeking.objects.get(user=userprofile),
+      'gallery': Gallery.objects.filter(user=userprofile).order_by('-created_at'),
+      'seekingdata': Seeking.objects.get(seeking_user=userprofile),
     }
     
     try:
@@ -816,6 +816,20 @@ def winks(request):
       'winksatme': Wink.objects.filter(recipient_id=id),
     }
     return render(request, 'match_dot_com/winks.html', context)
+  return redirect('match:login')
+
+def delete(request, id):
+  if 'id' in request.session:
+    myid= request.session['id']
+    if int(id) == myid:
+      if request.method == "POST":
+        if 'delete' in request.POST:
+          User.objects.get(id=id).delete()
+          return redirect('match:login')
+        if 'keepaccount' in request.POST:
+          return redirect('match:index')
+      return render(request, 'match_dot_com/accountdelete.html')
+    return redirect('match:index')
   return redirect('match:login')
 
 def logout(request):
