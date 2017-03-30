@@ -25,7 +25,7 @@
     <h3>Other Users</h2>
     {% comment %}{{ me.user_seeking.gender }} this works{% endcomment %}
      {% if others %}
-        {% for o in others %}  
+        {% for o in others|slice:':12' %}  
           {% comment %}{% if me.user_seeking.gender == o.user_profile.gender %}{% endcomment %}
             <div class="profileresults">
                 <div class="thumbnail">

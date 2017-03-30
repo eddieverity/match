@@ -456,10 +456,9 @@ def regional(request):
   user_prof = User.objects.get(id=user_id)
   user_zip = str(user_prof.zipcode)
   url = 'https://www.zipcodeapi.com/rest/T0rL6kxrFEJyuza4H9jsHeQVheFFxDNrDfcKzJcfnVOSvYWd7gFPvvKMJqsg4gII/radius.json/' + user_zip + '/10/mile'
-  # req = requests.get(url)
   req = urlopen(url)
   json_obj = json.load(req)
-  locals = { }
+  locals = [ ]
 
   otherusers = {
     "others": User.objects.exclude(id=user_id),
@@ -468,10 +467,15 @@ def regional(request):
   for i in json_obj['zip_codes']:
     for user in otherusers.keys():
       for x in otherusers[user]:
-        if str(x.zipcode) == str(i['zip_code']):
-          # print x.zipcode
-          locals = otherusers[user] # might be fixed now. check at 3PM 
+        # print str(x.zipcode)
+        # print str(i['zip_code'])
+        # print '++++++++++++++++++++++++++++++++++++'
+        if int(x.zipcode) == int(i['zip_code']):
+          print str(x.zipcode)
+          print str(i['zip_code'])
+          locals.append(x)
   
+  print locals
 
   context = {
     'locals': locals,
@@ -479,10 +483,7 @@ def regional(request):
     'profiles': Profile.objects.exclude(user=user_id).order_by('user'),
     'images': Images.objects.all().order_by('user'), 
   }
-  print "***************"
-  print context
-  
-  # return HttpResponse('garbage')
+
   return render(request, 'match_dot_com/regional.html', context)
 
 def editprofile(request, id):

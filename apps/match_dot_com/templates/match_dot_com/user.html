@@ -112,6 +112,9 @@
                         {% endif %}
                     {% endif %}
                 </div>
+                <div id="mobilegallery">
+                    <h2><a href="#">Image Gallery</a></h2>
+                </div>
                 <div class="gallerysection">
                     <h3>Gallery</h3>
                     {% if gallery %}
@@ -136,16 +139,6 @@
                         </div>
                         <input type="submit" value="Upload" class="btn btn-primary profilepicuploader"/>
                     </form>
-
-
-                    {% comment %}<form action="{% url 'match:gallery' %}" method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <label class="custom-file">
-                            <input type="file" id="file" class="custom-file-input" name="gallery_pic">
-                            <span class="custom-file-control"></span>
-                            <button class="btn btn-primary" value="submit">Upload</button>
-                        </label>
-                    </form>{% endcomment %}
                     {% endif %}
                 </div>
                 <hr>
@@ -153,39 +146,39 @@
                 <h3>Info</h3>
                 <div class="profiledata">
                     {% if profiledata.gender %}
-                        <p>Gender: {{ profiledata.gender | title }}</p>
+                        <p><strong>Gender:</strong> {{ profiledata.gender | title }}</p>
                     {% endif %}
                     {% if profiledata.age %}
-                        <p>Age: {{ profiledata.age }}</p>
+                        <p><strong>Age:</strong> {{ profiledata.age }}</p>
                     {% endif %}
                     {% if profiledata.height %}
-                        <p>Height: {{ profiledata.height }}</p>
+                        <p><strong>Height:</strong> {{ profiledata.height }}</p>
                     {% endif %}
                     {% if profiledata.body %}
-                        <p>Body Type: {{ profiledata.body }}</p>
+                        <p><strong>Body Type:</strong> {{ profiledata.body }}</p>
                     {% endif %}
                     {% if profiledata.relationship_status %}
-                        <p>Relationship Status: {{ profiledata.relationship_status | title }}</p>
+                        <p><strong>Relationship Status:</strong> {{ profiledata.relationship_status | title }}</p>
                     {% endif %}
                     {% if profiledata.education %}
-                        <p>Education: {{ profiledata.education }}</p>
+                        <p><strong>Education:</strong> {{ profiledata.education }}</p>
                     {% endif %}
                 </div>
                 <div class="profiledata">
                     {% if profiledata.current_kids %}
-                        <p>Kids: {{ profiledata.current_kids }}</p>
+                        <p><strong>Kids:</strong> {{ profiledata.current_kids }}</p>
                     {% endif %}
                     {% if profiledata.future_kids %}
-                        <p>Wants Kids: {{ profiledata.future_kids }}</p>
+                        <p><strong>Wants Kids:</strong> {{ profiledata.future_kids }}</p>
                     {% endif %}
                     {% if profiledata.smoke %}
-                        <p>Smoker: {{ profiledata.smoke }}</p>
+                        <p><strong>Smoker:</strong> {{ profiledata.smoke }}</p>
                     {% endif %}
                     {% if profiledata.smoke %}
-                        <p>Alcohol: {{ profiledata.drink }}</p>
+                        <p><strong>Alcohol:</strong> {{ profiledata.drink }}</p>
                     {% endif %}
                     {% if profiledata.smoke %}
-                        <p>Religion: {{ profiledata.religion | title }}</p>
+                        <p><strong>Religion:</strong> {{ profiledata.religion | title }}</p>
                     {% endif %}
                 </div>
                 {% endif %}

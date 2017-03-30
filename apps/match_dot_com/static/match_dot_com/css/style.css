@@ -20,6 +20,9 @@
 	font-weight: bold;
 	font-size: 2em;
 	}
+	#mobilegallery{
+		display: block;
+	}
 
 }
 @media only screen and (min-width: 481px) {
@@ -46,6 +49,9 @@
 	margin-right: 1em;
 	font-weight: bold;
 	}
+	#mobilegallery{
+		display: block;
+	}
 }
 @media only screen and (min-width: 512px) {
 	.gallerysection{
@@ -60,6 +66,9 @@
 	margin: 1em auto;
 	width: 90%;
 	}
+	#mobilegallery{
+		display: none;
+	}
 }
 @media only screen and (min-width: 825px) {
     .gallerysection{
@@ -70,7 +79,10 @@
 	#wrapper{
 	margin: 2em auto;
 	width: 90%;
-	}    
+	} 
+	#mobilegallery{
+		display: none;
+	}  
 }
 @media only screen and (min-width: 1024px) {
  .gallerysection{
@@ -81,6 +93,9 @@
 	#wrapper{
 	margin: 2em auto;
 	width: 90%;
+	}
+	#mobilegallery{
+		display: none;
 	}
 }
 
@@ -164,9 +179,6 @@ h2{
 	position: fixed;
 	margin-top: 370px;
 }
-
-
-
 #profile{
 	width: 85%;
 	margin: 0 auto; 

@@ -24,7 +24,7 @@
             </ul>
             <h3>Who Winked at Me</h3>
              {% if winksatme %}
-                {% for wink in winksatme %}
+                {% for wink in winksatme|slice:':12' %}
                     {% if wink.recipient_id == request.session.id %}
                         <div class="profileresults">
                             <div class="thumbnail">
@@ -47,7 +47,7 @@
             <hr>
             <h3>My Winks</h3>
              {% if mywinks %}
-                {% for wink in mywinks %}
+                {% for wink in mywinks|slice:':12' %}
                     {% if wink.sender_id == request.session.id %}
                         <div class="profileresults">
                             <div class="thumbnail">
