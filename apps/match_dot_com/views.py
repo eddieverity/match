@@ -15,6 +15,7 @@ from translator import translate
 import requests
 from urllib2 import urlopen
 import json
+from order_dict import *
 
 
 # Create your views here.
@@ -727,7 +728,7 @@ def matchsort(request):
       looping=False
       i=1  
       while i<len(delta_arr):
-        if delta_arr[i-1]<delta_arr[i]:
+        if delta_arr[i-1]>delta_arr[i]:
           #sort based on lowest delta
           temp=delta_arr[i]
           delta_arr[i]=delta_arr[i-1]
@@ -738,10 +739,68 @@ def matchsort(request):
           id_arr[i-1]=temp
           looping=True        
         i+=1
-    print id_arr
     
-    return HttpResponse(id_arr)
+
+    
+    percent_arr=[]
+    m=0
+    while m<len(delta_arr):
+      testvar=100-delta_arr[m]
+      percent_arr.append(testvar)
+      m+=1
+
+
+    # matches= OrderedDictionary()
+    # k=0
+    # while k<len(id_arr):
+    #   matches.put(percent_arr[k], User.objects.get(id=id_arr[k]))
+    #   k+=1
+
+    matches=[]
+    k=0
+    while k<len(id_arr):
+      matchipus=User.objects.get(id=id_arr[k])
+      matchipus.percent= percent_arr[k]
+          #example
+          #filtertron['future_kids']= active_user.future_kids
+      print percent_arr[k]
+      matches.append(matchipus)
+      k+=1
+    
+    percent_obj=[]
+    l=0
+    while l<len(percent_arr):
+      percent_obj.append({percent_arr[l]})
+      l+=1
+
+
+    context = {
+      'percent_obj' : percent_obj,
+      'matches': matches,
+      'me': User.objects.get(id=id),
+      'profiles': Profile.objects.exclude(user=id).order_by('user'),
+      'images': Images.objects.all().order_by('user'),
+    }
+    return render(request, 'match_dot_com/matches.html', context)   
+    #return HttpResponse(context['matches'])
+    
+    
+
+    
+
   return redirect ('match:login')
+
+  # if 'id' in request.session:
+  #   id = request.session['id']
+  #   context = {
+  #     'others': User.objects.exclude(id=id),
+  #     'me': User.objects.get(id=id),
+  #     'profiles': Profile.objects.exclude(user=id).order_by('user'),
+  #     'images': Images.objects.all().order_by('user'),
+  #   }
+  #   return render (request, 'match_dot_com/index.html', context)
+
+
 
 def wink(request, id):
   if 'id' in request.session:
