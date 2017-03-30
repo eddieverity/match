@@ -13,10 +13,26 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
       <link rel="stylesheet" href="{% static 'match_dot_com/css/style.css' %}">
       <link rel="shortcut icon" type="image/png" href="{% static 'match_dot_com/img/favicon.ico' %}"/>
+      <script>
+         window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+        });
+    }, 4000);
+      </script>
   <body>
     <div id="wrapper">
       <div id="seekingsurvey">
       <h2>Describe your ideal &#9829;</h2>
+      {% if messages %}
+      {% for message in messages %}
+        {% if 'error' in message.tags %}
+          <div class="alert alert-warning" role="alert">
+            {{ message | safe }}<br>
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
       <p>Age, Gender and Height are required fields</p>
 
 {% comment %}User is Looking For...{% endcomment %}
@@ -322,6 +338,9 @@
       </fieldset>
       <button type="submit" class="btn btn-primary">Submit</button>
       </form>
+      <hr>
+      <p><a href="{% url 'match:logout' %}">Logout</a></p>
+      <p class="templateinfo">&#169; &#9829; | Ed & Peter were here | xoxo </p>
       </div>
     </div> 
   </body>

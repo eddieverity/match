@@ -22,14 +22,18 @@ from order_dict import *
 def index(request):
   if 'id' in request.session:
     id = request.session['id']
-    context = {
-      'others': User.objects.exclude(id=id),
-      'me': User.objects.get(id=id),
-      'profiles': Profile.objects.exclude(user=id),
-      'images': Images.objects.all().order_by('user'),
-      'seeking': Seeking.objects.get(seeking_user=id),
-    }
-    return render (request, 'match_dot_com/index.html', context)
+    try:
+      context = {
+        'others': User.objects.exclude(id=id),
+        'me': User.objects.get(id=id),
+        'profiles': Profile.objects.exclude(user=id),
+        'images': Images.objects.all().order_by('user'),
+        'seeking': Seeking.objects.get(seeking_user=id),
+      }
+      return render (request, 'match_dot_com/index.html', context)
+    except:
+      messages.error(request, 'Finish survey to see matches.')
+      return redirect('match:survey_seeking')
   return redirect ('match:login')
 
 def survey(request):
