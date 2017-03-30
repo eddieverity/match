@@ -25,10 +25,10 @@ def index(request):
     context = {
       'others': User.objects.exclude(id=id),
       'me': User.objects.get(id=id),
-      'profiles': Profile.objects.exclude(user=id).order_by('user'),
+      'profiles': Profile.objects.exclude(user=id),
       'images': Images.objects.all().order_by('user'),
+      'seeking': Seeking.objects.get(seeking_user=id),
     }
-    print context
     return render (request, 'match_dot_com/index.html', context)
   return redirect ('match:login')
 
@@ -818,6 +818,9 @@ def wink(request, id):
     sender_id = request.session['id']
     recipient_id = id
     Wink.objects.create(sender_id=sender_id, recipient_id=recipient_id)
+
+    messages.error(request, 'Wink sent! ;)')
+     #WINK MESSAGE GOES HERE
     return redirect(reverse('match:user', kwargs={'id': id}))
   return redirect('match:login')
 
