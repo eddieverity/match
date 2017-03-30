@@ -458,7 +458,8 @@ def regional(request):
   # req = requests.get(url)
   req = urlopen(url)
   json_obj = json.load(req)
-  context = {}
+  locals = { }
+
   otherusers = {
     "others": User.objects.exclude(id=user_id),
   }
@@ -468,10 +469,22 @@ def regional(request):
     for user in otherusers.keys():
       for x in otherusers[user]:
         if str(x.zipcode) == str(i['zip_code']):
-          print x.zipcode
-          context[x.id] = x
-          print context
+          # print x.zipcode
+          locals[x.id] = otherusers[user]
+          # print locals
+          print x.id
+  print locals
+  print "***************"
+
+  context = {
+    'locals': locals,
+    'me': User.objects.get(id=user_id),
+    'profiles': Profile.objects.exclude(user=user_id).order_by('user'),
+    'images': Images.objects.all().order_by('user'), 
+  }
+  print context
   
+  # return HttpResponse('garbage')
   return render(request, 'match_dot_com/regional.html', context)
 
 def editprofile(request, id):
