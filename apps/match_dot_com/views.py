@@ -632,7 +632,7 @@ def editseeking(request, id):
 
 def matchsort(request):
 
-  pass
+
   if 'id' in request.session:
     id = request.session['id']
     active_user=Seeking.objects.get(seeking_user_id=request.session['id'])
@@ -659,8 +659,13 @@ def matchsort(request):
       filtertron['religion']=active_user.religion
     if active_user.deal_salary == 1:
       filtertron['salary'] = active_user.salary
-      
+    
     bulk_match=Profile.objects.filter(**filtertron)
+    if len(bulk_match) == 0:
+      messages.error(request, 'No Results Found:   Try widening your net to catch more fish!')
+      return redirect('match:regional')
+      
+
 
     delta_arr=[]
     id_arr=[]
