@@ -35,7 +35,7 @@ class Profile(models.Model):
   family=models.IntegerField(blank=True, null=True)
 
 class Seeking(models.Model):
-  seeking_user=models.ForeignKey(User, related_name='user_seeking') 
+  seeking_user=models.OneToOneField(User, related_name='user_seeking') 
   gender=models.CharField(max_length=64, blank=True, null=True)
   age_min=models.IntegerField(blank=True, null=True)
   age_max=models.IntegerField(blank=True, null=True)

@@ -1,10 +1,19 @@
 {% if pastmessages %}
-    {% for message in pastmessages %}
-        <div class="msgcontents">
-            {{ message.sender.first_name }} at {{ message.created_at }}:<br>
-            <div class="msgtxt">
-                {{ message.description }}
-            </div>
-        </div>
-    {% endfor %}
-{% endif %}
+                {% for message in pastmessages %}
+                    {% if message.sender.id != request.session.id %}
+                        <div class="msgcontents">
+                            {{ message.sender.first_name }} at {{ message.created_at }}:<br>
+                            <div class="msgtxt">
+                                {{ message.description }}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="mymsgcontents">
+                            {{ message.sender.first_name }} at {{ message.created_at }}:<br>
+                            <div class="mymsgtxt">
+                                {{ message.description }}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}

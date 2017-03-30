@@ -28,6 +28,7 @@ def index(request):
       'profiles': Profile.objects.exclude(user=id).order_by('user'),
       'images': Images.objects.all().order_by('user'),
     }
+    print context
     return render (request, 'match_dot_com/index.html', context)
   return redirect ('match:login')
 
@@ -464,17 +465,13 @@ def regional(request):
     "others": User.objects.exclude(id=user_id),
   }
 
-
   for i in json_obj['zip_codes']:
     for user in otherusers.keys():
       for x in otherusers[user]:
         if str(x.zipcode) == str(i['zip_code']):
           # print x.zipcode
-          locals[x.id] = otherusers[user]
-          # print locals
-          print x.id
-  print locals
-  print "***************"
+          locals = otherusers[user] # might be fixed now. check at 3PM 
+  
 
   context = {
     'locals': locals,
@@ -482,6 +479,7 @@ def regional(request):
     'profiles': Profile.objects.exclude(user=user_id).order_by('user'),
     'images': Images.objects.all().order_by('user'), 
   }
+  print "***************"
   print context
   
   # return HttpResponse('garbage')

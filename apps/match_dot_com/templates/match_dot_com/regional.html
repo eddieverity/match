@@ -28,9 +28,9 @@
         <div class="profileresults">
             <div class="thumbnail">
               {% if o.user_pics.user_pic %}
-              <a href="{% url 'match:user' id=o %}"><img src="/static/match_dot_com/img/{{o.user_pics.user_pic}}"></a>
+              <a href="{% url 'match:user' id=o.id %}"><img src="/static/match_dot_com/img/{{o.user_pics.user_pic}}"></a>
               {% else %}
-              <a href="{% url 'match:user' id=o %}"><img src="/static/match_dot_com/img/default.png"></a>
+              <a href="{% url 'match:user' id=o.id %}"><img src="/static/match_dot_com/img/default.png"></a>
               {% endif %}
             </div>
             <div class="resultstxt">
