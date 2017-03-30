@@ -771,7 +771,6 @@ def matchsort(request):
     # while k<len(id_arr):
     #   matches.put(percent_arr[k], User.objects.get(id=id_arr[k]))
     #   k+=1
-
     matches=[]
     k=0
     while k<len(id_arr):
@@ -783,9 +782,10 @@ def matchsort(request):
         print percent_arr[k]
         matches.append(matchipus)
         k+=1
-      except DoesNotExist:
-        messages.error(request, 'No Results Found:   Try widening your net to catch more fish!')
-        return redirect('match:regional')
+      except:
+        errormsg = 'No Results Found: Try widening your net to catch more fish!'
+        messages.error(request, errormsg)
+        return render(request, 'match_dot_com/matches.html')
       
     percent_obj=[]
     l=0

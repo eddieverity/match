@@ -27,16 +27,6 @@
       <li><a href="{% url 'match:matchsort' %}">Best Matches</a></li>
       <li class="active"><a href="{% url 'match:regional' %}">Users Near Me</a></li>
     </ul>
-    {% if messages %}
-      {% for message in messages %}
-        {% if 'error' in message.tags %}
-          <div class="alert alert-danger" role="alert">
-            {{message}}<br>
-          </div>
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-
      {% if locals %}
         {% for o in locals %}  
         <div class="profileresults">

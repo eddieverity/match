@@ -28,6 +28,15 @@
       <li class="active"><a href="{% url 'match:matchsort' %}">Best Matches</a></li>
       <li><a href="{% url 'match:regional' %}">Users Near Me</a></li>
     </ul>
+    {% if messages %}
+      {% for message in messages %}
+        {% if 'error' in message.tags %}
+          <div class="alert alert-danger" role="alert">
+            {{ message | safe }}<br>
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
      {% if matches %}
 
         {% for o in matches %}
@@ -51,8 +60,11 @@
             </div>
         </div>
         {% endfor %}
+      {% else %}
+      <h2>Update your <a href="{% url 'match:editseeking' id=request.session.id %}">match criteria</a>.</h2>
       {% endif %}
       <hr>
+      {% if matches %}
       <h3>My Profile</h3>
       <div class="thumbnail">
         {% if me.user_pics.user_pic %}
@@ -63,6 +75,7 @@
       </div>
       <a href="{% url 'match:user' id=request.session.id %}">View my Profile</a>
       <hr>
+      {% endif %}
       <p><a href="{% url 'match:messages' %}">Messages</a> | <a href="{% url 'match:winks' %}">Winks</a> | <a href="{% url 'match:logout' %}">Logout</a></p>
       <p class="templateinfo">&#169; &#9829; | Ed & Peter were here | xoxo </p>
     </div>
