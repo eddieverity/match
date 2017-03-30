@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^winks$', winks, name='winks'),
     url(r'^regional$', regional, name='regional'),
     url(r'^gallery$', upload_gallery, name='gallery'),
+    url(r'^user/(?P<id>\d+)/delete$', delete, name='delete'),
 ]
