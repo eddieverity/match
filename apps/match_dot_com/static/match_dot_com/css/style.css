@@ -136,6 +136,7 @@
 	padding: 2em;
 	border-radius: .5em;
 	overflow: auto;
+	min-height: 700px;
 }
 }
 @media only screen and (min-width: 512px) {
@@ -201,6 +202,7 @@
 	padding: 2em;
 	border-radius: .5em;
 	overflow: auto;
+	min-height: 700px;
 }
 }
 @media only screen and (min-width: 825px) {
@@ -263,6 +265,7 @@
 	padding: 2em;
 	border-radius: .5em;
 	overflow: auto;
+	min-height: 700px;
 }
 }
 @media only screen and (min-width: 1024px) {
@@ -325,6 +328,7 @@
 	padding: 2em;
 	border-radius: .5em;
 	overflow: auto;
+	min-height: 700px;
 }
 }
 
