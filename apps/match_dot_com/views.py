@@ -202,7 +202,7 @@ def seeking_entry(request):
     deal_seeking_kids = 1
 
 
-  seeking_education = request.POST.get('seeking_education', None)
+  seeking_education = request.POST.get('seeking_edu', None)
   deal_seeking_education = 0
   if 'deal_seeking_education' in request.POST:
     deal_seeking_education = 1
