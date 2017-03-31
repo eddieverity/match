@@ -332,6 +332,18 @@
 }
 }
 
+#msginbox img{
+	display: inline-block;
+	vertical-align: top;
+	width: 16px;
+	margin-top: .75em;
+}
+#inbox h4{
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 1em;
+}
+
 
 
 

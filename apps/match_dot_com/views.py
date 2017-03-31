@@ -353,7 +353,7 @@ def matchmsg(request):
     id = request.session['id']
     context = {
       'others': User.objects.exclude(id=id),
-      'messages': Messages.objects.filter(recipient=id),
+      'messages': Messages.objects.filter(recipient=id).order_by('-created_at'),
     }
     return render(request, 'match_dot_com/messages.html', context)
   return redirect('match:login')
