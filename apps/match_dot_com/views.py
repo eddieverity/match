@@ -273,7 +273,6 @@ def login(request):
         request.session['id']=curr_user.id
         try:
           user_survey= Profile.objects.get(user_id=curr_user.id)
-          print 'hit the .get for profile'
           return redirect('match:index')
         except:
           return render(request, 'match_dot_com/survey.html')
@@ -490,15 +489,8 @@ def regional(request):
   for i in json_obj['zip_codes']:
     for user in otherusers.keys():
       for x in otherusers[user]:
-        # print str(x.zipcode)
-        # print str(i['zip_code'])
-        # print '++++++++++++++++++++++++++++++++++++'
         if int(x.zipcode) == int(i['zip_code']):
-          print str(x.zipcode)
-          print str(i['zip_code'])
           locals.append(x)
-  
-  print locals
 
   context = {
     'locals': locals,
@@ -802,9 +794,7 @@ def matchsort(request):
       try:
         matchipus=User.objects.get(id=id_arr[k])
         matchipus.percent= percent_arr[k]
-            #example
-            #filtertron['future_kids']= active_user.future_kids
-        print percent_arr[k]
+
         matches.append(matchipus)
         k+=1
       except:
