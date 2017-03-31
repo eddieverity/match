@@ -516,6 +516,7 @@ def editprofile(request, id):
       if request.method == 'POST':
         bio = request.POST['bio']
         age = request.POST['age']
+        zipcode = request.POST['zipcode']
         height = request.POST['valueA']
         body = request.POST['user_bodytype']
         relationship_status = request.POST['user_status']
@@ -539,7 +540,7 @@ def editprofile(request, id):
           religion=religion,
           salary=salary
           )
-        User.objects.filter(id=id).update(bio=bio)
+        User.objects.filter(id=id).update(bio=bio, zipcode=zipcode)
         return redirect(reverse('match:user', kwargs={'id': userid}))
       return render(request, 'match_dot_com/editprofile.html', context)
     return redirect(reverse('match:user', kwargs={'id': userid}))

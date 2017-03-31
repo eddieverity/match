@@ -11,6 +11,13 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="{% static 'match_dot_com/css/style.css' %}">
         <link rel="shortcut icon" type="image/png" href="{% static 'match_dot_com/img/favicon.ico' %}"/>
+         <script type="text/javascript">
+            $(document).ready(function(){
+                $('body').css('background-color', $.cookie('bgcolor'));
+                });
+            </script>
+            <title>Match</title>
+        <script src="{% static 'match_dot_com/js/jquery.cookie.js' %}"></script>
     </head>
     <body>
         <div id="wrapper">
@@ -19,56 +26,61 @@
                 <h3>Edit {{user.first_name}} {{user.last_name}}'s Info</h2>
                 <form action="#" method="POST">
                     {% csrf_token %}
-                    <label for="bio">Bio</label>
-                    <textarea name="bio" class="form-control" cols="3" maxlength="500">{{ user.bio }}</textarea>
-                    <label for="user_age">Your Age</label>
-                    <input type="number" name="age" min="18" max="75" class="form-control" value="{{profile.age}}">
-                    <label for="valueA">Your Height:</label>
-                        <select name="valueA" id="valueA" class="form-control">
-                            <optgroup label="4&rsquo;">
-                                <option selected diabled hidden style='display: none' value='{{ profile.height }}'></option>
-                                <option value="48">4&rsquo;</option>
-                                <option value="49">4&rsquo;&nbsp;1&rdquo;</option>
-                                <option value="50">4&rsquo;&nbsp;2&rdquo;</option>
-                                <option value="51">4&rsquo;&nbsp;3&rdquo;</option>
-                                <option value="52">4&rsquo;&nbsp;4&rdquo;</option>
-                                <option value="53">4&rsquo;&nbsp;5&rdquo;</option>
-                                <option value="54">4&rsquo;&nbsp;6&rdquo;</option>
-                                <option value="55">4&rsquo;&nbsp;7&rdquo;</option>
-                                <option value="56">4&rsquo;&nbsp;8&rdquo;</option>
-                                <option value="57">4&rsquo;&nbsp;9&rdquo;</option>
-                                <option value="58">4&rsquo;&nbsp;10&rdquo;</option>
-                                <option value="59">4&rsquo;&nbsp;11&rdquo;</option>
-                            </optgroup>
-                            <optgroup label="5&rsquo;"> selected="selected"
-                                <option value="60">5&rsquo;</option>
-                                <option value="61">5&rsquo;&nbsp;1&rdquo;</option>
-                                <option value="62">5&rsquo;&nbsp;2&rdquo;</option>
-                                <option value="63">5&rsquo;&nbsp;3&rdquo;</option>
-                                <option value="64">5&rsquo;&nbsp;4&rdquo;</option>
-                                <option value="65">5&rsquo;&nbsp;5&rdquo;</option>
-                                <option value="66">5&rsquo;&nbsp;6&rdquo;</option>
-                                <option value="67">5&rsquo;&nbsp;7&rdquo;</option>
-                                <option value="68">5&rsquo;&nbsp;8&rdquo;</option>
-                                <option value="69">5&rsquo;&nbsp;9&rdquo;</option>
-                                <option value="70">5&rsquo;&nbsp;10&rdquo;</option>
-                                <option value="71">5&rsquo;&nbsp;11&rdquo;</option>
-                            </optgroup>
-                            <optgroup label="6&rsquo;">
-                                <option value="72">6&rsquo;</option>
-                                <option value="73">6&rsquo;&nbsp;1&rdquo;</option>
-                                <option value="74">6&rsquo;&nbsp;2&rdquo;</option>
-                                <option value="75">6&rsquo;&nbsp;3&rdquo;</option>
-                                <option value="76">6&rsquo;&nbsp;4&rdquo;</option>
-                                <option value="77">6&rsquo;&nbsp;5&rdquo;</option>
-                                <option value="78">6&rsquo;&nbsp;6&rdquo;</option>
-                                <option value="79">6&rsquo;&nbsp;7&rdquo;</option>
-                                <option value="80">6&rsquo;&nbsp;8&rdquo;</option>
-                                <option value="81">6&rsquo;&nbsp;9&rdquo;</option>
-                                <option value="82">6&rsquo;&nbsp;10&rdquo;</option>
-                                <option value="83">6&rsquo;&nbsp;11&rdquo;</option>
-                            </optgroup>
-                        </select>
+                    <div id="profileeditfields">
+                        <label for="bio">Bio</label>
+                        <textarea name="bio" class="form-control" cols="3" maxlength="500">{{ user.bio }}</textarea>
+                        <label for="user_age">Your Age</label>
+                        <input type="number" name="age" min="18" max="75" class="form-control" value="{{profile.age}}">
+                        <label for="valueA">Your Height:</label>
+                            <select name="valueA" id="valueA" class="form-control">
+                                <optgroup label="4&rsquo;">
+                                    <option selected diabled hidden style='display: none' value='{{ profile.height }}'></option>
+                                    <option value="48">4&rsquo;</option>
+                                    <option value="49">4&rsquo;&nbsp;1&rdquo;</option>
+                                    <option value="50">4&rsquo;&nbsp;2&rdquo;</option>
+                                    <option value="51">4&rsquo;&nbsp;3&rdquo;</option>
+                                    <option value="52">4&rsquo;&nbsp;4&rdquo;</option>
+                                    <option value="53">4&rsquo;&nbsp;5&rdquo;</option>
+                                    <option value="54">4&rsquo;&nbsp;6&rdquo;</option>
+                                    <option value="55">4&rsquo;&nbsp;7&rdquo;</option>
+                                    <option value="56">4&rsquo;&nbsp;8&rdquo;</option>
+                                    <option value="57">4&rsquo;&nbsp;9&rdquo;</option>
+                                    <option value="58">4&rsquo;&nbsp;10&rdquo;</option>
+                                    <option value="59">4&rsquo;&nbsp;11&rdquo;</option>
+                                </optgroup>
+                                <optgroup label="5&rsquo;"> selected="selected"
+                                    <option value="60">5&rsquo;</option>
+                                    <option value="61">5&rsquo;&nbsp;1&rdquo;</option>
+                                    <option value="62">5&rsquo;&nbsp;2&rdquo;</option>
+                                    <option value="63">5&rsquo;&nbsp;3&rdquo;</option>
+                                    <option value="64">5&rsquo;&nbsp;4&rdquo;</option>
+                                    <option value="65">5&rsquo;&nbsp;5&rdquo;</option>
+                                    <option value="66">5&rsquo;&nbsp;6&rdquo;</option>
+                                    <option value="67">5&rsquo;&nbsp;7&rdquo;</option>
+                                    <option value="68">5&rsquo;&nbsp;8&rdquo;</option>
+                                    <option value="69">5&rsquo;&nbsp;9&rdquo;</option>
+                                    <option value="70">5&rsquo;&nbsp;10&rdquo;</option>
+                                    <option value="71">5&rsquo;&nbsp;11&rdquo;</option>
+                                </optgroup>
+                                <optgroup label="6&rsquo;">
+                                    <option value="72">6&rsquo;</option>
+                                    <option value="73">6&rsquo;&nbsp;1&rdquo;</option>
+                                    <option value="74">6&rsquo;&nbsp;2&rdquo;</option>
+                                    <option value="75">6&rsquo;&nbsp;3&rdquo;</option>
+                                    <option value="76">6&rsquo;&nbsp;4&rdquo;</option>
+                                    <option value="77">6&rsquo;&nbsp;5&rdquo;</option>
+                                    <option value="78">6&rsquo;&nbsp;6&rdquo;</option>
+                                    <option value="79">6&rsquo;&nbsp;7&rdquo;</option>
+                                    <option value="80">6&rsquo;&nbsp;8&rdquo;</option>
+                                    <option value="81">6&rsquo;&nbsp;9&rdquo;</option>
+                                    <option value="82">6&rsquo;&nbsp;10&rdquo;</option>
+                                    <option value="83">6&rsquo;&nbsp;11&rdquo;</option>
+                                </optgroup>
+                            </select>
+                            <label for="user_age">Your Zip</label>
+                            <input selected diabled hidden style='display: none' name="zipcode" value='{{user.zipcode}}'>
+                            <input type="number" name="zipcode" class="form-control" placeholder="{{user.zipcode}}">
+                    </div>
                     <fieldset class="form-group">
                         <label for="user_bodytype">Body Type</label><hr>
                         <input selected diabled hidden style='display: none' name="user_bodytype" value='{{ profile.body }}'>

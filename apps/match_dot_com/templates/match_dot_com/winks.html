@@ -11,7 +11,14 @@
     <link rel="stylesheet" href="{% static 'match_dot_com/css/style.css' %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'match_dot_com/img/favicon.ico' %}"/>
     <title>Winks</title>
-</head>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('body').css('background-color', $.cookie('bgcolor'));
+            });
+        </script>
+        <title>Match</title>
+    <script src="{% static 'match_dot_com/js/jquery.cookie.js' %}"></script>
+    </head>
     <body>
         <div id="wrapper">
             <div id="inbox">

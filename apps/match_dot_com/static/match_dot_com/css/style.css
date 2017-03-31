@@ -26,10 +26,15 @@
 	#recent{
 	width: 100%;
 	display: block;
+	background-color: white;
+	border-radius: .5em;
 	}
 	#msginput{
 	width: 100%;
 	display: block;
+	background-color: white;
+	border-radius: .5em;
+
 	}
 	#editprofile fieldset{
 	display: block;
@@ -41,6 +46,23 @@
 	}
 	#surveyinterests textarea{
 	width: 100%;
+	}
+	.loginbox{
+		display: block;
+	}
+	#messenger{
+	width: 85%;
+	margin: 0 auto;
+	background-color: white;
+	border-radius: .5em;
+	overflow: auto;
+	}
+	#messenger li{
+		margin-left: 1em;
+	}
+	#messenger h1{
+		margin-left: 1em;
+		margin-top: 1em;
 	}
 }
 @media only screen and (min-width: 481px) {
@@ -73,10 +95,16 @@
 	#recent{
 	width: 100%;
 	display: block;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
 	}
 	#msginput{
 	width: 100%;
 	display: block;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
 	}
 	#editprofile fieldset{
 	display: inline-block;
@@ -97,6 +125,18 @@
 	#surveyinterests textarea{
 	width: 40%;
 	}
+	.loginbox{
+		display: inline-block;
+		vertical-align: top;
+	}
+	#messenger{
+	width: 85%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
+	overflow: auto;
+}
 }
 @media only screen and (min-width: 512px) {
 	.gallerysection{
@@ -117,11 +157,17 @@
 	#recent{
 	width: 50%;
 	float: right;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
 	}
 	#msginput{
 	width: 35%;
 	vertical-align: top;
 	position: fixed;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
 	}
 	#editprofile fieldset{
 	display: inline-block;
@@ -144,6 +190,18 @@
 	#surveyinterests textarea{
 	width: 40%;
 	}
+	.loginbox{
+		display: inline-block;
+		vertical-align: top;
+	}
+	#messenger{
+	width: 85%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
+	overflow: auto;
+}
 }
 @media only screen and (min-width: 825px) {
     .gallerysection{
@@ -161,11 +219,17 @@
 	#recent{
 	width: 50%;
 	float: right;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
 	}
 	#msginput{
 	width: 35%;
 	vertical-align: top;
 	position: fixed;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
 	}
 	#editprofile fieldset{
 	display: inline-block;
@@ -188,6 +252,18 @@
 	#surveyinterests textarea{
 	width: 40%;
 	}
+	.loginbox{
+		display: inline-block;
+		vertical-align: top;
+	}
+	#messenger{
+	width: 85%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
+	overflow: auto;
+}
 }
 @media only screen and (min-width: 1024px) {
  .gallerysection{
@@ -205,11 +281,17 @@
 	#recent{
 	width: 50%;
 	float: right;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
 	}
 	#msginput{
 	width: 35%;
 	vertical-align: top;
 	position: fixed;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
 	}
 	#editprofile fieldset{
 	display: inline-block;
@@ -232,6 +314,18 @@
 	#surveyinterests textarea{
 	width: 40%;
 	}
+	.loginbox{
+		display: inline-block;
+		vertical-align: top;
+	}
+	#messenger{
+	width: 85%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
+	overflow: auto;
+}
 }
 
 
@@ -245,6 +339,9 @@
 #loginwrapper{
 	width: 85%;
 	margin: 0 auto;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
 }
 .megaheart{
 	font-size: 35em;
@@ -252,6 +349,9 @@
 #home{
 	width: 85%;
 	margin: 0 auto;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
 }
 h1 {
 	display: inline-block;
@@ -281,10 +381,6 @@ h2{
 .alert{
 	margin-top: 10px;
 }
-#messenger{
-	width: 85%;
-	margin: 0 auto;
-}
 .msgcontents{
 	margin: 2em 2em;
 	display: block;
@@ -309,11 +405,14 @@ h2{
 }
 #messengerfooter{
 	position: fixed;
-	margin-top: 370px;
+	margin-top: 390px;
 }
 #profile{
 	width: 85%;
 	margin: 0 auto; 
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
 }
 #profile form{
 	margin: 0;
@@ -370,6 +469,9 @@ h2{
 #editprofile{
 	width: 85%;
 	margin: 0 auto;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
 }
 #editprofile label{
 	display: block;
@@ -418,6 +520,9 @@ h2{
 #seekingsurvey{
 	width: 85%;
 	margin: 0 auto;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
 }
 #seekingsurvey label{
 	display: block;
@@ -437,6 +542,9 @@ h2{
 #inbox{
 	width: 85%;
 	margin: 0 auto;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
 }
 .initialsurvey{
 	width: 85%;

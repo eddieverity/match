@@ -13,14 +13,16 @@
   <script type="text/javascript">
   $(document).ready(function(){
     $('.megaheart').click(function(){
-      var back = ["#darkred","deepskyblue","pink","green","lightslategrey","mediumpurple","yellow","greenyellow","palevioletred"];
+      var back = ["#darkred","deepskyblue","pink","lightslategrey","mediumpurple","yellow","greenyellow","palevioletred"];
       var rand = back[Math.floor(Math.random() * back.length)];
       var rand2 = back[Math.floor(Math.random() * back.length)];
       $(this).css('color', rand);
       $('body').css('background-color', rand2);
+      $.cookie('bgcolor', rand2);
       });
       });
   </script>
+  <script src="{% static 'match_dot_com/js/jquery.cookie.js' %}"></script>
   <title>Match | Login</title>
 </head>
 <body>
