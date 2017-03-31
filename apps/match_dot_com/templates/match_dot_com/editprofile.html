@@ -148,10 +148,10 @@
                     <button class="btn btn-primary">Submit</button>
                 </form>
                 <hr>
-                <a href="{% url 'match:user' id=request.session.id %}">Return to My Profile</a>
+                <a href="{% url 'match:user' id=request.session.id %}">Return to My Profile</a><br>
+                <a href="{% url 'match:index' %}">Home</a><br>
+                <a href="{% url 'match:logout' %}">Logout</a>
             </div>
         </div>
-        <a href="{% url 'match:index' %}">Home</a><br>
-        <a href="{% url 'match:logout' %}">Logout</a>
     </body>
 </html>

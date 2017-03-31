@@ -31,6 +31,17 @@
 	width: 100%;
 	display: block;
 	}
+	#editprofile fieldset{
+	display: block;
+	width: 100%;
+	}
+	.initialsurvey fieldset{
+	display: block;
+	width: 100%;
+	}
+	#surveyinterests textarea{
+	width: 100%;
+	}
 }
 @media only screen and (min-width: 481px) {
 	.gallerysection{
@@ -67,6 +78,25 @@
 	width: 100%;
 	display: block;
 	}
+	#editprofile fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 1em;
+	width: 25%;
+	}
+	#seekingsurvey fieldset{
+	display: block;
+	width: 100%;
+	}
+	.initialsurvey fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 2em;
+	width: 25%;
+	}
+	#surveyinterests textarea{
+	width: 40%;
+	}
 }
 @media only screen and (min-width: 512px) {
 	.gallerysection{
@@ -93,6 +123,27 @@
 	vertical-align: top;
 	position: fixed;
 	}
+	#editprofile fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 1em;
+	width: 25%;
+	}
+	#seekingsurvey fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 2em;
+	width: 25%;
+	}
+	.initialsurvey fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 2em;
+	width: 25%;
+	}
+	#surveyinterests textarea{
+	width: 40%;
+	}
 }
 @media only screen and (min-width: 825px) {
     .gallerysection{
@@ -116,6 +167,27 @@
 	vertical-align: top;
 	position: fixed;
 	}
+	#editprofile fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 1em;
+	width: 25%;
+	}
+	#seekingsurvey fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 2em;
+	width: 25%;
+	}
+	.initialsurvey fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 2em;
+	width: 25%;
+	}
+	#surveyinterests textarea{
+	width: 40%;
+	}
 }
 @media only screen and (min-width: 1024px) {
  .gallerysection{
@@ -138,6 +210,27 @@
 	width: 35%;
 	vertical-align: top;
 	position: fixed;
+	}
+	#editprofile fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 1em;
+	width: 25%;
+	}
+	#seekingsurvey fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 2em;
+	width: 25%;
+	}
+	.initialsurvey fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 2em;
+	width: 25%;
+	}
+	#surveyinterests textarea{
+	width: 40%;
 	}
 }
 
@@ -278,12 +371,6 @@ h2{
 	width: 85%;
 	margin: 0 auto;
 }
-#editprofile fieldset{
-	display: inline-block;
-	vertical-align: top;
-	margin-right: 1em;
-	width: 25%;
-}
 #editprofile label{
 	display: block;
 	float: none;
@@ -332,12 +419,6 @@ h2{
 	width: 85%;
 	margin: 0 auto;
 }
-#seekingsurvey fieldset{
-	display: inline-block;
-	vertical-align: top;
-	margin-right: 2em;
-	width: 25%;
-}
 #seekingsurvey label{
 	display: block;
 	float: none;
@@ -360,12 +441,6 @@ h2{
 .initialsurvey{
 	width: 85%;
 	margin: 0 auto;
-}
-.initialsurvey fieldset{
-	display: inline-block;
-	vertical-align: top;
-	margin-right: 2em;
-	width: 25%;
 }
 .initialsurvey label{
 	display: block;
@@ -394,9 +469,7 @@ h2{
 #surveyinterests label{
 	display: block;
 }
-#surveyinterests textarea{
-	width: 40%;
-}
+
 #surveyinterests button{
 	display: block;
 	margin-top: 1em;

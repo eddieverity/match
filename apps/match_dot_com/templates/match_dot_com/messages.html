@@ -25,7 +25,7 @@
             <h3>Inbox</h3>
             {% if messages %}
                 {% for message in messages|slice:':12' %}
-                    {{ message.sender.first_name }}: <a href="{% url 'match:messenger' id=message.sender.id %}">{{ message.description|truncatechars:25 }}</a>... @ {{ message.created_at }}
+                    <h4>{{ message.sender.first_name }}: <a href="{% url 'match:messenger' id=message.sender.id %}">{{ message.description|truncatechars:25 }}</a> @ {{ message.created_at }}</h4>
                     <hr>
                 {% endfor %}
                 {% else %}
