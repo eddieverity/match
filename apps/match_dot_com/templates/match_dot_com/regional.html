@@ -35,23 +35,27 @@
     </ul>
      {% if locals %}
         {% for o in locals %}  
-        <div class="profileresults">
-            <div class="thumbnail">
-              {% if o.user_pics.user_pic %}
-              <a href="{% url 'match:user' id=o.id %}"><img src="/static/match_dot_com/img/{{o.user_pics.user_pic}}"></a>
-              {% else %}
-              <a href="{% url 'match:user' id=o.id %}"><img src="/static/match_dot_com/img/default.png"></a>
-              {% endif %}
-            </div>
-            <div class="resultstxt">
-              Name: <a href="{% url 'match:user' id=o.id %}">{{ o.first_name }}</a><br>
-              {% for profiles in o.user_profile.all %}
-              Age: {{ profiles.age }}<br>
-              {% endfor %}
-              <a href="{% url 'match:messenger' id=o.id %}">Send {{ o.first_name }} a Message </a><br>
-              <a href="{% url 'match:wink' id=o.id %}">Wink at {{ o.first_name }}</a>
-            </div>
-        </div>
+          {% for x in o.user_profile.all %}
+            {% if x.gender == me.user_seeking.gender %}
+                <div class="profileresults">
+                    <div class="thumbnail">
+                      {% if o.user_pics.user_pic %}
+                      <a href="{% url 'match:user' id=o.id %}"><img src="/static/match_dot_com/img/{{o.user_pics.user_pic}}"></a>
+                      {% else %}
+                      <a href="{% url 'match:user' id=o.id %}"><img src="/static/match_dot_com/img/default.png"></a>
+                      {% endif %}
+                    </div>
+                    <div class="resultstxt">
+                      Name: <a href="{% url 'match:user' id=o.id %}">{{ o.first_name }}</a><br>
+                      {% for profiles in o.user_profile.all %}
+                      Age: {{ profiles.age }}<br>
+                      {% endfor %}
+                      <a href="{% url 'match:messenger' id=o.id %}">Send {{ o.first_name }} a Message </a><br>
+                      <a href="{% url 'match:wink' id=o.id %}">Wink at {{ o.first_name }}</a>
+                    </div>
+                </div>
+            {% endif %}
+          {%endfor%}
         {% endfor %}
       {% endif %}
       <hr>
