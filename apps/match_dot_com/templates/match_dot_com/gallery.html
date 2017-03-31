@@ -29,6 +29,7 @@
 
         // We can watch for our custom `fileselect` event like this
         $(document).ready( function() {
+            $('body').css('background-color', $.cookie('bgcolor'));
             $(':file').on('fileselect', function(event, numFiles, label) {
 
                 var input = $(this).parents('.input-group').find(':text'),
@@ -45,6 +46,7 @@
         
         });
     </script>
+    <script src="{% static 'match_dot_com/js/jquery.cookie.js' %}"></script>
     </head>
     <body>
         <div id="wrapper">

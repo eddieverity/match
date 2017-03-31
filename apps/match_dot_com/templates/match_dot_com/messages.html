@@ -29,23 +29,18 @@
                 <li><a href="{% url 'match:user' id=request.session.id %}">My Profile</a></li>
                 <li><a href="{% url 'match:logout' %}">Logout</a></li>
             </ul>
+            <div id="msginbox">
             <h3>Inbox</h3>
             {% if messages %}
                 {% for message in messages|slice:':12' %}
-                    <h4>{{ message.sender.first_name }}: <a href="{% url 'match:messenger' id=message.sender.id %}">{{ message.description|truncatechars:25 }}</a> @ {{ message.created_at }}</h4>
+                    <a href="{% url 'match:messenger' id=message.sender.id %}"><img src="/static/match_dot_com/img/envelope-closed-4x.png"/></a><h4>{{ message.sender.first_name }}: <a href="{% url 'match:messenger' id=message.sender.id %}">{{ message.description|truncatechars:25 }}</a> @ {{ message.created_at }}</h4>
                     <hr>
                 {% endfor %}
                 {% else %}
                 <p>No messages yet! Check out <a href="{% url 'match:index' %}">your matches</a>!</p>
                 <hr>
             {% endif %}
-            <h3>Other Users</h3>
-            {% if others %}
-                {% for o in others|slice:':8'%}
-                    <a href="{% url 'match:user' id=o.id %}">{{ o.first_name }} {{ o.last_name }}</a> - <a href="{% url 'match:messenger' id=o.id %}">Send Message </a><br>
-                {% endfor %}
-            {% endif %}
-            <hr>
+            </div>
             <p><a href="{% url 'match:index' %}">Matches</a> | <a href="{% url 'match:messages' %}">Messages</a> | <a href="{% url 'match:winks' %}">Winks</a> | <a href="{% url 'match:logout' %}">Logout</a></p>
             <p class="templateinfo">&#169; &#9829; | Ed & Peter were here | xoxo </p>
             </div>
