@@ -190,7 +190,7 @@ def seeking_entry(request):
   if 'deal_seeking_relationship_status' in request.POST:
     deal_seeking_relationship_status = 1
 
-  seeking_current_kids = request.POST.get('seeking_current_kids', None)
+  seeking_current_kids = request.POST.get('seeking_currkids', None)
   deal_current_kids = 0
   if 'deal_current_kids' in request.POST:
     deal_current_kids = 1
@@ -475,7 +475,11 @@ def regional(request):
   user_prof = User.objects.get(id=user_id)
   user_zip = str(user_prof.zipcode)
   url = 'https://www.zipcodeapi.com/rest/T0rL6kxrFEJyuza4H9jsHeQVheFFxDNrDfcKzJcfnVOSvYWd7gFPvvKMJqsg4gII/radius.json/' + user_zip + '/10/mile'
-  req = urlopen(url)
+  try:
+    req = urlopen(url)
+  except:
+    messages.error(request, 'You have an invalid zip code entered, please adjust in your profile')
+    return redirect('match:index')
   json_obj = json.load(req)
   locals = [ ]
 
@@ -644,7 +648,9 @@ def editseeking(request, id):
           return redirect(reverse('match:user', kwargs={'id': userid}))
         return render(request, 'match_dot_com/editseeking.html', context)
       except:
-        return redirect('match:survey_seeking')
+        messages.error(request, 'Please fill out age/gender/height')
+        return redirect('match:index')
+        #FFFFFF
     return redirect(reverse('match:user', kwargs={'id': userid}))
   return redirect('match:login')
 
