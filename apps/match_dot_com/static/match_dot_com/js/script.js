@@ -7,4 +7,5 @@ $(document).ready(function(){
       $(this).css('color', rand);
       $('body').css('background-color', rand2);
       });
+
 	});

@@ -29,7 +29,7 @@
             </div>
             <form action="{% url 'match:delete' id=request.session.id %}" method="POST">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-secondary" name="keepaccount">Delete My Account</button>
+                <button type="submit" class="btn btn-secondary" name="keepaccount">Keep My Account</button>
                 <button type="submit" class="btn btn-danger" id="deleter" name="delete">Delete My Account</button>
             </form>
             <hr>

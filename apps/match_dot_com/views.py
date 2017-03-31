@@ -8,6 +8,7 @@ import os
 import re
 import bcrypt
 import math
+import urllib2
 from models import *
 from django.db.models import Q
 from .forms import *
@@ -475,10 +476,16 @@ def regional(request):
   user_zip = str(user_prof.zipcode)
   url = 'https://www.zipcodeapi.com/rest/T0rL6kxrFEJyuza4H9jsHeQVheFFxDNrDfcKzJcfnVOSvYWd7gFPvvKMJqsg4gII/radius.json/' + user_zip + '/10/mile'
   try:
-    req = urlopen(url)
-  except:
-    messages.error(request, 'You have an invalid zip code entered, please adjust in your profile')
-    return redirect('match:index')
+    req = urllib2.urlopen(url)
+  except urllib2.HTTPError as err:
+    if err.code == 429:
+      messages.error(request, 'Our webmasters are poor and are using a free API key, try again later!')
+      return redirect('match:index')
+    if err.code == 404:
+      messages.error(request, 'You have an invalid zip code entered, please adjust in your profile')
+      return redirect('match:index')
+
+
   json_obj = json.load(req)
   locals = [ ]
 
@@ -866,6 +873,7 @@ def delete(request, id):
       if request.method == "POST":
         if 'delete' in request.POST:
           User.objects.get(id=id).delete()
+          request.session.clear()
           return redirect('match:login')
         if 'keepaccount' in request.POST:
           return redirect('match:index')

@@ -346,6 +346,7 @@
 
 
 
+
 .nav-tabs{
 	display:block;
 }
@@ -595,7 +596,7 @@ h2{
 }
 
 #surveyinterests button{
-	display: block;
+	display: inline-block;
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
