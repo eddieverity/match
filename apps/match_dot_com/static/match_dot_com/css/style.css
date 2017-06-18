@@ -64,7 +64,281 @@
 		margin-left: 1em;
 		margin-top: 1em;
 	}
+
+
+
+	/* beginsert */
+	#msginbox img{
+	display: inline-block;
+	vertical-align: top;
+	width: 16px;
+	margin-top: .75em;
 }
+#inbox h4{
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 1em;
+}
+.nav-tabs{
+	display:block;
+}
+.nav-tabs a{
+	font-size:1.5em;
+}
+#loginwrapper{
+	width: 85%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
+}
+.megaheart{
+	font-size: 35em;
+}
+#home{
+	width: 85%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
+}
+
+.profileresults {
+	margin-top: 1em;
+}
+.loginbox label{
+	width: 100px;
+}
+#piclabel{
+	widows: 200px;
+	display: block;
+}
+.loginbox{
+	width: 100%;
+	display: block;
+	vertical-align: top;
+}
+h2{
+	display: block;
+	width: 100%;
+}
+.alert{
+	margin-top: 10px;
+}
+.msgcontents{
+	margin: 2em 2em;
+	display: block;
+	float: left;
+}
+.msgtxt{
+	background: #007AFF;
+	color: white;
+	padding: 6px 12px 6px 12px;
+	border-radius: 5px;
+}
+.mymsgcontents{
+	margin: 2em 2em;
+	display: block;
+	float:right;
+}
+.mymsgtxt{
+	background: darkgrey;
+	color: white;
+	padding: 6px 12px 6px 12px;
+	border-radius: 5px;
+}
+#messengerfooter{
+	position: fixed;
+	margin-top: 390px;
+}
+#profile{
+	width: 85%;
+	margin: 0 auto; 
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
+}
+#profile form{
+	margin: 0;
+}
+#profile label{
+	float: none;
+}
+#profile button{
+	display: block;
+	float: left;
+}
+.thumbnail {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  margin-bottom: .5em;
+}
+.thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+.resultstxt{
+	position: relative;
+	width: 200px;
+	display: block;
+	padding-right: 0;
+	padding-left: .5em;
+}
+.container { 
+    width: 200px; 
+    height: 150px; 
+    overflow: hidden;
+}
+.container img { 
+    width: 120%;
+	margin-left: -10%;
+	margin-top: -15%;
+}
+.profileresults{
+	display: inline-block;
+}
+.profiledata{
+	display: inline-block;
+	width: 40%;
+	vertical-align: top;
+}
+
+#editprofile{
+	width: 85%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
+}
+#editprofile label{
+	display: block;
+	float: none;
+}
+#editprofile hr{
+	margin: 0 0 .5em 0;
+}
+#editprofile button{
+	display: block;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+#editprofile input{
+	padding-top: 1em;
+}
+.profilesection{
+	display: inline-block;
+	vertical-align: top;
+	width: 180px;
+	margin-top: 1em;
+	margin-right: 2em;
+}
+.profilepicuploader{
+	margin-top: .5em;
+	margin-bottom: .5em;
+}
+#galleryuploader{
+	width: 100px;
+}
+
+.galleryviewer h3{
+	margin-bottom: 1em;
+}
+.galleryviewer .thumbnail{
+	display: inline-block;
+	vertical-align: top;
+}
+#seekingsurvey{
+	width: 85%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
+}
+#seekingsurvey label{
+	display: block;
+	float: none;
+}
+#seekingsurvey hr{
+	margin: 0 0 .5em 0;
+}
+#seekingsurvey button{
+	display: block;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+#seekingsurvey input{
+	padding-top: 1em;
+}
+#inbox{
+	width: 85%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
+}
+.initialsurvey{
+	width: 85%;
+	margin: 0 auto;
+}
+.initialsurvey label{
+	display: block;
+	float: none;
+}
+.initialsurvey hr{
+	margin: 0 0 .5em 0;
+}
+.initialsurvey button{
+	display: block;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+.initialsurvey input{
+	padding-top: 1em;
+}
+#interests{
+	display: block;
+}
+#surveyinterests{
+	display: block;
+	width: 85%;
+	margin: 0 auto;
+	text-align: center;
+}
+#surveyinterests label{
+	display: block;
+}
+
+#surveyinterests button{
+	display: inline-block;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+.templateinfo{
+	margin-top: 2em;
+	color: lightslategrey;
+	font-size: .75em;
+}
+#inbox h3{
+	margin-bottom: 1em;
+}
+#deleteaccount{
+	width: 85%;
+	margin: 0 auto;
+}
+	/* endsert  */
+}
+
+
+
+
+
 @media only screen and (min-width: 481px) {
 	.gallerysection{
 		display: none;
@@ -137,202 +411,10 @@
 	border-radius: .5em;
 	overflow: auto;
 	min-height: 700px;
-}
-}
-@media only screen and (min-width: 512px) {
-	.gallerysection{
-    display: inline-block;
-	vertical-align: top;
-	width: 180px;
-    }
-	#profile{
-		width: 100%;
 	}
-	#wrapper{
-	margin: 1em auto;
-	width: 90%;
-	}
-	#mobilegallery{
-		display: none;
-	}
-	#recent{
-	width: 50%;
-	float: right;
-	background-color: white;
-	padding: 2em;
-	border-radius: .5em;
-	}
-	#msginput{
-	width: 35%;
-	vertical-align: top;
-	position: fixed;
-	background-color: white;
-	padding: 2em;
-	border-radius: .5em;
-	}
-	#editprofile fieldset{
-	display: inline-block;
-	vertical-align: top;
-	margin-right: 1em;
-	width: 25%;
-	}
-	#seekingsurvey fieldset{
-	display: inline-block;
-	vertical-align: top;
-	margin-right: 2em;
-	width: 25%;
-	}
-	.initialsurvey fieldset{
-	display: inline-block;
-	vertical-align: top;
-	margin-right: 2em;
-	width: 25%;
-	}
-	#surveyinterests textarea{
-	width: 40%;
-	}
-	.loginbox{
-		display: inline-block;
-		vertical-align: top;
-	}
-	#messenger{
-	width: 85%;
-	margin: 0 auto;
-	background-color: white;
-	padding: 2em;
-	border-radius: .5em;
-	overflow: auto;
-	min-height: 700px;
-}
-}
-@media only screen and (min-width: 825px) {
-    .gallerysection{
-    display: inline-block;
-	vertical-align: top;
-	width: 420px;
-    }
-	#wrapper{
-	margin: 2em auto;
-	width: 90%;
-	} 
-	#mobilegallery{
-		display: none;
-	}  
-	#recent{
-	width: 50%;
-	float: right;
-	background-color: white;
-	padding: 2em;
-	border-radius: .5em;
-	}
-	#msginput{
-	width: 35%;
-	vertical-align: top;
-	position: fixed;
-	background-color: white;
-	padding: 2em;
-	border-radius: .5em;
-	}
-	#editprofile fieldset{
-	display: inline-block;
-	vertical-align: top;
-	margin-right: 1em;
-	width: 25%;
-	}
-	#seekingsurvey fieldset{
-	display: inline-block;
-	vertical-align: top;
-	margin-right: 2em;
-	width: 25%;
-	}
-	.initialsurvey fieldset{
-	display: inline-block;
-	vertical-align: top;
-	margin-right: 2em;
-	width: 25%;
-	}
-	#surveyinterests textarea{
-	width: 40%;
-	}
-	.loginbox{
-		display: inline-block;
-		vertical-align: top;
-	}
-	#messenger{
-	width: 85%;
-	margin: 0 auto;
-	background-color: white;
-	padding: 2em;
-	border-radius: .5em;
-	overflow: auto;
-	min-height: 700px;
-}
-}
-@media only screen and (min-width: 1024px) {
- .gallerysection{
-	display: inline-block;
-	vertical-align: top;
-	width: 70%;
-	}
-	#wrapper{
-	margin: 2em auto;
-	width: 90%;
-	}
-	#mobilegallery{
-		display: none;
-	}
-	#recent{
-	width: 50%;
-	float: right;
-	background-color: white;
-	padding: 2em;
-	border-radius: .5em;
-	}
-	#msginput{
-	width: 35%;
-	vertical-align: top;
-	position: fixed;
-	background-color: white;
-	padding: 2em;
-	border-radius: .5em;
-	}
-	#editprofile fieldset{
-	display: inline-block;
-	vertical-align: top;
-	margin-right: 1em;
-	width: 25%;
-	}
-	#seekingsurvey fieldset{
-	display: inline-block;
-	vertical-align: top;
-	margin-right: 2em;
-	width: 25%;
-	}
-	.initialsurvey fieldset{
-	display: inline-block;
-	vertical-align: top;
-	margin-right: 2em;
-	width: 25%;
-	}
-	#surveyinterests textarea{
-	width: 40%;
-	}
-	.loginbox{
-		display: inline-block;
-		vertical-align: top;
-	}
-	#messenger{
-	width: 85%;
-	margin: 0 auto;
-	background-color: white;
-	padding: 2em;
-	border-radius: .5em;
-	overflow: auto;
-	min-height: 700px;
-}
-}
 
-#msginbox img{
+	/* beginsert */
+	#msginbox img{
 	display: inline-block;
 	vertical-align: top;
 	width: 16px;
@@ -343,10 +425,6 @@
 	vertical-align: top;
 	margin-left: 1em;
 }
-
-
-
-
 .nav-tabs{
 	display:block;
 }
@@ -612,6 +690,224 @@ h2{
 	width: 85%;
 	margin: 0 auto;
 }
+	/* endsert */
+}
+
+
+
+
+
+@media only screen and (min-width: 512px) {
+	.gallerysection{
+    display: inline-block;
+	vertical-align: top;
+	width: 180px;
+    }
+	#profile{
+		width: 100%;
+	}
+	#wrapper{
+	margin: 1em auto;
+	width: 90%;
+	}
+	#mobilegallery{
+		display: none;
+	}
+	#recent{
+	width: 50%;
+	float: right;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
+	}
+	#msginput{
+	width: 35%;
+	vertical-align: top;
+	position: fixed;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
+	}
+	#editprofile fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 1em;
+	width: 25%;
+	}
+	#seekingsurvey fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 2em;
+	width: 25%;
+	}
+	.initialsurvey fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 2em;
+	width: 25%;
+	}
+	#surveyinterests textarea{
+	width: 40%;
+	}
+	.loginbox{
+		display: inline-block;
+		vertical-align: top;
+	}
+	#messenger{
+	width: 85%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
+	overflow: auto;
+	min-height: 700px;
+	}
+}
+
+
+
+
+
+@media only screen and (min-width: 825px) {
+    .gallerysection{
+    display: inline-block;
+	vertical-align: top;
+	width: 420px;
+    }
+	#wrapper{
+	margin: 2em auto;
+	width: 90%;
+	} 
+	#mobilegallery{
+		display: none;
+	}  
+	#recent{
+	width: 50%;
+	float: right;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
+	}
+	#msginput{
+	width: 35%;
+	vertical-align: top;
+	position: fixed;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
+	}
+	#editprofile fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 1em;
+	width: 25%;
+	}
+	#seekingsurvey fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 2em;
+	width: 25%;
+	}
+	.initialsurvey fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 2em;
+	width: 25%;
+	}
+	#surveyinterests textarea{
+	width: 40%;
+	}
+	.loginbox{
+		display: inline-block;
+		vertical-align: top;
+	}
+	#messenger{
+	width: 85%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
+	overflow: auto;
+	min-height: 700px;
+	}
+}
+
+
+
+
+
+@media only screen and (min-width: 1024px) {
+ .gallerysection{
+	display: inline-block;
+	vertical-align: top;
+	width: 70%;
+	}
+	#wrapper{
+	margin: 2em auto;
+	width: 90%;
+	}
+	#mobilegallery{
+		display: none;
+	}
+	#recent{
+	width: 50%;
+	float: right;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
+	}
+	#msginput{
+	width: 35%;
+	vertical-align: top;
+	position: fixed;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
+	}
+	#editprofile fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 1em;
+	width: 25%;
+	}
+	#seekingsurvey fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 2em;
+	width: 25%;
+	}
+	.initialsurvey fieldset{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 2em;
+	width: 25%;
+	}
+	#surveyinterests textarea{
+	width: 40%;
+	}
+	.loginbox{
+		display: inline-block;
+		vertical-align: top;
+	}
+	#messenger{
+	width: 85%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 2em;
+	border-radius: .5em;
+	overflow: auto;
+	min-height: 700px;
+	}
+}
+
+
+
+
+
+/* testsnip */
+
+
+/* testsnip */
 
 /*LIGHTBOX*/
 
